@@ -10,3 +10,4 @@ function __autoload($name)
 
 require HOME_DIR . '/Configuration/DBConfig.php';
 require HOME_DIR . '/Models/Classes/Connection.class.php';
+require HOME_DIR . '/Models/Classes/HTML.class.php';
