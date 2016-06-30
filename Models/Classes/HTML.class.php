@@ -75,6 +75,7 @@ class HTML
     	$return .= '<body>';
     	//NAVIGATION
     	$return .= "<nav>{$this->getMenu()}</nav>";
+    	$return .= "<div id='content'>{$this->_content}</div>";
     	$return .= '</body>';
     	
     	$return .= '</html>';

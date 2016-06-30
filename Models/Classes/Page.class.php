@@ -17,10 +17,11 @@ class Page
 	public function getActualPage()
 	{
 		$result = Connection::connect()->prepare(
-				'SELECT * FROM `page` WHERE `id` = :id AND `active` = 1 AND `deleted` = 0;'
+				'SELECT * FROM `page` WHERE `pid` = :id AND `language` = :language AND `active` = 1 AND `deleted` = 0;'
 		);
 		$result->execute(array(
-				':id' => $this->_pid
+				':id' => $this->_pid,
+				':language' => $this->_language
 		));
 		
 		$page = $result->fetch();
@@ -30,10 +31,11 @@ class Page
 	public function changePID($pid)
 	{		
 		$result = Connection::connect()->prepare(
-				'SELECT `id` FROM `page` WHERE `id` = :id AND `active` = 1 AND `deleted` = 0;'
+				'SELECT `id` FROM `page` WHERE `pid` = :id AND `language` = :language AND `active` = 1 AND `deleted` = 0;'
 		);
 		$result->execute(array(
-				':id' => $pid
+				':id' => $pid,
+				':language' => $this->_language
 		));
 		
 		$page = $result->fetch();

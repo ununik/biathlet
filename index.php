@@ -14,16 +14,18 @@ if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 	} else {
 		$page->changeLog(true);
 	}
-}
-
-//Page id
-if (isset($_GET['pid']) && $_GET['pid'] != '') {
-	$page->changePID($_GET['pid']);
+} else {
+	$user = new User();
 }
 
 //Language setting
 if (isset($_GET['L']) && $_GET['L'] != '') {
 	$page->changeLanguage($_GET['L']);
+}
+
+//Page id
+if (isset($_GET['pid']) && $_GET['pid'] != '') {
+	$page->changePID($_GET['pid']);
 }
 
 //Main menu
