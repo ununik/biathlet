@@ -6,13 +6,16 @@ require HOME_DIR . '/autoloading.php';
 $html = new HTML();
 $page = new Page();
 
+$html->setCssFile('css/unlog.css');
 //Authentication
 if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 	$user = new User($_SESSION['biathlete_user']);
 	if (!$user->checkUser()) {
-		$_SESSION['biathlete_user'] == '';
+		$_SESSION['biathlete_user'] = '';
 	} else {
 		$page->changeLog(true);
+		$html->setCssFile('css/log.css');
+		$html->setHeader($user->getHeader());
 	}
 } else {
 	$user = new User();

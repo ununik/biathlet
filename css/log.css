@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+#mailbox_icon {
+	width: 40px;
+	height: 30px;
+	background-size: 40px 30px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	text-decoration: none;
+}
+
+#mailbox_icon span{
+	display: inline-block;
+	font-family: Arial;
+	font-size: 10px;
+	position: relative;
+	top: 10px;
+	left: 26px;
+	color: white;
+}
+#logo{
+	width: 400px;
+	height: 85px;
+	background-image: url('../images/icons/biathlete.svg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+#header{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 62px;
+}
+#head_navigation{
+	margin-left: 410px;
+	height: 100%;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+.header_money{
+	float: left;
+	position: relative;
+	top: 25px;
+	left: 45px;
+	font-size: 16px;
+}
+.header_name{
+	float: right;
+	position: relative;
+	top: 25px;
+	left: -45px;
+	font-size: 16px;	
+}
+.header_message{
+	float: right;
+	position: relative;
+	top: 18px;
+	left: -60px;
+	font-size: 16px;
+}
+.header_energy{
+	position: relative;
+	top: 25px;
+	font-size: 16px;
+}

@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+body{
+	font-family: Serif;
+}
+
+#content{
+	width: 800px;
+	margin: 0px auto;
+}
+
+.form{
+	width: 300px;
+	margin: 0px auto;
+	display: block;
+}
+.formField{
+	display: block;
+	padding: 12px 0px;
+}
+
+.formField label{
+	display: block;
+	margin: 0px 0px 3px 0px;
+	text-transform: uppercase;
+}
+
+.formField input{
+	width: 100%;	
+	border: 1px solid black;
+	padding: 2px;
+	border-radius: 3px;
+	outline: none;
+}
+.formField input:focus{
+	border: 1px solid gray;
+}
+.formField .checkbox{
+	width: auto;
+	display: inline-block;
+	margin-right: 10px;
+}
+.submit_button{
+	margin: 0px auto;
+	display: block;
+}
+.formLinks{
+	text-align: center;
+	margin: 10px 0px 0px 0px;
+}
+#logo{
+	width: 900px;
+	height: 150px;
+	background-image: url('../images/icons/biathlete.svg');
+	background-size: 900px;
+	background-repeat: no-repeat;
+	margin: 0px auto;
+}
+
+nav{
+	text-align: center;
+}
+nav li{
+	display: inline-block;
+	overflow: hidden;
+	margin: 0px 10px;
+}
+nav li a{
+	color: black;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 17px;
+}
+nav li a:hover{
+	text-decoration: underline;
+}

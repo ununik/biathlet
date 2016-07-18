@@ -4,6 +4,8 @@ class HTML
     private $_headerTitle = 'Biathlete';
     private $_mainMenu = array();
     private $_content = '';
+    private $_header = '';
+    private $_cssPath = '';
     
     public function setHeaderTitle($new)
     {
@@ -59,6 +61,16 @@ class HTML
     	return $menu;
     }
     
+    public function setCssFile($path)
+    {
+        $this->_cssPath = $path;
+    }
+    
+    public function setHeader($new)
+    {
+        $this->_header = $new;
+    }
+    
     public function addToContent($new)
     {
     	$this->_content .= $new;
@@ -70,9 +82,16 @@ class HTML
     	
     	$return .= '<head>';
     	$return .= "<title>{$this->_headerTitle}</title>";
+    	
+    	if ($this->_cssPath != '') {
+    	    $return .= '<link rel="stylesheet" type="text/css" href="' . $this->_cssPath . '">';
+    	}
+    	
     	$return .= '</head>';
     	
     	$return .= '<body>';
+    	$return .= '<div id="logo"></div>';
+    	$return .= "<div id='header'><div id='head_navigation'>{$this->_header}</div></div>";
     	//NAVIGATION
     	$return .= "<nav>{$this->getMenu()}</nav>";
     	$return .= "<div id='content'>{$this->_content}</div>";

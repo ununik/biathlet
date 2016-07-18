@@ -43,6 +43,11 @@ if (isset($_POST['registration'])) {
 		$err[] = 'Both passwords are not the same.';
 	}
 	
+	//rules
+	if (!isset($_POST['rules'])) {
+	    $err[] = 'You must agree with rules.';
+	}
+	
 	
 	//registration
 	if (count($err) == 0) {
