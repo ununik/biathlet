@@ -2,7 +2,7 @@
 $container = '';
 
 if (count($err) > 0) {
-	$container .= '<ul>';
+	$container .= '<ul class="formErrors">';
 	foreach ($err as $err) {
 		$container .= "<li>$err</li>";
 	}

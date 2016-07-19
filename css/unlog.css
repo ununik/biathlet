@@ -39,6 +39,9 @@ body{
 	display: inline-block;
 	margin-right: 10px;
 }
+.formErrors{
+   color: red;
+}
 .submit_button{
 	margin: 0px auto;
 	display: block;
