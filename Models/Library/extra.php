@@ -10,3 +10,11 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
+
+function cookies($login, $password) {
+    return $login . '_;_' . $password;
+}
+
+function getCookiesPart($string) {
+    return explode('_;_', $string);
+}

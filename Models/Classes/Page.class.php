@@ -3,7 +3,7 @@ class Page
 {
 	private $_log = false;
 	private $_pid = 2; //unlog root x log root - 101
-	private $_language = 'en';
+	public $_language = 'en';
 	
 	public function getPID()
 	{
@@ -35,18 +35,30 @@ class Page
 		
 		return $page;
 	}
-	public function changePID($pid)
-	{		
-	    if ($this->_log == true && $pid < 100) {
-	        $pid = $this->_pid;
-	    } else if ($this->_log == false && $pid > 100) {
-	        $pid = 101;
+	public function changePID($url)
+	{	
+	    if ($this->_log) {
+	        $log = 1;
+	    } else {
+	        $log = 0;
 	    }
+	    
+	    if ($url == '') {
+	        if ($this->_log) {
+	            $url = 'profil';
+	            $log = 1;
+	        } else {
+	            $url = 'login';
+	            $log = 0;
+	        }   
+	    }
+	    
 		$result = Connection::connect()->prepare(
-				'SELECT `pid` FROM `page` WHERE `pid` = :id AND `language` = :language AND `active` = 1 AND `deleted` = 0;'
+				'SELECT `pid` FROM `page` WHERE `url` = :url AND `language` = :language AND `log`=:log AND `active` = 1 AND `deleted` = 0;'
 		);
 		$result->execute(array(
-				':id' => $pid,
+				':url' => $url,
+		        ':log' => $log,
 				':language' => $this->_language
 		));
 		
@@ -61,6 +73,10 @@ class Page
 	
 	public function changeLanguage($language)
 	{
+	    if ($language == '') {
+	        $language = 'en';
+	    }
+	    
 		$this->_language = $language;
 	}
 	
@@ -84,10 +100,21 @@ class Page
 		return $menuArray;
 	}
 	
-	public function getLink($pid = '', $externalLink = '')
-	{
+	public function getLink($pid = '', $externalLink = '', $language = 'en')
+	{	    
 		if ($pid != '') {
-			return 'index.php?pid=' . $pid;
+		    $result = Connection::connect()->prepare(
+		            'SELECT * FROM `page` WHERE `pid` = :pid AND `language`=:language AND `active` = 1 AND `deleted` = 0;'
+		            );
+		    $result->execute(array(
+		            ':pid' => $pid,
+		            ':language' => $language
+		    ));
+		    
+		    $url = $result->fetch();
+		    
+		    return URL_PATH . '/index.php/'.$language.'/'.$url['url'].'/';
+			//return 'index.php?pid=' . $pid;
 		}
 		
 		return $externalLink;

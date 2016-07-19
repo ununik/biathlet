@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: localhost
--- Vygenerováno: Pon 18. čec 2016, 17:04
+-- Vygenerováno: Úte 19. čec 2016, 17:20
 -- Verze serveru: 5.5.49-0ubuntu0.14.04.1
 -- Verze PHP: 5.5.9-1ubuntu4.17
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `url` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=19 ;
 
 --
 -- Vypisuji data pro tabulku `page`
@@ -92,7 +92,32 @@ INSERT INTO `page` (`id`, `pid`, `log`, `language`, `title`, `controller`, `view
 (12, 106, 1, 'en', 'Settings', '/Controllers/Log/settings/en.php', '/Views/Log/settings/en.php', 1, 0, 'settings'),
 (13, 7, 0, 'en', 'Game tour', '', '/Views/GameTour/en.php', 1, 0, 'game-tour'),
 (14, 107, 1, 'en', 'Training diary', '/Controllers/Log/trainingDiary/en.php', '/Views/Log/trainingDiary/en.php', 1, 0, 'training-diary'),
-(15, 108, 1, 'en', 'Add new training', '/Controllers/Log/newTraining/en.php', '/Views/Log/newTraining/en.php', 1, 0, 'training-diary-new');
+(15, 108, 1, 'en', 'Add new training', '/Controllers/Log/newTraining/en.php', '/Views/Log/newTraining/en.php', 1, 0, 'training-diary-new'),
+(16, 109, 1, 'en', 'Rules', '', '/Views/Rules/en.php', 1, 0, 'rules'),
+(17, 110, 1, 'en', 'Authors', '', '/Views/Authors/en.php', 1, 0, 'authors'),
+(18, 111, 1, 'en', 'Game tour', '', '/Views/GameTour/en.php', 1, 0, 'game-tour');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `rules`
+--
+
+CREATE TABLE IF NOT EXISTS `rules` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language` varchar(10) COLLATE utf8_danish_ci NOT NULL,
+  `text` text COLLATE utf8_danish_ci NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Vypisuji data pro tabulku `rules`
+--
+
+INSERT INTO `rules` (`id`, `language`, `text`, `active`, `deleted`) VALUES
+(1, 'en', 'Users must be over 10 years old.', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`) VALUES
-(1, 'Martin', 'Pribyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1468854226, 20, 20, 100);
+(1, 'Martin', 'Pribyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1468941531, 20, 20, 100);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

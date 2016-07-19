@@ -9,7 +9,7 @@ class HTML
     
     public function setHeaderTitle($new)
     {
-    	$this->_headerTitle = $new;
+    	$this->_headerTitle = $new . ' - Biathlete';
     }
     
     /**
@@ -26,6 +26,7 @@ class HTML
     	$menuItemArray['class'] = $class;
     	$menuItemArray['active'] = $active;
     	$menuItemArray['href'] = $href;
+    	
     	
     	$this->_mainMenu[] = $menuItemArray;
     }
@@ -81,6 +82,7 @@ class HTML
     	$return = '<html>';
     	
     	$return .= '<head>';
+    	$return .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
     	$return .= "<title>{$this->_headerTitle}</title>";
     	
     	if ($this->_cssPath != '') {

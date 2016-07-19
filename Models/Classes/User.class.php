@@ -131,6 +131,7 @@ class User
 	    }
 	    
 	    $_SESSION['biathlete_user'] = $user['id'];
+	    setcookie('biathlete_user', \Library\Extra\cookies($login, $password), 60*60*24*31);
 	    return true;
 	}
 	
@@ -185,13 +186,13 @@ class User
 	    
 	    $return .= '<a href=" '.Page::getLink(101).' " class="header_name">' . $this->getFullName() . '</a>';
 	    
-	    $return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url(images/icons/messageReaded.svg)"></a>';
+	    $return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/messageReaded.svg)"></a>';
 	    
 	    //one unreaded message
-	    //$return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url(images/icons/message.svg)"></a>';
+	    //$return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/message.svg)"></a>';
 	    
 	    //more unreaded messages
-	    //$return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url(images/icons/messages.svg)"><span>1</span></a>';
+	    //$return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/messages.svg)"><span>1</span></a>';
   
 	    return $return;
 	}
