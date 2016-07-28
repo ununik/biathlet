@@ -6,10 +6,22 @@ class HTML
     private $_content = '';
     private $_header = '';
     private $_cssPath = '';
+    private $_js = array();
+    private $_scripts = '';
+    private $_actualActivity;
     
     public function setHeaderTitle($new)
     {
     	$this->_headerTitle = $new . ' - Biathlete';
+    }
+    
+    public function addToJs($src, $script = '')
+    {
+        if ($src != '') {
+            $this->_js[] = $src;
+        } else {
+            $this->_scripts .= '<script>'.$script.'</script>';
+        }
     }
     
     /**
@@ -77,6 +89,11 @@ class HTML
     	$this->_content .= $new;
     }
     
+    public function addToActualActivity($new)
+    {
+        $this->_actualActivity = $new;
+    }
+    
     public function printHTML()
     {
     	$return = '<html>';
@@ -89,11 +106,17 @@ class HTML
     	    $return .= '<link rel="stylesheet" type="text/css" href="' . $this->_cssPath . '">';
     	}
     	
+    	$return .= $this->_scripts;
+    	foreach ($this->_js as $js) {
+    	    $return .= '<script src="'.$js.'"></script>';
+    	}
+    	
     	$return .= '</head>';
     	
     	$return .= '<body>';
     	$return .= '<div id="logo"></div>';
     	$return .= "<div id='header'><div id='head_navigation'>{$this->_header}</div></div>";
+    	$return .= $this->_actualActivity;
     	//NAVIGATION
     	$return .= "<nav>{$this->getMenu()}</nav>";
     	$return .= "<div id='content'>{$this->_content}</div>";

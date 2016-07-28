@@ -1,4 +1,136 @@
 @CHARSET "UTF-8";
+h3{
+	clear: both;
+}
+#content{
+	float: left;
+	width: 80%;
+	box-sizing: border-box;
+}
+nav{
+	min-height: 100%;
+	width: 20%;
+	float: left;
+	box-sizing: border-box;
+}
+nav ul{
+	padding: 0px;
+	margin: 0px;
+	text-align: right;
+	padding: 15px 20px 0px 0px;
+}
+nav ul li a{
+	color: black;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 17px;
+}
+nav ul li a:hover{
+	text-decoration: underline;
+}
+nav ul li .active{
+	text-decoration: underline;
+}
+nav ul li{
+	margin: 5px 0px;
+}
+.NewTrainingCategory{
+	width: 10vw;
+  	height: 10vw;
+	display: inline-block;
+	box-sizing: border-box;	
+	border: 2px solid black;
+	cursor: pointer;
+}
+.NewTrainingCategory .title{
+	text-align: center;
+	font-size: 0.95vw;
+	text-transform: uppercase;
+	padding: 5%;
+}
+.fiftyfifty{
+	float: left;
+	width: 50%;
+	box-sizing: border-box;
+}
+.thirdty{
+	float: left;
+	width: 30%;
+	box-sizing: border-box;
+}
+.partTimeTitle{
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+}
+.partTimeDetail{
+	overflow: hidden;
+	width: 100%;
+	height: 0px;
+}
+.partTimeTime{
+	width: 5vw;
+  	height: 5vw;
+  	font-size: 1.3vW;
+  	float: left;
+  	border: 1px solid black;
+  	line-height: 5vw;
+  	clear: left;
+  	text-align: center;
+}
+.partTimeRest{
+	float:left;
+	height: 5vw;
+	width: 7vw;
+	line-height: 2.5vw;
+	border: 1px solid black;
+	font-size: 1.2vW;
+	text-align: left;
+}
+.partTimeGetJob{
+	width: 7vw;
+  	height: 5vw;
+  	font-size: 1vW;
+  	float: left;
+  	border: 1px solid black;
+  	line-height: 5vw;
+  	font-size: 1.3vW;
+  	text-align: center;
+  	cursor: pointer;
+}
+.form{
+	width: 300px;
+	margin: 0px auto;
+	display: block;
+	padding: 10px;
+}
+.formField{
+	display: block;
+	padding: 12px 0px;
+}
+
+.formField label{
+	display: block;
+	margin: 0px 0px 3px 0px;
+	text-transform: uppercase;
+}
+
+.formField input{
+	width: 100%;	
+	border: 1px solid black;
+	padding: 2px;
+	border-radius: 3px;
+	outline: none;
+}
+.formField input:focus{
+	border: 1px solid gray;
+}
+.formField .checkbox{
+	width: auto;
+	display: inline-block;
+	padding: 0px 3px;
+}
+
 #mailbox_icon {
 	width: 40px;
 	height: 30px;
@@ -63,4 +195,51 @@
 	position: relative;
 	top: 25px;
 	font-size: 16px;
+}
+.inactiveSteps{
+	display: none;
+}
+.step{
+	display: inline-block;
+	border: 1px solid black;
+	padding: 2px 4px;
+	line-height: 22px;
+	cursor: pointer;
+}
+.shopInactiveCategory{
+	display: none;
+}
+.shopCategoriesTitles{
+	display: inline-block;
+	padding: 3px 5px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+#shopCategoriesPanel{
+	margin: 5px 0px 15px 0px;
+}
+.shopItemBox{
+	width: 10vw;
+  	height: 10vw;
+	display: inline-block;
+	box-sizing: border-box;	
+	border: 2px solid black;
+}
+.shopItemBox .title{
+	text-align: center;
+	font-size: 0.95vw;
+	text-transform: uppercase;
+	padding: 5%;
+}
+.shopItemBox .buy{
+	cursor: pointer;
+	width: 100%;
+	text-align: center;
+	background-color: black;
+	color: white;
+	line-height: 25px;
+}
+.shopItemBox .noMoney{
+	cursor: default;
+	color: gray;
 }

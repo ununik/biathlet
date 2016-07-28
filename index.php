@@ -15,14 +15,21 @@ if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 	} else {
 		$page->changeLog(true);
 		$html->setCssFile(URL_PATH . '/css/log.css');
+		$html->addToJs('', 'const HOME_DIR = "'.HOME_DIR.'"');
+		$html->addToJs('', 'const URL_PATH = "'.URL_PATH.'"');
+		$html->addToJs(URL_PATH . '/js/jquery-3.1.0.min.js');
+		$html->addToJs(URL_PATH . '/js/ajax.js');
+		$html->addToJs(URL_PATH . '/js/basicFunctions.js');
 		$html->setHeader($user->getHeader());
+		$html->addToActualActivity($user->getActualActivity());
 	}
 } elseif (isset($_COOKIE['biathlete_user']) && $_COOKIE['biathlete_user'] != '') {
+    $user = new User();
     $cookies = \Library\Extra\getCookiesPart($_COOKIE['biathlete_user']);
     if (!$user->makeLogin($cookies[0], $cookies[1])) {
         $_COOKIE['biathlete_user'] = '';
     }
-    header('Location: '.URL_PATH . '/index.php/'. $_SERVER['PATH_INFO']);
+    header('Location: '.URL_PATH . '/index.php'. $_SERVER['PATH_INFO']);
 } else {
 	$user = new User();
 }

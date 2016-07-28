@@ -1,4 +1,8 @@
 <?php
+$html->addToJs(URL_PATH . '/js/profilUpdate.js');
+
+$inactiveStepsPersonal = '';
+$inactiveStepsLogin = 'inactiveSteps';
 $err = array();
 $firstname = $user->_firstname;
 $lastname = $user->_lastname;
@@ -6,6 +10,8 @@ $mail = $user->getMail();
 $login = $user->getLogin();
 
 if (isset($_POST['profilUpdate'])) {
+    $inactiveStepsPersonal = '';
+    $inactiveStepsLogin = 'inactiveSteps';
     $firstname = \Library\Forms\safeText($_POST['firstname']);
     $lastname = \Library\Forms\safeText($_POST['lastname']);
     $mail = \Library\Forms\safeText($_POST['mail']);
@@ -50,6 +56,8 @@ if (isset($_POST['profilUpdate'])) {
 }
 
 if (isset($_POST['passwordUpdate'])) {
+    $inactiveStepsPersonal = 'inactiveSteps';
+    $inactiveStepsLogin = '';
     $old = \Library\Forms\safeText($_POST['oldPassword']);
     $new = \Library\Forms\safeText($_POST['newPassword']);
     $new2 = \Library\Forms\safeText($_POST['newPassword2']);

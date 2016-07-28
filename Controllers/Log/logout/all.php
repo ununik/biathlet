@@ -1,3 +1,3 @@
 <?php
-unset($_SESSION['biathlete_user']);
+$user->logout();
 header('Location: '. $page->getLink(2));

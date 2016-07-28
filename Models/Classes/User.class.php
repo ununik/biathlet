@@ -10,6 +10,11 @@ class User
 	public $_actualEnergy = 0;
 	public $_maxEnergy = 0;
 	public $_money = 0;
+	public $_lastActivityTimestamp = 0;
+	public $_stayLogin = 0;
+	public $_lastActivity = '';
+	public $_nextEnergy = 0;
+	public $_howLongToNextEnergy = 0;
 	
 	public function __construct($sessionId = '')
 	{
@@ -33,6 +38,11 @@ class User
             $this->_maxEnergy = $user['maxEnergy'];
             $this->_actualEnergy = $user['actualEnergy'];
             $this->_money = $user['money'];
+            $this->_lastActivityTimestamp = $user['lastActivityTimestamp'];
+            $this->_lastActivity = $user['lastActivity'];
+            $this->_stayLogin = $user['stayLogin'];
+            $this->_nextEnergy = $user['nextEnergyTimestamp'];
+            $this->_howLongToNextEnergy = $user['howLongToNextEnergy'];
             
             $result = Connection::connect()->prepare(
                  'UPDATE `user` SET `lastOnlineTime`=:time WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
@@ -117,7 +127,7 @@ class User
 	public function makeLogin($login, $password)
 	{
 	    $result = Connection::connect()->prepare(
-	            'SELECT `id` FROM `user` WHERE `login`=:login AND `password`=:password AND `active`=1 LIMIT 1;'
+	            'SELECT `id`, `stayLogin` FROM `user` WHERE `login`=:login AND `password`=:password AND `active`=1 LIMIT 1;'
 	            );
 	    $result->execute(array(
 	            ':login' => $login,
@@ -131,8 +141,16 @@ class User
 	    }
 	    
 	    $_SESSION['biathlete_user'] = $user['id'];
-	    setcookie('biathlete_user', \Library\Extra\cookies($login, $password), 60*60*24*31);
+	    if ($user['stayLogin'] == 1) {
+	       setcookie('biathlete_user', \Library\Extra\cookies($login, $password), time() + (60*60*24*31), '/');
+	    }
 	    return true;
+	}
+	
+	public function logout()
+	{
+	    unset($_SESSION['biathlete_user']);
+	    setcookie( 'biathlete_user', false, time() - 3600, '/');
 	}
 	
 	public function randomPassword($mail)
@@ -180,9 +198,9 @@ class User
 	{
 	    $return = '';
 	    
-	    $return .= '<span class="header_money">EUR '. $this->_money.'</span>';
+	    $return .= '<span class="header_money"><span id="myMoney"><script>reloadMoney()</script></span> EUR</span>';
 	    
-	    $return .= '<span class="header_energy">Energy: ' . $this->_actualEnergy . '/'. $this->_maxEnergy.'</span>';
+	    $return .= '<span class="header_energy">Energy: <span id="myEnergy"><script>reloadEnergy()</script></span></span>';
 	    
 	    $return .= '<a href=" '.Page::getLink(101).' " class="header_name">' . $this->getFullName() . '</a>';
 	    
@@ -194,6 +212,13 @@ class User
 	    //more unreaded messages
 	    //$return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/messages.svg)"><span>1</span></a>';
   
+	    return $return;
+	}
+	
+	public function getActualActivity()
+	{
+	    $return = '<span class="header_activity">Actual activity: <span id="myActivity"><script>reloadActivity()</script></span></span>';
+	    
 	    return $return;
 	}
 	
@@ -242,6 +267,51 @@ class User
 	    $result->execute(array(
 	            ':id' => $this->_id,
 	            ':password' => \Library\Forms\passwordHash($newPass),
+	    ));
+	}
+	
+	public function changeStayLog($value)
+	{
+	    $result = Connection::connect()->prepare(
+	            'UPDATE `user` SET `stayLogin`=:value WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+	            );
+	    $result->execute(array(
+	            ':id' => $this->_id,
+	            ':value' => $value
+	    ));
+	}
+	
+	public function setMoney($money)
+	{
+	    $result = Connection::connect()->prepare(
+	            'UPDATE `user` SET `money`=:value WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+	            );
+	    $result->execute(array(
+	            ':id' => $this->_id,
+	            ':value' => $money
+	    ));
+	}
+	public function setActualEnergy($energy, $nextEnergy)
+	{
+	    $result = Connection::connect()->prepare(
+	            'UPDATE `user` SET `actualEnergy`=:value, `nextEnergyTimestamp`=:nextEnergy WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+	            );
+	    $result->execute(array(
+	            ':id' => $this->_id,
+	            ':value' => $energy,
+	            ':nextEnergy' => $nextEnergy
+	    ));
+	}
+	
+	public function setLastActivity($time, $activity)
+	{
+	    $result = Connection::connect()->prepare(
+	            'UPDATE `user` SET `lastActivityTimestamp`=:time, `lastActivity`=:activity WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+	            );
+	    $result->execute(array(
+	            ':id' => $this->_id,
+	            ':time' => $time,
+	            ':activity' => $activity
 	    ));
 	}
 }

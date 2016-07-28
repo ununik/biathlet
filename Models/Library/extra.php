@@ -1,7 +1,8 @@
 <?php
 namespace Library\Extra;
 
-function generateRandomString($length = 10) {
+function generateRandomString($length = 10)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -11,10 +12,17 @@ function generateRandomString($length = 10) {
     return $randomString;
 }
 
-function cookies($login, $password) {
+function cookies($login, $password)
+{
     return $login . '_;_' . $password;
 }
 
-function getCookiesPart($string) {
+function getCookiesPart($string)
+{
     return explode('_;_', $string);
+}
+
+function moneyFormat($number)
+{
+    return number_format ($number, 2 , '.', ' ');
 }
