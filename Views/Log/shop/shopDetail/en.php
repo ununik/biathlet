@@ -28,15 +28,22 @@ for ($n=0; $n < $i; $n++) {
         $return .= '<div class="shopCategory shopInactiveCategory" id="'.$itemsArray[$n]['category']['id'].'">';
     }
     foreach ($itemsArray[$n]['items'] as $item) {
+        $return .= '<div class="shopItemBoxWrapper">';
         $return .= '<div class="shopItemBox">';
+        $return .= '<div class="detail">';
         $return .= '<div class="title">'.$item['title'].'</div>';
-        $return .= '<div>'.$item['description'].'</div>';
-        $return .= '<div>'. \Library\Extra\moneyFormat($item['price']) .' EUR</div>';
+        //$return .= '<div>'.$item['description'].'</div>';
+        if ($item['image'] != '') {
+            $return .= '<img src="'.URL_PATH.$item['image'].'" class="ilustration">';
+        }
+        $return .= '<div class="price">'. \Library\Extra\moneyFormat($item['price']) .'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
+        $return .= '</div>';
         if ($user->_money < $item['price']) {
             $return .= '<div class="buy noMoney">Buy</div>';
         } else {
             $return .= '<div class="buy" onclick="buyItem(\''.$item['id'].'\', \''.$page->_language.'\')">Buy</div>';
         }
+        $return .= '</div>';
         $return .= '</div>';
     }
     $return .= '</div>';

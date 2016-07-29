@@ -6,7 +6,7 @@ function showCategory(category, language) {
 		  $('#oneCategory').html(mypostrequest.responseText);
 	  }
 	  else{
-	   alert("An error has occured making the request")
+	   //alert("An error has occured making the request")
 	  }
 	 }
 	}

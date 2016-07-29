@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: localhost
--- Vygenerováno: Čtv 28. čec 2016, 17:15
+-- Vygenerováno: Pát 29. čec 2016, 15:07
 -- Verze serveru: 5.5.49-0ubuntu0.14.04.1
 -- Verze PHP: 5.5.9-1ubuntu4.17
 
@@ -35,16 +35,21 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `specialCode` varchar(50) COLLATE utf8_danish_ci NOT NULL,
   `used` tinyint(1) NOT NULL DEFAULT '0',
   `categoryInShop` int(15) NOT NULL,
+  `image` text COLLATE utf8_danish_ci NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Vypisuji data pro tabulku `equipment`
 --
 
-INSERT INTO `equipment` (`uid`, `id`, `title`, `description`, `language`, `specialCode`, `used`, `categoryInShop`) VALUES
-(1, 1, 'Anschütz 1827 F', '', 'en', '', 0, 1),
-(2, 2, 'ELEY tenex biathlon', '', 'en', '', 0, 2);
+INSERT INTO `equipment` (`uid`, `id`, `title`, `description`, `language`, `specialCode`, `used`, `categoryInShop`, `image`) VALUES
+(1, 1, 'Anschütz 1827 F', '', 'en', '', 0, 1, '/uploads/images/equipment/ansch-1827f.jpg'),
+(2, 2, 'ELEY tenex biathlon', '', 'en', '', 0, 2, '/uploads/images/equipment/eley-tenex-box.jpg'),
+(3, 3, 'LAPUA Polar Biathlon', '', 'en', '', 0, 2, '/uploads/images/equipment/lapuaPolar.jpg'),
+(4, 4, 'Anschutz magazine', '', 'en', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg'),
+(5, 5, 'Larsen rifle bag', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-futral.jpg'),
+(6, 5, 'Larsen armsling', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-sling.jpg');
 
 -- --------------------------------------------------------
 
@@ -74,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `job-partTime` (
 --
 
 INSERT INTO `job-partTime` (`id`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`) VALUES
-(1, 'WOOD GROUP (timber company)', '', 15, 2, 5, 10, 2, 5, 10, 'en', 1, 0);
+(1, 'WOOD GROUP (timber company)', '', 25, 2, 5, 10, 8, 13, 20, 'en', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -219,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `shops-category` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Vypisuji data pro tabulku `shops-category`
@@ -227,7 +232,8 @@ CREATE TABLE IF NOT EXISTS `shops-category` (
 
 INSERT INTO `shops-category` (`uid`, `id`, `title`, `language`, `active`, `deleted`) VALUES
 (1, 1, 'Weapons', 'en', 1, 0),
-(2, 2, 'Cartridges', 'en', 1, 0);
+(2, 2, 'Cartridges', 'en', 1, 0),
+(3, 3, 'Accessories', 'en', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -245,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `shops-item` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `price` float NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Vypisuji data pro tabulku `shops-item`
@@ -253,7 +259,11 @@ CREATE TABLE IF NOT EXISTS `shops-item` (
 
 INSERT INTO `shops-item` (`uid`, `id`, `language`, `shop`, `equipment`, `active`, `deleted`, `price`) VALUES
 (1, 1, 'en', 2, 1, 1, 0, 350),
-(2, 2, 'en', 2, 2, 1, 0, 2.2);
+(2, 2, 'en', 2, 2, 1, 0, 2.2),
+(3, 3, 'en', 2, 3, 1, 0, 2.7),
+(4, 4, 'en', 2, 4, 1, 0, 60),
+(5, 5, 'en', 2, 5, 1, 0, 85),
+(6, 6, 'en', 2, 6, 1, 0, 40);
 
 -- --------------------------------------------------------
 
@@ -340,7 +350,31 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`) VALUES
-(1, 'Martin', 'Pribyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1469718904, 40, 40, 100.4, 1469719014, 'Part time job (WOOD GROUP (timber company))', 1, 1469718934, 30);
+(1, 'Martin', 'Pribyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1469797672, 40, 20, 26, 1469799112, 'Part time job (WOOD GROUP (timber company))', 1, 1469797792, 120);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `user-item`
+--
+
+CREATE TABLE IF NOT EXISTS `user-item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(15) NOT NULL,
+  `item` int(15) NOT NULL,
+  `timestamp` int(20) NOT NULL,
+  `count` int(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=4 ;
+
+--
+-- Vypisuji data pro tabulku `user-item`
+--
+
+INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
+(1, 1, 2, 1469792747, 5),
+(2, 1, 3, 1469792744, 14),
+(3, 1, 4, 1469792731, 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

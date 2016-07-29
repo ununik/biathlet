@@ -24,7 +24,7 @@ function getParttimeJob(id, type, language) {
 	      },2000);
 	  }
 	  else{
-	   alert("An error has occured making the request")
+	   //alert("An error has occured making the request")
 	  }
 	 }
 	}

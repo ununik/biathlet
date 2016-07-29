@@ -198,7 +198,7 @@ class User
 	{
 	    $return = '';
 	    
-	    $return .= '<span class="header_money"><span id="myMoney"><script>reloadMoney()</script></span> EUR</span>';
+	    $return .= '<span class="header_money"><span id="myMoney"><script>reloadMoney()</script></span><img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></span>';
 	    
 	    $return .= '<span class="header_energy">Energy: <span id="myEnergy"><script>reloadEnergy()</script></span></span>';
 	    

@@ -11,13 +11,13 @@ foreach ($job->getAllPartTimeJobs($user->_maxEnergy, $page->_language) as $job) 
         $container .= '<div class="partTimeTime">10 min</div>';
         $container .= '<div class="partTimeRest">';
         $container .= '<div>Energy: '.$job['energy1'].'</div>';
-        $container .= '<div>Amount: '.$job['price1'].'</div>';
+        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price1']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
         $container .= '</div>';
     } else {
         $container .= '<div class="partTimeTime">10 min</div>';
         $container .= '<div class="partTimeRest">';
         $container .= '<div>Energy: '.$job['energy1'].'</div>';
-        $container .= '<div>Amount: '.$job['price1'].'</div>';
+        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price1']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
         $container .= '</div>';
         $container .= '<div class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \'1\',  \'en\')">Get the job</div>';
     }
@@ -26,13 +26,13 @@ foreach ($job->getAllPartTimeJobs($user->_maxEnergy, $page->_language) as $job) 
         $container .= '<div class="partTimeTime">20 min</div>';
         $container .= '<div class="partTimeRest">';
         $container .= '<div>Energy: '.$job['energy2'].'</div>';
-        $container .= '<div>Amount: '.$job['price2'].'</div>';
+        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price2']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
         $container .= '</div>';
     } else {
         $container .= '<div class="partTimeTime">20 min</div>';
         $container .= '<div class="partTimeRest">';
         $container .= '<div>Energy: '.$job['energy2'].'</div>';
-        $container .= '<div>Amount: '.$job['price2'].'</div>';
+        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price2']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
         $container .= '</div>';
         $container .= '<div class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \'2\',  \'en\')">Get the job</div>';
     }
@@ -41,13 +41,13 @@ foreach ($job->getAllPartTimeJobs($user->_maxEnergy, $page->_language) as $job) 
         $container .= '<div class="partTimeTime">30 min</div>';
         $container .= '<div class="partTimeRest">';
         $container .= '<div>Energy: '.$job['energy3'].'</div>';
-        $container .= '<div>Amount: '.$job['price3'].'</div>';
+        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price3']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
         $container .= '</div>';
     } else {
         $container .= '<div class="partTimeTime">30 min</div>';
         $container .= '<div class="partTimeRest">';
         $container .= '<div>Energy: '.$job['energy3'].'</div>';
-        $container .= '<div>Amount: '.$job['price3'].'</div>';
+        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price3']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
         $container .= '</div>';
         $container .= '<div class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \'3\',  \'en\')">Get the job</div>';
     }

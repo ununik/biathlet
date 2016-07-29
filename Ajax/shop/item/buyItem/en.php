@@ -18,4 +18,8 @@ if ($user->_money < $item['price']) {
 }
 
 $user->setMoney($user->_money - $item['price']);
+$userItem = new UserItem($user->_id);
+$userItem->newItemForUser($item['id']);
+
+
 echo 'Thank you for shopping.';
