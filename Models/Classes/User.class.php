@@ -15,6 +15,7 @@ class User
 	public $_lastActivity = '';
 	public $_nextEnergy = 0;
 	public $_howLongToNextEnergy = 0;
+  public $_gender = 'n';
 	
 	public function __construct($sessionId = '')
 	{
@@ -43,6 +44,7 @@ class User
             $this->_stayLogin = $user['stayLogin'];
             $this->_nextEnergy = $user['nextEnergyTimestamp'];
             $this->_howLongToNextEnergy = $user['howLongToNextEnergy'];
+            $this->_gender = $user['gender'];
             
             $result = Connection::connect()->prepare(
                  'UPDATE `user` SET `lastOnlineTime`=:time WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
@@ -217,16 +219,16 @@ class User
 	
 	public function getActualActivity()
 	{
-	    $return = '<span class="header_activity">Actual activity: <span id="myActivity"><script>reloadActivity()</script></span></span>';
+	    $return = '<span class="header_activity"><b>Actual activity</b>: <span id="myActivity"><script>reloadActivity()</script></span></span>';
 	    
 	    return $return;
 	}
 	
-	public function updateProfil($firstname, $lastname, $mail, $login)
+	public function updateProfil($firstname, $lastname, $mail, $login, $gender)
 	{
 	    $result = Connection::connect()->prepare(
 	            'UPDATE `user` SET `firstname`=:firstname, `lastname`=:lastname,
-	            `mail`=:mail, `login`=:login
+	            `mail`=:mail, `login`=:login, `gender`=:gender
 	            WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
 	            );
 	    $result->execute(array(
@@ -234,6 +236,7 @@ class User
 	            ':lastname' => $lastname,
 	            ':mail' => $mail,
 	            ':login' => $login,
+              ':gender' => $gender,
 	            ':id' => $this->_id
 	    ));
 	    
@@ -314,4 +317,32 @@ class User
 	            ':activity' => $activity
 	    ));
 	}
+  
+  public function searchUser($words = array(), $columnsInTable = array())
+  {
+      if (!is_array($words)) {
+        $words[0] = $words;
+      }
+      if (!is_array($columnsInTable)) {
+        $columnsInTable[0] = $columnsInTable;
+      }
+      
+      $sql = 'SELECT `id` from `user` WHERE 1=0 ';
+      
+      foreach ($words as $word) {
+        if ($word == '') {
+            continue;
+        }
+        foreach ($columnsInTable as $column) {
+          $sql .= ' OR `'.$column.'` like "%' .$word.'%"';
+        }
+      }
+      
+      $result = Connection::connect()->prepare($sql);
+	    $result->execute();
+      
+      $users = $result->fetchAll();
+      
+      return $users;
+  }
 }

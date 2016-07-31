@@ -39,6 +39,8 @@ $page->changeLanguage($languagePath);
 
 $page->changePID($pagePath);
 
+$html->setHomepageLink($page->getLink($page->getHomepageId()));
+
 //Main menu
 foreach ($page->getMainMenu() as $menu) {
 	$active = false;

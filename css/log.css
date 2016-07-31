@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 .euro{
 	max-height: 0.9em;
+  max-width: 0.6em;
 	position: relative;
 	top: 2px;
 	margin-left: 3px;
@@ -128,6 +129,13 @@ nav ul li{
 	border-radius: 3px;
 	outline: none;
 }
+.formField select{
+	width: 100%;	
+	border: 1px solid black;
+	padding: 2px;
+	border-radius: 3px;
+	outline: none;
+}
 .formField input:focus{
 	border: 1px solid gray;
 }
@@ -156,8 +164,11 @@ nav ul li{
 	color: white;
 }
 #logo{
+  display: block;
 	width: 400px;
 	height: 85px;
+  position: relative;
+  z-index: 300;
 	background-image: url('../images/icons/biathlete.svg');
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -189,6 +200,8 @@ nav ul li{
 	top: 25px;
 	left: -45px;
 	font-size: 16px;	
+  color: black;
+  text-decoration: none;
 }
 .header_message{
 	float: right;
@@ -228,6 +241,10 @@ nav ul li{
 	display: inline-block;
 	padding: 1px;
 }
+.shopItemBoxWrapper a{
+    color: black;
+    text-decoration: none;
+}
 .shopItemBox{
 	width: 10vw;
   	height: 10vw;
@@ -254,10 +271,6 @@ nav ul li{
 	float: right;
 	box-sizing: border-box;
 }
-.shopItemBoxWrapper{
-	display: inline-block;
-	padding: 1px;
-}
 .profilItemBoxWrapper{
 	display: inline-block;
 	padding: 1px;
@@ -276,6 +289,10 @@ nav ul li{
 	text-transform: uppercase;
 	padding: 5%;
 	vertical-align: top;
+}
+.inactiveCategoryTitle{
+  background-color: black !important;
+  color: white !important;
 }
 .profilItemBox .ilustration{
 	max-width: 100%;
@@ -303,7 +320,7 @@ nav ul li{
 	box-sizing: border-box;	
 	max-width: 4.5vW;
 	padding-left: 3px;
-	font-size: 0.9vw;
+	font-size: 1vw;
 }
 .shopItemBox .buy{
 	cursor: pointer;
@@ -317,4 +334,15 @@ nav ul li{
 .shopItemBox .noMoney{
 	cursor: default;
 	color: gray;
+}
+.table_name a{
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.table_name a:hover{
+    text-decoration: underline;
 }

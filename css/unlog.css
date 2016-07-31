@@ -58,6 +58,7 @@ body{
 	margin: 10px 0px 0px 0px;
 }
 #logo{
+  display: block;
 	width: 900px;
 	height: 150px;
 	background-image: url('../images/icons/biathlete.svg');

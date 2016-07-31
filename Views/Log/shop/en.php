@@ -8,7 +8,6 @@ foreach ($shops->getAllShops($page->_language) as $shop) {
     $container .= '<div class="shopItemBoxWrapper">';
     $container .= '<a href="'.$page->getLink(113).'?shop='.$shop['id'].'" class="NewTrainingCategory">';
     $container .= '<div class="title">'.$shop['title'].'</div>';
-    $container .= '<div>'.$shop['description'].'</div>';
     $container .= '</a>';
     $container .= '</div>';
 }

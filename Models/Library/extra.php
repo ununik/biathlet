@@ -26,3 +26,31 @@ function moneyFormat($number)
 {
     return number_format ($number, 2 , '.', ' ');
 }
+
+/**
+ *  return array
+ *   
+ **/ 
+function getWordsFromString($string)
+{
+    $string = str_replace(',', ' ', $string);
+    $string = str_replace('.', ' ', $string);
+    $string = str_replace('?', ' ', $string);
+    $string = str_replace('!', ' ', $string);
+    $string = str_replace(':', ' ', $string);
+    $string = str_replace('&', ' ', $string);
+    $string = str_replace("'", ' ', $string);
+    $string = str_replace('"', ' ', $string);
+    $words = explode(' ', $string);
+    $return = array();
+    
+    foreach ($words as $word) {
+        if ($word == '') {
+           continue;
+        }
+        
+        $return[] = \Library\forms\safeText($word);
+    }
+    
+    return $return;
+}

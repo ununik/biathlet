@@ -9,10 +9,16 @@ class HTML
     private $_js = array();
     private $_scripts = '';
     private $_actualActivity;
+    private $homepageLink = '';
     
     public function setHeaderTitle($new)
     {
     	$this->_headerTitle = $new . ' - Biathlete';
+    }
+    
+    public function setHomepageLink($new)
+    {
+      $this->homepageLink = $new;
     }
     
     public function addToJs($src, $script = '')
@@ -99,6 +105,7 @@ class HTML
     	$return = '<html>';
     	
     	$return .= '<head>';
+      $return .= '<meta charset="UTF-8">';
     	$return .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
     	$return .= "<title>{$this->_headerTitle}</title>";
     	
@@ -114,7 +121,7 @@ class HTML
     	$return .= '</head>';
     	
     	$return .= '<body>';
-    	$return .= '<div id="logo"></div>';
+    	$return .= '<a href="'.$this->homepageLink.'" id="logo"></a>';
     	$return .= "<div id='header'><div id='head_navigation'>{$this->_header}</div></div>";
     	$return .= $this->_actualActivity;
     	//NAVIGATION

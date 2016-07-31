@@ -17,7 +17,11 @@ foreach ($categories as $category) {
 
 $return .= '<div id="shopCategoriesPanel">';
 for ($n =0; $n < $i; $n++) {
-    $return .= '<div onclick="showCategory(\''.$itemsArray[$n]['category']['id'].'\')" class="shopCategoriesTitles">'.$itemsArray[$n]['category']['title'].'</div>';
+    if ($n == 0) {
+        $return .= '<div onclick="showCategory(\''.$itemsArray[$n]['category']['id'].'\', this)" class="shopCategoriesTitles">'.$itemsArray[$n]['category']['title'].'</div>';
+    } else {
+        $return .= '<div onclick="showCategory(\''.$itemsArray[$n]['category']['id'].'\', this)" class="shopCategoriesTitles inactiveCategoryTitle">'.$itemsArray[$n]['category']['title'].'</div>';    
+    }
 }
 $return .= '</div>';
 

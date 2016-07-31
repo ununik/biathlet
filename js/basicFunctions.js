@@ -6,7 +6,7 @@ function reloadMoney(){
 		  $('#myMoney').html(mypostrequest.responseText);
 	  }
 	  else{
-	   alert("An error has occured making the request")
+	   //alert("An error has occured making the request")
 	  }
 	 }
 	}
@@ -23,7 +23,7 @@ function reloadEnergy(){
 		  $('#myEnergy').html(mypostrequest.responseText);
 	  }
 	  else{
-	   alert("An error has occured making the request")
+	   //alert("An error has occured making the request")
 	  }
 	 }
 	}
@@ -40,7 +40,7 @@ function reloadActivity(){
 		  $('#myActivity').html(mypostrequest.responseText);
 	  }
 	  else{
-	   alert("An error has occured making the request")
+	   //alert("An error has occured making the request")
 	  }
 	 }
 	}

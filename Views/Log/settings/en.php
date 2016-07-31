@@ -1,5 +1,6 @@
 <?php
-$container = '<form action="" method="post" class="form">';
+$container = '<h3>Settings</h3>';
+$container .= '<form action="" method="post" class="form">';
 
 $container .= '<div class="formField">';
 if ($stayLogin == 1) {
@@ -17,5 +18,7 @@ $container .= '</form>';
 
 $container .= '<a href="' . $page->getLink(103) . '">Update profil</a>';
 $container .= '<a href="'.$page->getLink(109).'">Rules</a>';
+$container .= '<a href="'.$page->getLink(110).'">Authors</a>';
+$container .= '<a href="'.$page->getLink(111).'">Game tour</a>';
 
 return $container;

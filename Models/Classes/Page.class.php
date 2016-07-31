@@ -13,6 +13,15 @@ class Page
 	{
 		$this->_log = $log;
 	}
+  
+  public function getHomepageId()
+  {
+      if ($this->_log) {
+	        return 101;
+	    } else {
+	        return 2;
+	    }
+  }
 	
 	public function getActualPage()
 	{
@@ -67,7 +76,7 @@ class Page
 		if (isset($page['pid']) && $page['pid'] > 0) {
 			$this->_pid = $page['pid'];
 		} else {
-			die('page not found - Page.class.php line 32');
+			header('Location: '. $this->getLink($this->getHomepageId()));
 		}
 	}
 	

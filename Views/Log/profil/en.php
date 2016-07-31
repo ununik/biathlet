@@ -1,6 +1,12 @@
 <?php
 $container = '<h3>'.$user->getFullName().'</h3>';
 
+$container .= '<ul>';
+$container .= '<li><a href="' . $page->getLink(114) . '">Workroom</a></li>';
+$container .= '<li><a href="' . $page->getLink(103) . '">Update profil</a></li>';
+$container .= '<li>Link to profil: <a href="'.$page->getLink(116).'?user='.$user->_id.'">'.$page->getLink(116).'?user='.$user->_id.'</a></li>';
+$container .= '</ul>';
+
 $container .= '<h4>My equipment</h4>';
 $categories = $shops->getAllCategories($page->_language);
 $i = 0;
@@ -16,7 +22,11 @@ foreach ($categories as $category) {
 
 $container .= '<div id="shopCategoriesPanel">';
 for ($n =0; $n < $i; $n++) {
-    $container .= '<div onclick="showCategory(\''.$itemsArray[$n]['category']['id'].'\')" class="shopCategoriesTitles">'.$itemsArray[$n]['category']['title'].'</div>';
+    if ($n == 0) {
+        $container .= '<div onclick="showCategory(\''.$itemsArray[$n]['category']['id'].'\', this)" class="shopCategoriesTitles">'.$itemsArray[$n]['category']['title'].'</div>';
+    } else {
+        $container .= '<div onclick="showCategory(\''.$itemsArray[$n]['category']['id'].'\', this)" class="shopCategoriesTitles inactiveCategoryTitle">'.$itemsArray[$n]['category']['title'].'</div>';    
+    }
 }
 $container .= '</div>';
 
@@ -45,8 +55,5 @@ for ($n=0; $n < $i; $n++) {
     }
     $container .= '</div>';
 }
-
-
-$container .= '<a href="' . $page->getLink(103) . '">Update profil</a>';
 
 return $container;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Počítač: localhost
--- Vygenerováno: Pát 29. čec 2016, 15:07
--- Verze serveru: 5.5.49-0ubuntu0.14.04.1
--- Verze PHP: 5.5.9-1ubuntu4.17
+-- Počítač: 127.0.0.1
+-- Vygenerováno: Ned 31. čec 2016, 17:02
+-- Verze serveru: 5.5.34
+-- Verze PHP: 5.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `equipment` (
   `uid` int(15) NOT NULL AUTO_INCREMENT,
   `id` int(15) NOT NULL,
-  `title` varchar(255) COLLATE utf8_danish_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `description` text COLLATE utf8_danish_ci NOT NULL,
   `language` varchar(15) COLLATE utf8_danish_ci NOT NULL,
   `specialCode` varchar(50) COLLATE utf8_danish_ci NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `categoryInShop` int(15) NOT NULL,
   `image` text COLLATE utf8_danish_ci NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Vypisuji data pro tabulku `equipment`
@@ -47,17 +47,18 @@ INSERT INTO `equipment` (`uid`, `id`, `title`, `description`, `language`, `speci
 (1, 1, 'Anschütz 1827 F', '', 'en', '', 0, 1, '/uploads/images/equipment/ansch-1827f.jpg'),
 (2, 2, 'ELEY tenex biathlon', '', 'en', '', 0, 2, '/uploads/images/equipment/eley-tenex-box.jpg'),
 (3, 3, 'LAPUA Polar Biathlon', '', 'en', '', 0, 2, '/uploads/images/equipment/lapuaPolar.jpg'),
-(4, 4, 'Anschutz magazine', '', 'en', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg'),
+(4, 4, 'Anschütz magazine', '', 'en', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg'),
 (5, 5, 'Larsen rifle bag', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-futral.jpg'),
-(6, 5, 'Larsen armsling', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-sling.jpg');
+(6, 6, 'Larsen armsling', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-sling.jpg'),
+(7, 7, 'Default metal', '', 'en', '', 0, 1, '');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `job-partTime`
+-- Struktura tabulky `job-parttime`
 --
 
-CREATE TABLE IF NOT EXISTS `job-partTime` (
+CREATE TABLE IF NOT EXISTS `job-parttime` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_danish_ci NOT NULL,
   `description` text COLLATE utf8_danish_ci NOT NULL,
@@ -75,19 +76,19 @@ CREATE TABLE IF NOT EXISTS `job-partTime` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=2 ;
 
 --
--- Vypisuji data pro tabulku `job-partTime`
+-- Vypisuji data pro tabulku `job-parttime`
 --
 
-INSERT INTO `job-partTime` (`id`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`) VALUES
+INSERT INTO `job-parttime` (`id`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`) VALUES
 (1, 'WOOD GROUP (timber company)', '', 25, 2, 5, 10, 8, 13, 20, 'en', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `mainMenu`
+-- Struktura tabulky `mainmenu`
 --
 
-CREATE TABLE IF NOT EXISTS `mainMenu` (
+CREATE TABLE IF NOT EXISTS `mainmenu` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `language` varchar(10) COLLATE utf8_czech_ci NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
@@ -98,13 +99,13 @@ CREATE TABLE IF NOT EXISTS `mainMenu` (
   `pidLink` int(10) NOT NULL,
   `externalLink` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=13 ;
 
 --
--- Vypisuji data pro tabulku `mainMenu`
+-- Vypisuji data pro tabulku `mainmenu`
 --
 
-INSERT INTO `mainMenu` (`id`, `language`, `active`, `deleted`, `sorting`, `title`, `log`, `pidLink`, `externalLink`) VALUES
+INSERT INTO `mainmenu` (`id`, `language`, `active`, `deleted`, `sorting`, `title`, `log`, `pidLink`, `externalLink`) VALUES
 (1, 'en', 1, 0, 1, 'Registration', 0, 1, ''),
 (2, 'en', 1, 0, 2, 'Login', 0, 2, ''),
 (3, 'en', 1, 0, 10, 'Logout', 1, 102, ''),
@@ -114,7 +115,8 @@ INSERT INTO `mainMenu` (`id`, `language`, `active`, `deleted`, `sorting`, `title
 (8, 'en', 1, 0, 5, 'Game tour', 0, 7, ''),
 (9, 'en', 1, 0, 3, 'Training diary', 1, 107, ''),
 (10, 'en', 1, 0, 4, 'Jobs', 1, 112, ''),
-(11, 'en', 1, 0, 3, 'Shop', 1, 113, '');
+(11, 'en', 1, 0, 3, 'Shop', 1, 113, ''),
+(12, 'en', 1, 0, 5, 'Biathletes', 1, 115, '');
 
 -- --------------------------------------------------------
 
@@ -134,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `url` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=25 ;
 
 --
 -- Vypisuji data pro tabulku `page`
@@ -160,7 +162,11 @@ INSERT INTO `page` (`id`, `pid`, `log`, `language`, `title`, `controller`, `view
 (17, 110, 1, 'en', 'Authors', '', '/Views/Authors/en.php', 1, 0, 'authors'),
 (18, 111, 1, 'en', 'Game tour', '', '/Views/GameTour/en.php', 1, 0, 'game-tour'),
 (19, 112, 1, 'en', 'Jobs', '/Controllers/Log/jobs/en.php', '/Views/Log/jobs/en.php', 1, 0, 'jobs'),
-(20, 113, 1, 'en', 'Shop', '/Controllers/Log/shop/en.php', '/Views/Log/shop/en.php', 1, 0, 'shop');
+(20, 113, 1, 'en', 'Shop', '/Controllers/Log/shop/en.php', '/Views/Log/shop/en.php', 1, 0, 'shop'),
+(21, 114, 1, 'en', 'Workroom', '/Controllers/Log/workroom/en.php', '/Views/Log/workroom/en.php', 1, 0, 'workroom'),
+(22, 115, 1, 'en', 'Biathletes', '/Controllers/Log/biathletes/en.php', '/Views/Log/biathletes/en.php', 1, 0, 'biathletes'),
+(23, 116, 1, 'en', 'User', '/Controllers/User/en.php', '/Views/User/en.php', 1, 0, 'user'),
+(24, 8, 0, 'en', 'User', '/Controllers/User/en.php', '/Views/User/en.php', 1, 0, 'user');
 
 -- --------------------------------------------------------
 
@@ -342,15 +348,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `stayLogin` tinyint(1) NOT NULL DEFAULT '1',
   `nextEnergyTimestamp` int(20) NOT NULL,
   `howLongToNextEnergy` int(20) NOT NULL,
+  `gender` enum('m','f','n') COLLATE utf8_czech_ci NOT NULL DEFAULT 'n',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=3 ;
 
 --
 -- Vypisuji data pro tabulku `user`
 --
 
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`) VALUES
-(1, 'Martin', 'Pribyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1469797672, 40, 20, 26, 1469799112, 'Part time job (WOOD GROUP (timber company))', 1, 1469797792, 120);
+INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`) VALUES
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1469977356, 40, 29, 176, 1469977984, 'Part time job (WOOD GROUP (timber company))', 1, 1469977393, 120, 'm'),
+(2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1469902789, 1469976941, 20, 20, 100, 0, '', 1, 0, 0, 'n');
 
 -- --------------------------------------------------------
 
