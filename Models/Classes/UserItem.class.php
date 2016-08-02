@@ -76,4 +76,65 @@ class UserItem
         
         return $categories;
     }
+    
+    public function showWeapon($language, $stock, $harness)
+    {    	
+    	$partsFromTop = array(
+    			$stock,
+    			$harness
+    	);
+    	$return = '<div id="weaponImg" style="background-image: ';	
+    			
+    			foreach ($partsFromTop as $part) {
+    				$return .= 'url(\''.URL_PATH.$part.'\'),';
+    			}
+    	$return = substr($return, 0, -1);
+    	$return .= ';" >';
+		$return .= '</div>';
+
+		return $return;
+    }
+    
+    public function getItemSVGImageById($id, $language)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT svgImage FROM `equipment` 
+                WHERE
+                language=:language AND
+                id = :id AND
+    			active = 1 AND
+    			deleted = 0
+                ;'
+    			);
+    	$result->execute(array(
+    			':id' => $id,
+    			':language' => $language
+    	));
+    	 
+    	$item = $result->fetch();
+    	$item = $item['svgImage'];
+    	
+    	return $item;
+    }
+    
+    public function getItemById($id, $language)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT * FROM `equipment`
+                WHERE
+                language=:language AND
+                id = :id AND
+    			active = 1 AND
+    			deleted = 0
+                ;'
+    			);
+    	$result->execute(array(
+    			':id' => $id,
+    			':language' => $language
+    	));
+    
+    	$item = $result->fetch();
+    	 
+    	return $item;
+    }
 }

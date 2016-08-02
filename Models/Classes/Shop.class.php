@@ -40,7 +40,7 @@ class Shop
         ));
          
         $categories = $result->fetchAll();
-        
+     
         return $categories;
     }
     
@@ -49,10 +49,12 @@ class Shop
         $result = Connection::connect()->prepare(
                 'SELECT * FROM `equipment` INNER JOIN `shops-item` ON `equipment`.`id`=`shops-item`.`equipment`
                 WHERE 
-                active=1 AND 
-                deleted=0 AND 
+                `shops-item`.`active`=1 AND 
+                `shops-item`.`deleted`=0 AND 
+        		`equipment`.`active`=1 AND 
+                `equipment`.`deleted`=0 AND 
                 `equipment`.language=:language AND 
-                shop=:shop AND 
+                `shops-item`.`shop`=:shop AND 
                 `equipment`.categoryInShop=:category AND
                 `equipment`.specialCode = ""
                 ;'
@@ -71,10 +73,10 @@ class Shop
     public function getItemFromShop($id)
     {
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `shops-item` WHERE `equipment`=:equipment AND `active`=1 AND `deleted`=0;'
+                'SELECT * FROM `shops-item` WHERE `id`=:id AND `active`=1 AND `deleted`=0;'
                 );
         $result->execute(array(
-                ':equipment' => $id
+                ':id' => $id
         ));
          
         $item = $result->fetch();

@@ -15,7 +15,12 @@ class User
 	public $_lastActivity = '';
 	public $_nextEnergy = 0;
 	public $_howLongToNextEnergy = 0;
-  public $_gender = 'n';
+  	public $_gender = 'n';
+  	public $_weapon = 0;
+  	public $_stock = 0;
+  	public $_diopter = 0;
+  	public $_rifleSling = 0;
+  	public $_harness = 0;
 	
 	public function __construct($sessionId = '')
 	{
@@ -45,6 +50,11 @@ class User
             $this->_nextEnergy = $user['nextEnergyTimestamp'];
             $this->_howLongToNextEnergy = $user['howLongToNextEnergy'];
             $this->_gender = $user['gender'];
+            $this->_weapon = $user['weapon'];
+            $this->_stock = $user['stock'];
+            $this->_diopter = $user['diopter'];
+            $this->_rifleSling = $user['rifle_sling'];
+            $this->_harness = $user['harness'];
             
             $result = Connection::connect()->prepare(
                  'UPDATE `user` SET `lastOnlineTime`=:time WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
@@ -114,16 +124,30 @@ class User
 	
 	public function addNew($login, $mail, $password)
 	{
-		$result = Connection::connect()->prepare(
-				'INSERT INTO `user` (`mail`,	`login`, `password`, `registered`) 
-				VALUES (:mail, :login, :password, :registered);'
+		$db = Connection::connect();
+		$result = $db->prepare(
+				'INSERT INTO `user` (`mail`, `login`, `password`, `registered`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`) 
+				VALUES (:mail, :login, :password, :registered, :weapon, :stock, :diopter, :rifle_sling, :harness);'
 		);
 		$result->execute(array(
 			':mail' => $mail,
 			':login' => $login,
 			':password' => \Library\Forms\passwordHash($password),
-			':registered' => time()
+			':registered' => time(),
+			':weapon' => DEFAULT_WEAPON,
+			':stock' => DEFAULT_STOCK,
+			':diopter' => DEFAULT_DIOPTER,
+			':rifle_sling' => DEFAULT_RIFLE_SLING,
+			':harness' => DEFAULT_HARNESS				
 		));
+		
+		$userItem = new UserItem($db->lastInsertId());
+		//DEFAULT ITEMS
+		$userItem->newItemForUser(DEFAULT_WEAPON);
+		$userItem->newItemForUser(DEFAULT_STOCK);
+		$userItem->newItemForUser(DEFAULT_DIOPTER);
+		$userItem->newItemForUser(DEFAULT_RIFLE_SLING);
+		$userItem->newItemForUser(DEFAULT_HARNESS);
 	}
 	
 	public function makeLogin($login, $password)

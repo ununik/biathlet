@@ -4,6 +4,7 @@ $return = '<h4>'.$actualShop['title'].'</h4>';
 $return .= '<div>'.$actualShop['description'].'</div>';
 
 $categories = $shops->getAllCategories($page->_language);
+
 $i = 0;
 foreach ($categories as $category) {
     $shopItems = $shops->getAllItemsForCategory($_GET['shop'], $category['id'], $page->_language);

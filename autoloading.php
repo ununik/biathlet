@@ -26,5 +26,6 @@ function __autoload($name)
 require HOME_DIR . '/Configuration/DBConfig.php';
 require HOME_DIR . '/Configuration/WebSettings.php';
 require HOME_DIR . '/Configuration/PasswordConfig.php';
+require HOME_DIR . '/Configuration/DefaultItems.php';
 require HOME_DIR . '/Models/Library/forms.php';
 require HOME_DIR . '/Models/Library/extra.php';

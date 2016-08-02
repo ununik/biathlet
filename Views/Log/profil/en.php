@@ -1,6 +1,8 @@
 <?php
 $container = '<h3>'.$user->getFullName().'</h3>';
 
+$container .= $userItem->showWeapon($page->_language, $stock['svgImage'], $harness['svgImage']);
+
 $container .= '<ul>';
 $container .= '<li><a href="' . $page->getLink(114) . '">Workroom</a></li>';
 $container .= '<li><a href="' . $page->getLink(103) . '">Update profil</a></li>';
