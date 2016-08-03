@@ -54,3 +54,52 @@ function getWordsFromString($string)
     
     return $return;
 }
+
+function getColumnNameInProfilFromEquipmentCategory($categoryId, $object = false)
+{
+	if ($object === true) {
+		switch ($categoryId) {
+			case 1:
+				return '_weapon';
+				break;
+			case 4:
+				return '_stock';
+				break;
+			case 5:
+				return '_diopter';
+				break;
+			case 6:
+				return '_rifleSling';
+				break;
+			case 7:
+				return '_harness';
+				break;
+			case 8:
+				return '_buttPlate';
+				break;
+		}
+	} else {
+		switch ($categoryId) {
+			case 1:
+				return 'weapon';
+				break;
+			case 4:
+				return 'stock';
+				break;
+			case 5:
+				return 'diopter';
+				break;
+			case 6:
+				return 'rifle_sling';
+				break;
+			case 7:
+				return 'harness';
+				break;
+			case 8:
+				return 'buttPlate';
+				break;
+		}
+	}
+	
+	return '';
+}

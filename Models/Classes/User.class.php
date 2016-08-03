@@ -21,6 +21,7 @@ class User
   	public $_diopter = 0;
   	public $_rifleSling = 0;
   	public $_harness = 0;
+  	public $_buttPlate = 0;
 	
 	public function __construct($sessionId = '')
 	{
@@ -55,6 +56,7 @@ class User
             $this->_diopter = $user['diopter'];
             $this->_rifleSling = $user['rifle_sling'];
             $this->_harness = $user['harness'];
+            $this->_buttPlate = $user['buttPlate'];
             
             $result = Connection::connect()->prepare(
                  'UPDATE `user` SET `lastOnlineTime`=:time WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
@@ -148,6 +150,7 @@ class User
 		$userItem->newItemForUser(DEFAULT_DIOPTER);
 		$userItem->newItemForUser(DEFAULT_RIFLE_SLING);
 		$userItem->newItemForUser(DEFAULT_HARNESS);
+		$userItem->newItemForUser(DEFAULT_BUTT_PLATE);
 	}
 	
 	public function makeLogin($login, $password)

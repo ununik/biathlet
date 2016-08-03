@@ -6,6 +6,9 @@ a{
 a:hover{
 	text-decoration: underline;
 }
+#navigationButton{
+	display: none;
+}
 body{
 	font-family: Serif;
 }
@@ -127,4 +130,10 @@ nav li a:hover{
 		display: block;
 		margin: 4px 0px;
 	}
+}
+#weaponImg{
+	width: 600px;
+	height: 300px;
+	background-size: 100%;
+	background-repeat: no-repeat;
 }

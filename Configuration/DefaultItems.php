@@ -4,3 +4,4 @@ define('DEFAULT_STOCK', 8);
 define('DEFAULT_DIOPTER', 9);
 define('DEFAULT_RIFLE_SLING', 10);
 define('DEFAULT_HARNESS', 11);
+define('DEFAULT_BUTT_PLATE', 18);

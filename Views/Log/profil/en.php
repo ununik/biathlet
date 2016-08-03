@@ -1,7 +1,15 @@
 <?php
 $container = '<h3>'.$user->getFullName().'</h3>';
 
-$container .= $userItem->showWeapon($page->_language, $stock['svgImage'], $harness['svgImage']);
+$container .= $userItem->showWeapon(
+	$page->_language,
+	$weapon['svgImage'],
+	$weapon['svgImage2'],
+	$stock['svgImage'],
+	$harness['svgImage'],
+	$diopter['svgImage'],
+	$buttPlate['svgImage']
+		);
 
 $container .= '<ul>';
 $container .= '<li><a href="' . $page->getLink(114) . '">Workroom</a></li>';

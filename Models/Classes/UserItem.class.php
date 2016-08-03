@@ -56,6 +56,25 @@ class UserItem
         }
     }
     
+    public function getConcreteItemForUserFromID($id)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT * FROM `user-item` WHERE `user`=:user AND `id`=:item LIMIT 1;'
+    			);
+    	$result->execute(array(
+    			':user' => $this->_id,
+    			':item' => $id
+    	));
+    	 
+    	$item = $result->fetch();
+    
+    	if (isset($item['id'])) {
+    		return $item;
+    	} else {
+    		return false;
+    	}
+    }
+    
     public function getAllItemsForUser($user, $category, $language)
     {
         $result = Connection::connect()->prepare(
@@ -77,15 +96,22 @@ class UserItem
         return $categories;
     }
     
-    public function showWeapon($language, $stock, $harness)
+    public function showWeapon($language, $weapon, $weapon2,$stock, $harness, $diopter, $buttPlate)
     {    	
     	$partsFromTop = array(
+    			$weapon2,
     			$stock,
+    			$diopter,
+    			$weapon,
+    			$buttPlate,
     			$harness
     	);
     	$return = '<div id="weaponImg" style="background-image: ';	
     			
     			foreach ($partsFromTop as $part) {
+    				if ($part == '') {
+    					continue;
+    				}
     				$return .= 'url(\''.URL_PATH.$part.'\'),';
     			}
     	$return = substr($return, 0, -1);
@@ -136,5 +162,16 @@ class UserItem
     	$item = $result->fetch();
     	 
     	return $item;
+    }
+    
+    public function setNewItem($field, $item)
+    {
+    	$result = Connection::connect()->prepare(
+    			'UPDATE `user` SET '.$field.'=:item WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+    			);
+    	$result->execute(array(
+    			':id' => $this->_id,
+    			':item' => $item
+    	));
     }
 }

@@ -125,6 +125,7 @@ class HTML
     	$return .= "<div id='header'><div id='head_navigation'>{$this->_header}</div></div>";
     	$return .= $this->_actualActivity;
     	//NAVIGATION
+    	$return .= '<div id="navigationButton" onclick="menu()"></div>';
     	$return .= "<nav>{$this->getMenu()}</nav>";
     	$return .= "<div id='content'>{$this->_content}</div>";
     	$return .= '</body>';
