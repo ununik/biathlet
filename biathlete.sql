@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: localhost
--- Vygenerováno: Stř 03. srp 2016, 16:30
+-- Vygenerováno: Čtv 04. srp 2016, 18:05
 -- Verze serveru: 5.5.50-0ubuntu0.14.04.1
 -- Verze PHP: 5.5.9-1ubuntu4.17
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `svgImage2` varchar(255) COLLATE utf8_danish_ci NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=21 ;
 
 --
 -- Vypisuji data pro tabulku `equipment`
@@ -66,7 +66,8 @@ INSERT INTO `equipment` (`uid`, `id`, `title`, `description`, `language`, `speci
 (16, 16, 'Izhmash Bi7-3', '', 'en', '', 0, 1, '', '/uploads/images/equipment/weapons/bi7-3.svg', 1, 0, '/uploads/images/equipment/weapons/bi7-32.svg'),
 (17, 17, 'Bi7 diopter', '', 'en', '', 0, 5, '', '/uploads/images/equipment/diopter/bi7.svg', 1, 0, ''),
 (18, 18, '2Hooks', '', 'en', '', 0, 8, '', '/uploads/images/equipment/buttPlates/2hooks.svg', 1, 0, ''),
-(19, 19, 'Anschutz', '', 'en', '', 0, 8, '', '/uploads/images/equipment/buttPlates/anschutz.svg', 1, 0, '');
+(19, 19, 'Anschutz', '', 'en', '', 0, 8, '', '/uploads/images/equipment/buttPlates/anschutz.svg', 1, 0, ''),
+(20, 20, 'Bi7-4', '', 'en', '', 0, 4, '', '/uploads/images/equipment/stocks/bi7-4.svg', 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1470234583, 40, 8, 218.3, 1470235183, 'Part time job (WOOD GROUP (timber company))', 1, 1470234703, 120, 'm', 16, 15, 17, 10, 11, 19),
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1470326709, 40, 40, 218.3, 1470235183, 'Part time job (WOOD GROUP (timber company))', 1, 1470240189, 120, 'm', 16, 12, 17, 10, 11, 18),
 (2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1469902789, 1470231601, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0),
 (3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1470063945, 1470136485, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0),
 (4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1470063990, 1470130837, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0);
@@ -404,7 +405,7 @@ CREATE TABLE IF NOT EXISTS `user-item` (
   `timestamp` int(20) NOT NULL,
   `count` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=29 ;
 
 --
 -- Vypisuji data pro tabulku `user-item`
@@ -437,7 +438,8 @@ INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (24, 1, 16, 1470146647, 1),
 (25, 1, 17, 1470146647, 1),
 (26, 1, 19, 1470146647, 1),
-(27, 1, 18, 1470146647, 1);
+(27, 1, 18, 1470146647, 1),
+(28, 1, 20, 1470146647, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
