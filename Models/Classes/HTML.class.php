@@ -10,6 +10,7 @@ class HTML
     private $_scripts = '';
     private $_actualActivity;
     private $homepageLink = '';
+    private $_languageNavigation = array();
     
     public function setHeaderTitle($new)
     {
@@ -100,6 +101,11 @@ class HTML
         $this->_actualActivity = $new;
     }
     
+    public function addToTranslationNavigation($language, $url)
+    {
+    	$this->_languageNavigation[] = '<a href="'.$url.'">'.$language.'</a>';
+    }
+    
     public function printHTML()
     {
     	$return = '<html>';
@@ -121,6 +127,13 @@ class HTML
     	$return .= '</head>';
     	
     	$return .= '<body>';
+    	
+    	$return .= '<ul id="languageNavigation">';
+    	foreach ($this->_languageNavigation as $nav) {
+    		$return .= '<li>'.$nav.'</li>';
+    	}
+    	$return .= '</ul>';
+    	
     	$return .= '<a href="'.$this->homepageLink.'" id="logo"></a>';
     	$return .= "<div id='header'><div id='head_navigation'>{$this->_header}</div></div>";
     	$return .= $this->_actualActivity;
@@ -128,6 +141,7 @@ class HTML
     	$return .= '<div id="navigationButton" onclick="menu()"></div>';
     	$return .= "<nav>{$this->getMenu()}</nav>";
     	$return .= "<div id='content'>{$this->_content}</div>";
+    	$return .= '<div id="messageBlackBackground"><div id="messageWhiteBackground"><div id="message"></div></div></div>';
     	$return .= '</body>';
     	
     	$return .= '</html>';

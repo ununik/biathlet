@@ -1,6 +1,6 @@
 <?php
 $container = '<h3>'.$user->getFullName().'</h3>';
-$container .= '<div class="form"><div class="step" onclick="step(\'personal\', this)">Personal</div><div class="step inactiveCategoryTitle" onclick="step(\'login\', this)">Password</div></div>';
+$container .= '<div class="form"><div class="step" onclick="step(\'personal\', this)">'.Translation::t($page->_language, 'Personal').'</div><div class="step inactiveCategoryTitle" onclick="step(\'login\', this)">'.Translation::t($page->_language, 'Password').'</div></div>';
 if (count($err) > 0) {
     $container .= '<ul class="form">';
     foreach ($err as $err) {
@@ -12,17 +12,17 @@ if (count($err) > 0) {
 $container .= '<form action="" method="post" class="form steps '.$inactiveStepsPersonal.'" id="personal">';
 
 $container .= '<div class="formField">';
-$container .= '<label>Firstname</label>';
+$container .= '<label>'.Translation::t($page->_language, 'Firstname').'</label>';
 $container .= '<input type="text" name="firstname" value="' . $firstname . '">';
 $container .= '</div>';
 
 $container .= '<div class="formField">';
-$container .= '<label>Lastname</label>';
+$container .= '<label>'.Translation::t($page->_language, 'Lastname').'</label>';
 $container .= '<input type="text" name="lastname" value="' . $lastname . '">';
 $container .= '</div>';
 
 $container .= '<div class="formField">';
-$container .= '<label>Gender</label>';
+$container .= '<label>'.Translation::t($page->_language, 'Gender').'</label>';
 $container .= '<select name="gender">';
 $container .= '<option value="n">---</option>';
 
@@ -30,23 +30,23 @@ $container .= '<option value="f"';
 if ($gender == 'f') {
 $container .= ' selected';
 }
-$container .= '>FEMALE</option>';
+$container .= '>'.Translation::t($page->_language, 'FEMALE').'</option>';
 
 $container .= '<option value="m"';
 if ($gender == 'm') {
 $container .= ' selected';
 }
-$container .= '>MALE</option>';
+$container .= '>'.Translation::t($page->_language, 'MALE').'</option>';
 $container .= '</select>';
 $container .= '</div>';
 
 $container .= '<div class="formField">';
-$container .= '<label>Mail</label>';
+$container .= '<label>'.Translation::t($page->_language, 'Mail').'</label>';
 $container .= '<input type="text" name="mail" value="' . $mail . '">';
 $container .= '</div>';
 
 $container .= '<div class="formField">';
-$container .= '<label>Login</label>';
+$container .= '<label>'.Translation::t($page->_language, 'Login').'</label>';
 $container .= '<input type="text" name="login" value="' . $login . '">';
 $container .= '</div>';
 

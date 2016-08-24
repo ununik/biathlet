@@ -1,7 +1,7 @@
 <?php
-$container = '<h3>Workroom</h3>';
+$container = '<h3>'.Translation::t($page->_language, 'Workroom').'</h3>';
 
-$container .= '<h4>Completed weapon</h4>';
+$container .= '<h4>'.Translation::t($page->_language, 'Completed weapon').'</h4>';
 $container .= $userItem->showWeapon(
 	$page->_language,
 	$weapon['svgImage'],

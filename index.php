@@ -5,6 +5,9 @@ require HOME_DIR . '/autoloading.php';
 
 $html = new HTML();
 $page = new Page();
+$languageClass = new Language();
+//Language setting
+$page->changeLanguage($languagePath);
 
 $html->setCssFile(URL_PATH . '/css/unlog.css');
 //Authentication
@@ -20,8 +23,8 @@ if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 		$html->addToJs(URL_PATH . '/js/jquery-3.1.0.min.js');
 		$html->addToJs(URL_PATH . '/js/ajax.js');
 		$html->addToJs(URL_PATH . '/js/basicFunctions.js');
-		$html->setHeader($user->getHeader());
-		$html->addToActualActivity($user->getActualActivity());
+		$html->setHeader($user->getHeader($page->_language));
+		$html->addToActualActivity($user->getActualActivity($page->_language));
 	}
 } elseif (isset($_COOKIE['biathlete_user']) && $_COOKIE['biathlete_user'] != '') {
     $user = new User();
@@ -34,11 +37,7 @@ if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 	$user = new User();
 }
 
-//Language setting
-$page->changeLanguage($languagePath);
-
 $page->changePID($pagePath);
-
 $html->setHomepageLink($page->getLink($page->getHomepageId()));
 
 //Main menu
@@ -59,6 +58,11 @@ if ($actualPage['controller'] != '') {
 }
 if ($actualPage['view'] != '') {
 	$html->addToContent(require HOME_DIR . $actualPage['view']);
+}
+
+//LANGUAGE MENU
+foreach ($languageClass->getAllLanguages($page->_language, false) as $langNavigation) {
+	$html->addToTranslationNavigation($langNavigation['originalTitle'], $page->getLink($page->getPID(), '', $langNavigation['short']));
 }
 
 print($html->printHTML());

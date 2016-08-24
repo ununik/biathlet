@@ -29,4 +29,20 @@ class Training
     
         return $categories;
     }
+    
+    public function getTraining($id, $language)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT * FROM `training-subcategory` WHERE `id`=:id AND `language`=:language AND `active`=1 AND `deleted`=0;'
+    			);
+    	$result->execute(array(
+    			':language' => $language,
+    			':id' => $id,
+    	));
+    	 
+    	$training = $result->fetch();
+    	
+    	return $training;
+    }
+    
 }

@@ -10,7 +10,7 @@ function showAllInCategories(category, language){
 	mypostrequest.onreadystatechange=function(){
 	 if (mypostrequest.readyState==4){
 	  if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
-		  $('#test').html(mypostrequest.responseText);
+		  showMessage(mypostrequest.responseText);
 	  }
 	  else{
 	   //alert("An error has occured making the request")

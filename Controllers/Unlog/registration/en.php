@@ -12,13 +12,13 @@ if (isset($_POST['registration'])) {
 	//Validation
 	//login
 	if (strlen($login) == 0) {
-		$err[] = 'Login is mandatory field.';
+		$err[] = Translation::t($page->_language, 'Login is mandatory field.');
 	}
 	if (strlen($login) > 255) {
-		$err[] = 'Login is too long.';
+		$err[] = Translation::t($page->_language, 'Login is too long.');
 	}
 	if ($user->existsLogin($login)) {
-		$err[] = 'This login is occupied.';
+		$err[] = Translation::t($page->_language, 'This login is occupied.');
 	}
 	
 	//mail

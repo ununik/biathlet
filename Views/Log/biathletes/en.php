@@ -16,6 +16,11 @@ if ($issetSearch === true) {
         $search .= '</tr>';
        foreach ($profils as $profil) {
           $search .= '<tr>';
+          if ($profil['id'] == $user->_id) {
+          	$search .= '<td class="table_message"></td>';
+          } else {
+          	$search .= '<td class="table_message"><a href="'.$page->getLink(118).'?user='.$profil['id'].'"><img src="http://localhost/biathlete/images/icons/messageReaded.svg"></a></td>';
+          }
           $search .= '<td class="table_name"><a href="'.$page->getLink(116).'?user='.$profil['id'].'">'.$user->getFullName($profil['id']).'</a></td>';
           $search .= '</tr>';
        }

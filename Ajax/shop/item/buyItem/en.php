@@ -20,6 +20,9 @@ if ($user->_money < $item['price']) {
 $user->setMoney($user->_money - $item['price']);
 $userItem = new UserItem($user->_id);
 $userItem->newItemForUser($item['equipment']);
+$equipment = $userItem->getItemById($item['equipment'], $language);
+$bank = new Bank($user->_id);
+$bank->addNewEntry($user->_id, 0-$item['price'], 'Shop - '.$equipment['title']);
 
 
 echo 'Thank you for shopping.';

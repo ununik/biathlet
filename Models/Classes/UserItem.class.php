@@ -4,11 +4,7 @@ class UserItem
     private $_id = 0;
     
     public function __construct($id = '')
-    {
-        if ($id == '') {
-            die();
-        }
-        
+    {        
         $this->_id = $id;
     }
     
@@ -75,14 +71,25 @@ class UserItem
     	}
     }
     
-    public function getAllItemsForUser($user, $category, $language)
+    public function getBestCartridgesForUser($user, $language)
     {
+    	$item  = $this->getAllItemsForUser($user, 2, $language, 'equipment.id', 'accuracy DESC');
+    	
+    	return $item[0]['id'];
+    }
+    
+    public function getAllItemsForUser($user, $category, $language, $columns = '*', $order = '')
+    {
+    	if ($order != '') {
+    		$order = ' ORDER BY '.$order;
+    	}
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `equipment` INNER JOIN `user-item` ON `equipment`.`id`=`user-item`.`item`
+                'SELECT '.$columns.' FROM `equipment` INNER JOIN `user-item` ON `equipment`.`id`=`user-item`.`item`
                 WHERE 
                 `equipment`.language=:language AND 
                 `user-item`.user=:user AND 
-                `equipment`.categoryInShop=:category
+                `equipment`.categoryInShop=:category'.
+        		$order .'
                 ;'
                 );
         $result->execute(array(
@@ -164,6 +171,27 @@ class UserItem
     	return $item;
     }
     
+    public function getCategory($id, $language)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT * FROM `shops-category`
+                WHERE
+                language=:language AND
+                id = :id AND
+    			active = 1 AND
+    			deleted = 0
+                ;'
+    			);
+    	$result->execute(array(
+    			':id' => $id,
+    			':language' => $language
+    	));
+    	
+    	$category = $result->fetch();
+    	
+    	return $category;
+    }
+    
     public function setNewItem($field, $item)
     {
     	$result = Connection::connect()->prepare(
@@ -173,5 +201,26 @@ class UserItem
     			':id' => $this->_id,
     			':item' => $item
     	));
+    }
+    
+    public function getProducer($id, $language)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT * FROM `equipment-producer`
+                WHERE
+                language=:language AND
+                id = :id AND
+    			active = 1 AND
+    			deleted = 0
+                ;'
+    			);
+    	$result->execute(array(
+    			':id' => $id,
+    			':language' => $language
+    	));
+    	
+    	$producer = $result->fetch();
+    	
+    	return $producer;
     }
 }

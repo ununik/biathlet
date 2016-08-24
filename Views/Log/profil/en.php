@@ -11,13 +11,22 @@ $container .= $userItem->showWeapon(
 	$buttPlate['svgImage']
 		);
 
+$container .= '<table>';
+$container .= '<tr><td>'.Translation::t($page->_language, 'Accuracy').'</td><td>'.$user->getAccuracy().'</td><tr>';
+$container .= '<tr><td>'.Translation::t($page->_language, 'Best cartridge').'<br><small>'.Translation::t($page->_language, '(for competitions)').'</small></td><td>'.$bestCartridge['title'].'</td><tr>';
+$container .= '<tr><td>'.Translation::t($page->_language, 'Leg power').'</td><td>'.$user->getLegPower().'</td><tr>';
+$container .= '<tr><td>'.Translation::t($page->_language, 'Hand power').'</td><td>'.$user->getHandPower().'</td><tr>';
+$container .= '<tr><td>'.Translation::t($page->_language, 'Hand power').'</td><td>'.$user->getEndurance().'</td><tr>';
+$container .= '<tr><td>'.Translation::t($page->_language, 'Stability').'</td><td>'.$user->getStability().'</td><tr>';
+$container .= '</table>';
+
 $container .= '<ul>';
-$container .= '<li><a href="' . $page->getLink(114) . '">Workroom</a></li>';
-$container .= '<li><a href="' . $page->getLink(103) . '">Update profil</a></li>';
-$container .= '<li>Link to profil: <a href="'.$page->getLink(116).'?user='.$user->_id.'">'.$page->getLink(116).'?user='.$user->_id.'</a></li>';
+$container .= '<li><a href="' . $page->getLink(114) . '">'.Translation::t($page->_language, 'Workroom').'</a></li>';
+$container .= '<li><a href="' . $page->getLink(103) . '">'.Translation::t($page->_language, 'Update profil').'</a></li>';
+$container .= '<li>'.Translation::t($page->_language, 'Link to profil:').' <a href="'.$page->getLink(116).'?user='.$user->_id.'">'.$page->getLink(116).'?user='.$user->_id.'</a></li>';
 $container .= '</ul>';
 
-$container .= '<h4>My equipment</h4>';
+$container .= '<h4>'.Translation::t($page->_language, 'My equipment').'</h4>';
 $categories = $shops->getAllCategories($page->_language);
 $i = 0;
 foreach ($categories as $category) {
@@ -50,7 +59,7 @@ for ($n=0; $n < $i; $n++) {
         $container .= '<div class="profilItemBoxWrapper">';
         $container .= '<div class="profilItemBox">';
         $container .= '<div class="detail">';
-        $container .= '<div class="title">'.$item['title'].'</div>';
+        $container .= '<div class="title"><a href="'.$page->getLink(117).'?id='.$item['id'].'" target="_blank">'.$item['title'].'</a></div>';
         if ($item['image'] != '') {
             $container .= '<img src="'.URL_PATH.$item['image'].'" class="ilustration">';
         }

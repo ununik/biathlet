@@ -1,3 +1,16 @@
+$(document).ready(function() {
+	  
+});
+function showMessage(text){
+	$('#messageBlackBackground').css('display', 'block');
+	$('body').css('overflow', 'hidden');
+	$('#message').html('<div id="closeMessage" onclick="hideMessage()">x</div>'+text);
+}
+function hideMessage(){
+	$('#messageBlackBackground').css('display', 'none');
+	$('body').css('overflow', 'auto');
+	$('#message').html('');
+}
 function reloadMoney(){
 	var mypostrequest=new ajaxRequest()
 	mypostrequest.onreadystatechange=function(){

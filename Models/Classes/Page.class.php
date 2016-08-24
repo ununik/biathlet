@@ -109,8 +109,12 @@ class Page
 		return $menuArray;
 	}
 	
-	public function getLink($pid = '', $externalLink = '', $language = 'en')
+	public function getLink($pid = '', $externalLink = '', $language = '')
 	{	    
+		if ($language == '') {
+			$language = $this->_language;
+		}
+		
 		if ($pid != '') {
 		    $result = Connection::connect()->prepare(
 		            'SELECT * FROM `page` WHERE `pid` = :pid AND `language`=:language AND `active` = 1 AND `deleted` = 0;'

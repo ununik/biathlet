@@ -25,7 +25,14 @@ if ($user->_actualEnergy < $currentJob['energy'.$_POST['type']]) {
 
 $user->setActualEnergy($user->_actualEnergy - $currentJob['energy'.$_POST['type']], time() + $user->_howLongToNextEnergy);
 $user->setMoney($user->_money + $currentJob['price'.$_POST['type']]);
-$user->setLastActivity(time() + $_POST['type']*10*60, 'Part time job (' . $currentJob['title'].')');
+$user->setLastActivity(time() + $_POST['type']*10*60, $currentJob['message']);
+$user->setAccuracy($user->_accuracy + ($_POST['type'] * $currentJob['accuracy']));
+$user->setEndurance($user->_endurance + ($_POST['type'] * $currentJob['endurance']));
+$user->setHandPower($user->_handPower + ($_POST['type'] * $currentJob['handPower']));
+$user->setLegPower($user->_legPower + ($_POST['type'] * $currentJob['legPower']));
+$user->setStability($user->_stability + ($_POST['type'] * $currentJob['stability']));
+$bank = new Bank($user->_id);
+$bank->addNewEntry($user->_id, $currentJob['price'.$_POST['type']], $currentJob['message']);
 
 echo 'done';
 //echo $currentJob->doParttimeJob($_POST['id'], $_POST['type'], $user->_id);

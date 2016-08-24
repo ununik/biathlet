@@ -11,10 +11,11 @@ function buyItem(id, language){
 	 if (mypostrequest.readyState==4){
 	  if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
 		  reloadMoney();
-		  $('#shopResult').html(mypostrequest.responseText);
+		  showMessage(mypostrequest.responseText);
+		  
 		  
 		  setTimeout(function(){
-			  $('#shopResult').html('');
+			  hideMessage();
 	      },2000);
 	  }
 	  else{

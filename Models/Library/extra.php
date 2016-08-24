@@ -24,7 +24,7 @@ function getCookiesPart($string)
 
 function moneyFormat($number)
 {
-    return number_format ($number, 2 , '.', ' ');
+    return number_format ($number, 2 , '.', ' ') .'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro">';
 }
 
 /**
@@ -102,4 +102,10 @@ function getColumnNameInProfilFromEquipmentCategory($categoryId, $object = false
 	}
 	
 	return '';
+}
+
+function getEasiestTimeFormSeconds($seconds)
+{
+	$seconds = $seconds - 3600;
+	return date('H:i:s', $seconds);
 }

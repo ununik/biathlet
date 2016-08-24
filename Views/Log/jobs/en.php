@@ -6,53 +6,21 @@ $container .= '<h3>Part time jobs</h3>';
 foreach ($job->getAllPartTimeJobs($user->_maxEnergy, $page->_language) as $job) {
     $container .= '<div>';
     $container .= '<div class="partTimeTitle">'.$job['title'].'</div>';
-    $container .= '<div class="partTimeDetail">';
-    if ($user->_actualEnergy < $job['energy1']) {
-        $container .= '<div class="partTimeTime">10 min</div>';
-        $container .= '<div class="partTimeRest">';
-        $container .= '<div>Energy: '.$job['energy1'].'</div>';
-        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price1']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
-        $container .= '</div>';
-    } else {
-        $container .= '<div class="partTimeTime">10 min</div>';
-        $container .= '<div class="partTimeRest">';
-        $container .= '<div>Energy: '.$job['energy1'].'</div>';
-        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price1']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
-        $container .= '</div>';
-        $container .= '<div class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \'1\',  \'en\')">Get the job</div>';
+    $container .= '<table class="partTimeDetail">';
+    for ($i = 1; $i < 4; $i++) {
+    	$container .= '<tr class="detail'.$i.'">';
+    	$container .= '<td class="partTimeTime">'.$i.'0 min</td>';
+    	$container .= '<td class="partTimeRest">';
+    	$container .= '<div>Energy: '.$job['energy'.$i].'</div>';
+    	$container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price'.$i]).'</div>';
+    	if ($user->_actualEnergy < $job['energy'.$i]) {
+    		$container .= '<td class="partTimeGetJob">Lack of energy</td>';
+    	} else {
+    		$container .= '<td class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \''.$i.'\',  \'en\')">Get the job</td>';
+    	}
+    	$container .= '</tr>';
     }
-    
-    if ($user->_actualEnergy < $job['energy2']) {
-        $container .= '<div class="partTimeTime">20 min</div>';
-        $container .= '<div class="partTimeRest">';
-        $container .= '<div>Energy: '.$job['energy2'].'</div>';
-        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price2']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
-        $container .= '</div>';
-    } else {
-        $container .= '<div class="partTimeTime">20 min</div>';
-        $container .= '<div class="partTimeRest">';
-        $container .= '<div>Energy: '.$job['energy2'].'</div>';
-        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price2']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
-        $container .= '</div>';
-        $container .= '<div class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \'2\',  \'en\')">Get the job</div>';
-    }
-    
-    if ($user->_actualEnergy < $job['energy3']) {
-        $container .= '<div class="partTimeTime">30 min</div>';
-        $container .= '<div class="partTimeRest">';
-        $container .= '<div>Energy: '.$job['energy3'].'</div>';
-        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price3']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
-        $container .= '</div>';
-    } else {
-        $container .= '<div class="partTimeTime">30 min</div>';
-        $container .= '<div class="partTimeRest">';
-        $container .= '<div>Energy: '.$job['energy3'].'</div>';
-        $container .= '<div>Amount: '.\Library\Extra\moneyFormat($job['price3']).'<img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></div>';
-        $container .= '</div>';
-        $container .= '<div class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \'3\',  \'en\')">Get the job</div>';
-    }
-    $container .= '</div>';
-
+    $container .= '</table>';
     $container .= '</div>';
 }
 $container .= '</div>';

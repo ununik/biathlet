@@ -1,9 +1,9 @@
 $(document).ready(function() {
   $(".partTimeTitle").click(function () {
-	  if ($(".partTimeDetail").css("height") == "0px") {
-	    	$(".partTimeDetail").css("height", 'auto');
+	  if ($(".partTimeDetail").css("display") == "none") {
+	    	$(".partTimeDetail").css("display", 'block');
 	    } else {
-	    	$(".partTimeDetail").css("height", '0px');
+	    	$(".partTimeDetail").css("display", 'none');
 	    }
   });
 });
@@ -17,10 +17,10 @@ function getParttimeJob(id, type, language) {
 		  reloadEnergy();
 		  reloadMoney();
 		  reloadActivity();
-		  $('#jobsResult').html(mypostrequest.responseText);
+		  showMessage(mypostrequest.responseText);
 		  
 		  setTimeout(function(){
-			  $('#jobsResult').html('');
+			  hideMessage();
 	      },2000);
 	  }
 	  else{

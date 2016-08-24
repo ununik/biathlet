@@ -74,35 +74,38 @@ nav ul li{
 	cursor: pointer;
 }
 .partTimeDetail{
-	overflow: hidden;
+	display: none;
 	width: 100%;
-	height: 0px;
+	border-collapse: collapse;
+}
+.partTimeDetail .detail1{
+	background-color: #f3f3f3;
+}
+.partTimeDetail .detail2{
+	background-color: #d3d7cf;
+}
+.partTimeDetail .detail3{
+	background-color: #babdb6;
 }
 .partTimeTime{
 	width: 5vw;
   	height: 5vw;
   	font-size: 1.3vW;
-  	float: left;
-  	border: 1px solid black;
   	line-height: 5vw;
   	clear: left;
   	text-align: center;
 }
 .partTimeRest{
-	float:left;
 	height: 5vw;
-	width: 10vw;
 	line-height: 2.5vw;
-	border: 1px solid black;
 	font-size: 1vW;
 	text-align: left;
+	width: 50%;
 }
 .partTimeGetJob{
-	width: 7vw;
+	width: 10vw;
   	height: 5vw;
   	font-size: 1vW;
-  	float: left;
-  	border: 1px solid black;
   	line-height: 5vw;
   	font-size: 1.3vW;
   	text-align: center;
@@ -131,6 +134,14 @@ nav ul li{
 	padding: 2px;
 	border-radius: 3px;
 	outline: none;
+}
+.formField textarea{
+	width: 100%;	
+	border: 1px solid black;
+	padding: 2px;
+	border-radius: 3px;
+	outline: none;
+	height: 10em;
 }
 .formField select{
 	width: 100%;	
@@ -349,6 +360,14 @@ nav ul li{
 .table_name a:hover{
     text-decoration: underline;
 }
+.table_message{
+	width: 2em;
+	text-align: center;	
+}
+.table_message img{
+	height: 1em;	
+	display: inline-block;
+}
 #weaponImg{
 	width: 600px;
 	height: 300px;
@@ -398,6 +417,72 @@ nav ul li{
 	display: block;
 	margin: 0px auto;
 	box-sizing: border-box;
+}
+#messageBlackBackground{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(2, 2, 2, 0.88);
+	z-index: 1000;
+	display: none;
+	box-sizing: border-box;
+}
+#messageWhiteBackground{
+	width: 50vW;
+	height: 50vH;
+	background-color: white;
+	z-index: 1001;
+	margin: 25vH 25vW;
+	display: block;
+	box-sizing: border-box;
+	padding: 20px;
+	position: fixed;
+}
+#closeMessage{
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+}
+#languageNavigation{
+	padding: 0px;
+	position: absolute;
+	z-index: 310;
+	margin: 0px;
+	top: 0px;
+}
+#languageNavigation li{
+	display: inline-block;
+	padding: 0px;
+}
+.bankTable{
+	border-collapse: collapse;
+	width: 80%;
+}
+.bankTable td{
+	padding: 5px 0px;
+}
+.bankTable .datum{
+	width: 200px;
+	text-align: right;
+	padding-right: 20px;
+}
+.bankTable .positive{
+	width: 80px;
+	text-align: right;
+	border-left: 1px solid black;
+}
+.bankTable .negative{
+	width: 80px;
+	padding-right: 20px;
+	text-align: right;
+	border-right: 1px solid black;
 }
 
 @media only screen and (max-device-width: 600px){

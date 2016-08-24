@@ -22,6 +22,12 @@ class User
   	public $_rifleSling = 0;
   	public $_harness = 0;
   	public $_buttPlate = 0;
+  	public $_accuracy = 0;
+  	public $_legPower = 0;
+  	public $_handPower = 0;
+  	public $_endurance = 0;
+  	public $_stability = 0;
+  	private $_arrayOfAllEquiptmentForCompetitions = array();
 	
 	public function __construct($sessionId = '')
 	{
@@ -57,6 +63,11 @@ class User
             $this->_rifleSling = $user['rifle_sling'];
             $this->_harness = $user['harness'];
             $this->_buttPlate = $user['buttPlate'];
+            $this->_accuracy = $user['accuracy'];
+            $this->_legPower = $user['legPower'];
+            $this->_handPower = $user['handPower'];
+            $this->_endurance = $user['endurance'];
+            $this->_stability = $user['stability'];
             
             $result = Connection::connect()->prepare(
                  'UPDATE `user` SET `lastOnlineTime`=:time WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
@@ -68,6 +79,184 @@ class User
 		}
 		
 		return true;
+	}
+	
+	private function getArrayOfAllEquiptmentForCompetitions ()
+	{
+		$parts = $this->_arrayOfAllEquiptmentForCompetitions;
+		if (count($parts) == 0) {
+			$userItem = new UserItem();
+			
+			$cartridge = $userItem->getBestCartridgesForUser($this->_id, 'en');
+			$parts = array(
+					$this->_weapon,
+					$this->_diopter,
+					$this->_stock,
+					$this->_buttPlate,
+					$this->_harness,
+					$cartridge
+					
+			);
+		}
+		
+		return $parts;		
+	}
+	
+	public function getAccuracy()
+	{
+		$total = $this->_accuracy;
+		
+		$parts = $this->getArrayOfAllEquiptmentForCompetitions();
+		$userItem = new UserItem();
+		foreach ($parts as $part) {
+			$weapon = $userItem->getItemById($part, 'en');
+			$total += $weapon['accuracy'];
+		}
+		
+		if ($total < 0) {
+			$total = 0;
+		}
+		
+		return $total;
+	}
+	
+	public function setAccuracy($new)
+	{
+		if ($new < 0) {
+			$new = 0;
+		}
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `accuracy`=:field WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':field' => $new,
+				':id' => $this->_id
+		));
+	}
+	
+	public function getLegPower()
+	{
+		$total = $this->_legPower;
+		
+		$parts = $this->getArrayOfAllEquiptmentForCompetitions();
+		$userItem = new UserItem();	
+		foreach ($parts as $part) {
+			$weapon = $userItem->getItemById($part, 'en');
+			$total += $weapon['legPower'];
+		}
+		
+		if ($total < 0) {
+			$total = 0;
+		}
+	
+		return $total;
+	}
+	
+	public function setLegPower($new)
+	{
+		if ($new < 0) {
+			$new = 0;
+		}
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `legPower`=:field WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':field' => $new,
+				':id' => $this->_id
+		));
+	}
+	
+	public function getHandPower()
+	{
+		$total = $this->_handPower;
+		
+		$parts = $this->getArrayOfAllEquiptmentForCompetitions();
+		$userItem = new UserItem();
+		foreach ($parts as $part) {
+			$weapon = $userItem->getItemById($part, 'en');
+			$total += $weapon['handPower'];
+		}
+	
+		if ($total < 0) {
+			$total = 0;
+		}
+	
+		return $total;
+	}
+	public function setHandPower($new)
+	{
+		if ($new < 0) {
+			$new = 0;
+		}
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `handPower`=:field WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':field' => $new,
+				':id' => $this->_id
+		));
+	}
+	
+	public function getEndurance()
+	{
+		$total = $this->_endurance;
+	
+		$parts = $this->getArrayOfAllEquiptmentForCompetitions();
+		$userItem = new UserItem();
+		foreach ($parts as $part) {
+			$weapon = $userItem->getItemById($part, 'en');
+			$total += $weapon['endurance'];
+		}
+	
+		if ($total < 0) {
+			$total = 0;
+		}
+	
+		return $total;
+	}
+	public function setEndurance($new)
+	{
+		if ($new < 0) {
+			$new = 0;
+		}
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `endurance`=:field WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':field' => $new,
+				':id' => $this->_id
+		));
+	}
+	
+	public function getStability()
+	{
+		$total = $this->_stability;
+	
+		$parts = $this->getArrayOfAllEquiptmentForCompetitions();
+		$userItem = new UserItem();
+		foreach ($parts as $part) {
+			$weapon = $userItem->getItemById($part, 'en');
+			$total += $weapon['stability'];
+		}
+	
+		if ($total < 0) {
+			$total = 0;
+		}
+	
+		return $total;
+	}
+	public function setStability($new)
+	{
+		if ($new < 0) {
+			$new = 0;
+		}
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `stability`=:field WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':field' => $new,
+				':id' => $this->_id
+		));
 	}
 	
 	public function getMail()
@@ -223,17 +412,17 @@ class User
 	    return $firstname . ' ' . $lastname. ' (' . $login . ')';
 	}
 	
-	public function getHeader()
+	public function getHeader($language)
 	{
 	    $return = '';
 	    
-	    $return .= '<span class="header_money"><span id="myMoney"><script>reloadMoney()</script></span><img src="'.URL_PATH.'/images/icons/euro.svg" class="euro"></span>';
+	    $return .= '<span class="header_money"><a href="'.Page::getLink(119, '', $language).'"><span id="myMoney"><script>reloadMoney()</script></span></a></span>';
 	    
-	    $return .= '<span class="header_energy">Energy: <span id="myEnergy"><script>reloadEnergy()</script></span></span>';
+	    $return .= '<span class="header_energy">'.Translation::t($language, 'Energy').': <span id="myEnergy"><script>reloadEnergy()</script></span></span>';
+	  
+	    $return .= '<a href=" '.Page::getLink(101, '', $language).' " class="header_name">' . $this->getFullName() . '</a>';
 	    
-	    $return .= '<a href=" '.Page::getLink(101).' " class="header_name">' . $this->getFullName() . '</a>';
-	    
-	    $return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/messageReaded.svg)"></a>';
+	    $return .= '<a href=" '.Page::getLink(105, '', $language).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/messageReaded.svg)"></a>';
 	    
 	    //one unreaded message
 	    //$return .= '<a href=" '.Page::getLink(105).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/message.svg)"></a>';
@@ -244,9 +433,9 @@ class User
 	    return $return;
 	}
 	
-	public function getActualActivity()
+	public function getActualActivity($language = 'en')
 	{
-	    $return = '<span class="header_activity"><b>Actual activity</b>: <span id="myActivity"><script>reloadActivity()</script></span></span>';
+	    $return = '<span class="header_activity"><b>'.Translation::t($language, 'Actual activity').'</b>: <span id="myActivity"><script>reloadActivity()</script></span></span>';
 	    
 	    return $return;
 	}

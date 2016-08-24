@@ -1,5 +1,5 @@
 <?php
-$container = '';
+$container = '<h3>Trainings</h3>';
 
 foreach ($training->getAllTrainingsCategories($page->_language) as $category) {
     $container .= '<div class="shopItemBoxWrapper">';
