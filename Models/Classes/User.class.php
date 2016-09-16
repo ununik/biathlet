@@ -522,6 +522,17 @@ class User
 	    ));
 	}
 	
+	public function setMaxEnergy($energy)
+	{
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `maxEnergy`=:energy WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':id' => $this->_id,
+				':energy' => $energy
+		));
+	}
+	
 	public function setLastActivity($time, $activity)
 	{
 	    $result = Connection::connect()->prepare(

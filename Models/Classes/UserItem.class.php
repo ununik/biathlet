@@ -36,7 +36,7 @@ class UserItem
     public function getConcreteItemForUser($itemId)
     {
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `user-item` WHERE `user`=:user AND `item`=:item LIMIT 1;'
+                'SELECT * FROM `user-item` WHERE `user`=:user AND count > 0 AND `item`=:item LIMIT 1;'
                 );
         $result->execute(array(
             ':user' => $this->_id,
@@ -78,18 +78,23 @@ class UserItem
     	return $item[0]['id'];
     }
     
-    public function getAllItemsForUser($user, $category, $language, $columns = '*', $order = '')
+    public function getAllItemsForUser($user, $category, $language, $columns = '*', $order = '', $where = '')
     {
     	if ($order != '') {
     		$order = ' ORDER BY '.$order;
     	}
+    	if ($where != '') {
+    		$where = ' AND '.$where;
+    	}
+    	
         $result = Connection::connect()->prepare(
                 'SELECT '.$columns.' FROM `equipment` INNER JOIN `user-item` ON `equipment`.`id`=`user-item`.`item`
                 WHERE 
                 `equipment`.language=:language AND 
                 `user-item`.user=:user AND 
+        		`user-item`.count > 0 AND 
                 `equipment`.categoryInShop=:category'.
-        		$order .'
+        		$where.$order .'
                 ;'
                 );
         $result->execute(array(
@@ -222,5 +227,17 @@ class UserItem
     	$producer = $result->fetch();
     	
     	return $producer;
+    }
+    
+    public function setItemCount($count, $id)
+    {
+    	$result = Connection::connect()->prepare(
+    			'UPDATE `user-item` SET `count`=:count, timestamp=:timestamp WHERE id=:id;'
+    			);
+    	$result->execute(array(
+    			':count' => $count,
+    			':id' => $id,
+    			':timestamp' => time()
+    	));
     }
 }

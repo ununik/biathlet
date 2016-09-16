@@ -42,7 +42,12 @@ function doTraining(id) {
 	  }
 	 }
 	}
-	parameters = 'id=' + id;
+	if (document.getElementById("ammo")) {
+		ammo = $("#ammo").val();
+		parameters = 'id=' + id + '&ammo='+ammo;
+	} else {
+		parameters = 'id=' + id;
+	}
 	mypostrequest.open("POST", URL_PATH + "/Ajax/training/category/goTraining/en.php", true)
 	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 	mypostrequest.send(parameters)
