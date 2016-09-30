@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: localhost
--- Vygenerováno: Pát 16. zář 2016, 15:50
+-- Vygenerováno: Pát 30. zář 2016, 17:13
 -- Verze serveru: 5.5.50-0ubuntu0.14.04.1
 -- Verze PHP: 5.5.9-1ubuntu4.17
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `title` text NOT NULL,
   `user` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Vypisuji data pro tabulku `bank`
@@ -54,7 +54,13 @@ INSERT INTO `bank` (`id`, `timestamp`, `revenue`, `title`, `user`) VALUES
 (12, 1472120636, -2.2, 'Shop - ELEY tenex biathlon', 1),
 (13, 1472120638, -2.2, 'Shop - ELEY tenex biathlon', 1),
 (14, 1472120641, -2.2, 'Shop - ELEY tenex biathlon', 1),
-(15, 1472467051, 10, 'Part time job - WOOD GROUP (timber company)', 1);
+(15, 1472467051, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(16, 1474446519, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(17, 1474448413, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
+(18, 1474448525, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(19, 1475236726, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(20, 1475242571, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
+(21, 1475243357, 10, 'Part time job - WOOD GROUP (timber company)', 1);
 
 -- --------------------------------------------------------
 
@@ -529,39 +535,39 @@ CREATE TABLE IF NOT EXISTS `translation` (
 
 INSERT INTO `translation` (`id`, `language`, `original`, `translated`) VALUES
 (1, 'cs', 'Password', 'Heslo'),
-(2, 'cs', 'I forgot my password.', 'Zapomněl jsem své heslo.'),
-(3, 'cs', 'I don''t have any account.', 'Ještě nemám účet.'),
-(5, 'cs', 'Login is mandatory field.', 'Login musí být vyplněný.'),
-(6, 'cs', 'Password is mandatory field.', 'Heslo musí být vyplněné.'),
-(7, 'cs', 'Wrong login or password', 'Špatné jméno nebo heslo.'),
+(2, 'cs', 'I forgot my password.', 'ZapomnÄ›l jsem svÃ© heslo.'),
+(3, 'cs', 'I don''t have any account.', 'JeÅ¡tÄ› nemÃ¡m svÅ¯j ÃºÄet.'),
+(5, 'cs', 'Login is mandatory field.', 'Login musÃ­ bÃ½t vyplnÄ›nÃ½.'),
+(6, 'cs', 'Password is mandatory field.', 'Heslo musÃ­ bÃ½t vyplnÄ›nÃ©.'),
+(7, 'cs', 'Wrong login or password', 'Å patnÃ© jmÃ©no nebo heslo.'),
 (8, 'cs', 'Password again', 'Heslo znovu'),
-(9, 'cs', 'I agree with rules.', 'Souhlasím s pravidly'),
-(10, 'cs', 'I have an account.', 'Mám svůj účet.'),
+(9, 'cs', 'I agree with rules.', 'SouhlasÃ­m s pravidly'),
+(10, 'cs', 'I have an account.', 'MÃ¡m svÅ¯j ÃºÄet.'),
 (11, 'cs', 'REGISTER', 'REGISTRUJ'),
-(12, 'cs', 'Login is mandatory field.', 'Login je povinný.'),
-(13, 'cs', 'Login is too long.', 'Login je příliš dlouhý.'),
-(14, 'cs', 'This login is occupied.', 'Tento login je obsazený.'),
-(15, 'cs', 'Accuracy', 'Přesnost'),
-(16, 'cs', 'Best cartridge', 'Nejlepší náboje'),
-(17, 'cs', '(for competitions)', '(na závody)'),
-(18, 'cs', 'Leg power', 'Síla nohou'),
-(19, 'cs', 'Hand power', 'Síla rukou'),
+(12, 'cs', 'Login is mandatory field.', 'Login je povinnÃ½.'),
+(13, 'cs', 'Login is too long.', 'Login je pÅ™Ã­liÅ¡ dlouhÃ½.'),
+(14, 'cs', 'This login is occupied.', 'Tento login je obsazenÃ½.'),
+(15, 'cs', 'Accuracy', 'PÅ™esnost'),
+(16, 'cs', 'Best cartridge', 'NejlepÅ¡Ã­ nÃ¡boje'),
+(17, 'cs', '(for competitions)', '(na zÃ¡vody)'),
+(18, 'cs', 'Leg power', 'SÃ­la nohou'),
+(19, 'cs', 'Hand power', 'SÃ­la rukou'),
 (20, 'cs', 'Endurance', 'Vytrvalost'),
 (21, 'cs', 'Stability', 'Stabilita'),
-(22, 'cs', 'Workroom', 'Dílna'),
+(22, 'cs', 'Workroom', 'DÃ­lna'),
 (23, 'cs', 'Update profil', 'Upravit profil'),
 (24, 'cs', 'Link to profil:', 'Odkaz na profil:'),
-(25, 'cs', 'My equipment', 'Mé vybavení'),
-(26, 'cs', 'Firstname', 'Jméno'),
-(27, 'cs', 'Lastname', 'Příjmení'),
-(28, 'cs', 'Gender', 'Pohlaví'),
-(29, 'cs', 'FEMALE', 'ŽENA'),
-(30, 'cs', 'MALE', 'MUŽ'),
-(31, 'cs', 'Personal', 'Osobní'),
+(25, 'cs', 'My equipment', 'MÃ© vybavenÃ­'),
+(26, 'cs', 'Firstname', 'JmÃ©no'),
+(27, 'cs', 'Lastname', 'PÅ™Ã­jjmenÃ­'),
+(28, 'cs', 'Gender', 'PohlavÃ­'),
+(29, 'cs', 'FEMALE', 'Å½ENA'),
+(30, 'cs', 'MALE', 'MUÅ½'),
+(31, 'cs', 'Personal', 'OsobnÃ­'),
 (32, 'cs', 'Password', 'Heslo'),
 (33, 'cs', 'Energy', 'Energie'),
-(34, 'cs', 'Actual activity', 'Aktuální aktivita'),
-(35, 'cs', 'Completed weapon', 'Kompletní zbraň'),
+(34, 'cs', 'Actual activity', 'AktuÃ¡lnÃ­ aktivita'),
+(35, 'cs', 'Completed weapon', 'KompletnÃ­ zbraÅˆ'),
 (36, 'cs', 'Bank', 'Banka'),
 (37, 'cs', 'Money operations', 'Penezni operace');
 
@@ -610,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1472471141, 42, 30, 2.1, 1472471371, 'You have fast running training', 1, 1472471261, 120, 'm', 1, 13, 14, 10, 11, 19, 355, 93, 124, 121, 139),
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1475248353, 47, 47, 16.7, 1475245156, 'Part time job - WOOD GROUP (timber company)', 1, 1475248233, 120, 'm', 1, 12, 17, 10, 11, 18, 555, 117, 160, 109, 151),
 (2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1469902789, 1472467065, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0),
 (3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1470063945, 1470389835, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0),
 (4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1470063990, 1470130837, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0);
@@ -636,7 +642,7 @@ CREATE TABLE IF NOT EXISTS `user-item` (
 
 INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (1, 1, 2, 1470397326, 0),
-(2, 1, 3, 1472466978, 11),
+(2, 1, 3, 1475242571, 11),
 (3, 1, 4, 1469792731, 2),
 (4, 0, 7, 1470063816, 3),
 (5, 0, 8, 1470063816, 3),

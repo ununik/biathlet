@@ -4,7 +4,7 @@ $(document).ready(function() {
 function showMessage(text){
 	$('#messageBlackBackground').css('display', 'block');
 	$('body').css('overflow', 'hidden');
-	$('#message').html('<div id="closeMessage" onclick="hideMessage()">x</div>'+text);
+	$('#message').html('<div id="closeMessage" onclick="hideMessage()"></div>'+text);
 }
 function hideMessage(){
 	$('#messageBlackBackground').css('display', 'none');

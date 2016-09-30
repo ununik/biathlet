@@ -14,60 +14,45 @@ $container .= $userItem->showWeapon(
 
 //weapon
 $container .= '<div class="workshopItemBoxWrapper">';
-$container .= '<div class="workshopItemBox" onclick="showAllInCategories(\''.$weapon['categoryInShop'].'\', \'en\')">';
+$container .= '<div class="workshopItemBox workroom-weapon" onclick="showAllInCategories(\''.$weapon['categoryInShop'].'\', \'en\')">';
 $container .= '<div class="detail">';
 $container .= '<div class="title">'.$weapon['title'].'</div>';
-if ($weapon['image'] != '') {
-	$container .= '<img src="'.URL_PATH.$weapon['image'].'" class="ilustration">';
-}
 $container .= '</div>';
 $container .= '</div>';
 $container .= '</div>';
 
 //stock
 $container .= '<div class="workshopItemBoxWrapper">';
-$container .= '<div class="workshopItemBox" onclick="showAllInCategories(\''.$stock['categoryInShop'].'\', \'en\')">';
+$container .= '<div class="workshopItemBox workroom-stock" onclick="showAllInCategories(\''.$stock['categoryInShop'].'\', \'en\')">';
 $container .= '<div class="detail">';
 $container .= '<div class="title">'.$stock['title'].'</div>';
-if ($stock['image'] != '') {
-	$container .= '<img src="'.URL_PATH.$stock['image'].'" class="ilustration">';
-}
 $container .= '</div>';
 $container .= '</div>';
 $container .= '</div>';
 
 //harness
 $container .= '<div class="workshopItemBoxWrapper">';
-$container .= '<div class="workshopItemBox" onclick="showAllInCategories(\''.$harness['categoryInShop'].'\', \'en\')">';
+$container .= '<div class="workshopItemBox workroom-harness" onclick="showAllInCategories(\''.$harness['categoryInShop'].'\', \'en\')">';
 $container .= '<div class="detail">';
 $container .= '<div class="title">'.$harness['title'].'</div>';
-if ($harness['image'] != '') {
-	$container .= '<img src="'.URL_PATH.$harness['image'].'" class="ilustration">';
-}
 $container .= '</div>';
 $container .= '</div>';
 $container .= '</div>';
 
 //diopter
 $container .= '<div class="workshopItemBoxWrapper">';
-$container .= '<div class="workshopItemBox" onclick="showAllInCategories(\''.$diopter['categoryInShop'].'\', \'en\')">';
+$container .= '<div class="workshopItemBox workroom-diopter" onclick="showAllInCategories(\''.$diopter['categoryInShop'].'\', \'en\')">';
 $container .= '<div class="detail">';
 $container .= '<div class="title">'.$diopter['title'].'</div>';
-if ($diopter['image'] != '') {
-	$container .= '<img src="'.URL_PATH.$diopter['image'].'" class="ilustration">';
-}
 $container .= '</div>';
 $container .= '</div>';
 $container .= '</div>';
 
 //buttPlate
 $container .= '<div class="workshopItemBoxWrapper">';
-$container .= '<div class="workshopItemBox" onclick="showAllInCategories(\''.$buttPlate['categoryInShop'].'\', \'en\')">';
+$container .= '<div class="workshopItemBox workroom-buttPlate" onclick="showAllInCategories(\''.$buttPlate['categoryInShop'].'\', \'en\')">';
 $container .= '<div class="detail">';
 $container .= '<div class="title">'.$buttPlate['title'].'</div>';
-if ($buttPlate['image'] != '') {
-	$container .= '<img src="'.URL_PATH.$buttPlate['image'].'" class="ilustration">';
-}
 $container .= '</div>';
 $container .= '</div>';
 $container .= '</div>';

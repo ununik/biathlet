@@ -17,11 +17,11 @@ function getParttimeJob(id, type, language) {
 		  reloadEnergy();
 		  reloadMoney();
 		  reloadActivity();
-		  showMessage(mypostrequest.responseText);
+		  /*showMessage(mypostrequest.responseText);
 		  
 		  setTimeout(function(){
 			  hideMessage();
-	      },2000);
+	      },2000);*/
 	  }
 	  else{
 	   //alert("An error has occured making the request")

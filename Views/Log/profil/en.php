@@ -1,6 +1,15 @@
 <?php
 $container = '<h3>'.$user->getFullName().'</h3>';
 
+$container .= '<table class="personalDefinition">';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Accuracy').'</td><td>'.$user->getAccuracy().'</td><tr>';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Best cartridge').'<br><small>'.Translation::t($page->_language, '(for competitions)').'</small></td><td>'.$bestCartridge['title'].'</td><tr>';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Leg power').'</td><td>'.$user->getLegPower().'</td><tr>';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Hand power').'</td><td>'.$user->getHandPower().'</td><tr>';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Hand power').'</td><td>'.$user->getEndurance().'</td><tr>';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Stability').'</td><td>'.$user->getStability().'</td><tr>';
+$container .= '</table>';
+
 $container .= $userItem->showWeapon(
 	$page->_language,
 	$weapon['svgImage'],
@@ -9,16 +18,7 @@ $container .= $userItem->showWeapon(
 	$harness['svgImage'],
 	$diopter['svgImage'],
 	$buttPlate['svgImage']
-		);
-
-$container .= '<table>';
-$container .= '<tr><td>'.Translation::t($page->_language, 'Accuracy').'</td><td>'.$user->getAccuracy().'</td><tr>';
-$container .= '<tr><td>'.Translation::t($page->_language, 'Best cartridge').'<br><small>'.Translation::t($page->_language, '(for competitions)').'</small></td><td>'.$bestCartridge['title'].'</td><tr>';
-$container .= '<tr><td>'.Translation::t($page->_language, 'Leg power').'</td><td>'.$user->getLegPower().'</td><tr>';
-$container .= '<tr><td>'.Translation::t($page->_language, 'Hand power').'</td><td>'.$user->getHandPower().'</td><tr>';
-$container .= '<tr><td>'.Translation::t($page->_language, 'Hand power').'</td><td>'.$user->getEndurance().'</td><tr>';
-$container .= '<tr><td>'.Translation::t($page->_language, 'Stability').'</td><td>'.$user->getStability().'</td><tr>';
-$container .= '</table>';
+);
 
 $container .= '<ul>';
 $container .= '<li><a href="' . $page->getLink(114) . '">'.Translation::t($page->_language, 'Workroom').'</a></li>';

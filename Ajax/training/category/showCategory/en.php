@@ -40,9 +40,9 @@ foreach ($training->getAllTrainingsSubcategories($language, $_POST['id']) as $su
     if (
     	($user->_actualEnergy < $subcategory['energy']) || ($user->_lastActivityTimestamp > time() || $user->_money < $subcategory['price'])
     ) {
-    	$return .= '<td>--</td>';
+    	$return .= '<td class="goNotTraining"></td>';
     } else {
-    	$return .= '<td onclick="doTraining(\''.$subcategory['id'].'\')">GO</td>';
+    	$return .= '<td onclick="doTraining(\''.$subcategory['id'].'\')" class="goTraining"></td>';
     }
     $return .= '</tr>';
 }

@@ -128,6 +128,8 @@ class HTML
     	
     	$return .= '<body>';
     	
+    	$return .= '<div id="topBackground"></div>';
+    	
     	$return .= '<ul id="languageNavigation">';
     	foreach ($this->_languageNavigation as $nav) {
     		$return .= '<li>'.$nav.'</li>';
