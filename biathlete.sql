@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Počítač: localhost
--- Vygenerováno: Pát 30. zář 2016, 17:13
--- Verze serveru: 5.5.50-0ubuntu0.14.04.1
--- Verze PHP: 5.5.9-1ubuntu4.17
+-- Počítač: 127.0.0.1
+-- Vygenerováno: Pon 03. říj 2016, 08:08
+-- Verze serveru: 5.5.34
+-- Verze PHP: 5.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `title` text NOT NULL,
   `user` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Vypisuji data pro tabulku `bank`
@@ -60,7 +60,12 @@ INSERT INTO `bank` (`id`, `timestamp`, `revenue`, `title`, `user`) VALUES
 (18, 1474448525, 10, 'Part time job - WOOD GROUP (timber company)', 1),
 (19, 1475236726, 10, 'Part time job - WOOD GROUP (timber company)', 1),
 (20, 1475242571, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
-(21, 1475243357, 10, 'Part time job - WOOD GROUP (timber company)', 1);
+(21, 1475243357, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(22, 1475261998, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(23, 1475295112, -2.2, 'Shop - ELEY tenex biathlon', 1),
+(24, 1475295278, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(25, 1475347626, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(26, 1475386481, 10, 'Part time job - WOOD GROUP (timber company)', 1);
 
 -- --------------------------------------------------------
 
@@ -148,10 +153,10 @@ INSERT INTO `equipment-producer` (`uid`, `id`, `title`, `link`, `active`, `delet
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `job-partTime`
+-- Struktura tabulky `job-parttime`
 --
 
-CREATE TABLE IF NOT EXISTS `job-partTime` (
+CREATE TABLE IF NOT EXISTS `job-parttime` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
   `message` text COLLATE utf8_danish_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_danish_ci NOT NULL,
@@ -175,10 +180,10 @@ CREATE TABLE IF NOT EXISTS `job-partTime` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=2 ;
 
 --
--- Vypisuji data pro tabulku `job-partTime`
+-- Vypisuji data pro tabulku `job-parttime`
 --
 
-INSERT INTO `job-partTime` (`id`, `message`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`, `legPower`, `handPower`, `endurance`, `stability`, `accuracy`) VALUES
+INSERT INTO `job-parttime` (`id`, `message`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`, `legPower`, `handPower`, `endurance`, `stability`, `accuracy`) VALUES
 (1, 'Part time job - WOOD GROUP (timber company)', 'WOOD GROUP (timber company)', '', 25, 2, 5, 10, 8, 13, 20, 'en', 1, 0, 2, 3, -1, 1, 0);
 
 -- --------------------------------------------------------
@@ -209,10 +214,10 @@ INSERT INTO `languages` (`id`, `short`, `long`, `originalTitle`, `enTitle`, `act
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `mainMenu`
+-- Struktura tabulky `mainmenu`
 --
 
-CREATE TABLE IF NOT EXISTS `mainMenu` (
+CREATE TABLE IF NOT EXISTS `mainmenu` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `language` varchar(10) COLLATE utf8_czech_ci NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
@@ -226,10 +231,10 @@ CREATE TABLE IF NOT EXISTS `mainMenu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=19 ;
 
 --
--- Vypisuji data pro tabulku `mainMenu`
+-- Vypisuji data pro tabulku `mainmenu`
 --
 
-INSERT INTO `mainMenu` (`id`, `language`, `active`, `deleted`, `sorting`, `title`, `log`, `pidLink`, `externalLink`) VALUES
+INSERT INTO `mainmenu` (`id`, `language`, `active`, `deleted`, `sorting`, `title`, `log`, `pidLink`, `externalLink`) VALUES
 (1, 'en', 1, 0, 1, 'Registration', 0, 1, ''),
 (2, 'en', 1, 0, 2, 'Login', 0, 2, ''),
 (3, 'en', 1, 0, 10, 'Logout', 1, 102, ''),
@@ -463,6 +468,7 @@ CREATE TABLE IF NOT EXISTS `training-category` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `sort` int(10) NOT NULL,
+  `img` varchar(255) COLLATE utf8_danish_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=5 ;
 
@@ -470,11 +476,11 @@ CREATE TABLE IF NOT EXISTS `training-category` (
 -- Vypisuji data pro tabulku `training-category`
 --
 
-INSERT INTO `training-category` (`id`, `language`, `title`, `subtitle`, `active`, `deleted`, `sort`) VALUES
-(1, 'en', 'Running', '', 1, 0, 3),
-(2, 'en', 'Gym', '', 1, 0, 10),
-(3, 'en', 'Shooting', '', 1, 0, 2),
-(4, 'en', 'CC skiing', '', 1, 0, 1);
+INSERT INTO `training-category` (`id`, `language`, `title`, `subtitle`, `active`, `deleted`, `sort`, `img`) VALUES
+(1, 'en', 'Running', '', 1, 0, 3, ''),
+(2, 'en', 'Gym', '', 1, 0, 10, ''),
+(3, 'en', 'Shooting', '', 1, 0, 2, '/images/icons/shooting.svg'),
+(4, 'en', 'CC skiing', '', 1, 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -616,7 +622,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1475248353, 47, 47, 16.7, 1475245156, 'Part time job - WOOD GROUP (timber company)', 1, 1475248233, 120, 'm', 1, 12, 17, 10, 11, 18, 555, 117, 160, 109, 151),
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 0, 1468225389, 1475431683, 47, 47, 54.5, 1475388280, 'Part time job - WOOD GROUP (timber company)', 1, 1475388001, 120, 'm', 1, 13, 17, 10, 11, 18, 555, 141, 196, 97, 163),
 (2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1469902789, 1472467065, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0),
 (3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1470063945, 1470389835, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0),
 (4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 1, 0, 1470063990, 1470130837, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0);
@@ -671,7 +677,7 @@ INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (28, 1, 20, 1470146647, 1),
 (29, 1, 21, 1470146647, 1),
 (30, 1, 5, 1472038337, 1),
-(31, 1, 2, 1472120697, 1);
+(31, 1, 2, 1475295112, 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

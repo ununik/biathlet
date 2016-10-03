@@ -16,7 +16,7 @@ foreach ($job->getAllPartTimeJobs($user->_maxEnergy, $page->_language) as $job) 
     	if ($user->_actualEnergy < $job['energy'.$i]) {
     		$container .= '<td class="partTimeGetJob">Lack of energy</td>';
     	} else {
-    		$container .= '<td class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \''.$i.'\',  \'en\')">Get the job</td>';
+    		$container .= '<td class="partTimeGetJob" onclick="getParttimeJob(\''.$job['id'].'\', \''.$i.'\',  \'en\')"></td>';
     	}
     	$container .= '</tr>';
     }

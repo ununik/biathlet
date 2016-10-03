@@ -3,6 +3,9 @@ $container = '<h3>'.Translation::t($page->_language, 'Bank').'</h3>';
 
 $container .= '<h4>'.Translation::t($page->_language, 'Money operations').'</h4>';
 $container .= '<table class="bankTable">';
+$container .= '<tr><th>date</th><th>action</th>';
+$container .= '<th>costs</th>';
+$container .= '<th>revenues</th></tr>';
 
 foreach ($bank->getAllEntries($user->_id) as $entry) {
 	$container .= '<tr>';

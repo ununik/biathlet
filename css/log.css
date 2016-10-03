@@ -58,6 +58,7 @@ nav ul li{
 	box-sizing: border-box;	
 	border: 2px solid black;
 	cursor: pointer;
+	background-size: 100%;
 }
 .NewTrainingCategory .title{
 	text-align: center;
@@ -110,13 +111,18 @@ nav ul li{
 	width: 50%;
 }
 .partTimeGetJob{
-	width: 10vw;
+	width: 5vw;
   	height: 5vw;
   	font-size: 1vW;
   	line-height: 5vw;
   	font-size: 1.3vW;
   	text-align: center;
-  	cursor: pointer;
+	background-image: url(../images/icons/go.svg);
+	background-size: 100%;
+	cursor: pointer;
+}
+.partTimeGetJob:hover{
+	background-image: url(../images/icons/go-hover.svg);
 }
 .form{
 	width: 300px;

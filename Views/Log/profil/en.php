@@ -59,7 +59,7 @@ for ($n=0; $n < $i; $n++) {
         $container .= '<div class="profilItemBoxWrapper">';
         $container .= '<div class="profilItemBox">';
         $container .= '<div class="detail">';
-        $container .= '<div class="title"><a href="'.$page->getLink(117).'?id='.$item['id'].'" target="_blank">'.$item['title'].'</a></div>';
+        $container .= '<div class="title"><a href="'.$page->getLink(117).'?id='.$item['item'].'" target="_blank">'.$item['title'].'</a></div>';
         if ($item['image'] != '') {
             $container .= '<img src="'.URL_PATH.$item['image'].'" class="ilustration">';
         }
