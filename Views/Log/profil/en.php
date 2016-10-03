@@ -17,7 +17,9 @@ $container .= $userItem->showWeapon(
 	$stock['svgImage'],
 	$harness['svgImage'],
 	$diopter['svgImage'],
-	$buttPlate['svgImage']
+	$buttPlate['svgImage'],
+	'/uploads/images/sponsors/sticks/viessmann.svg',
+	'/uploads/images/equipment/background.svg'
 );
 
 $container .= '<ul>';

@@ -108,17 +108,19 @@ class UserItem
         return $categories;
     }
     
-    public function showWeapon($language, $weapon, $weapon2,$stock, $harness, $diopter, $buttPlate)
+    public function showWeapon($language, $weapon, $weapon2,$stock, $harness, $diopter, $buttPlate, $sponzorStick = '', $background = '', $class = '')
     {    	
     	$partsFromTop = array(
     			$weapon2,
+    			$sponzorStick,
     			$stock,
     			$diopter,
     			$weapon,
     			$buttPlate,
-    			$harness
+    			$harness,
+    			$background
     	);
-    	$return = '<div id="weaponImg" style="background-image: ';	
+    	$return = '<div id="weaponImg" class="'.$class.'" style="background-image: ';	
     			
     			foreach ($partsFromTop as $part) {
     				if ($part == '') {

@@ -97,7 +97,7 @@ class Page
 			$log = 0;
 		}
 		$result = Connection::connect()->prepare(
-				'SELECT * FROM `mainMenu` WHERE `log` = :log AND  `language`=:language AND `active` = 1 AND `deleted` = 0 ORDER BY `sorting` ASC;'
+				'SELECT * FROM `main-menu` WHERE `log` = :log AND  `language`=:language AND `active` = 1 AND `deleted` = 0 ORDER BY `sorting` ASC;'
 		);
 		$result->execute(array(
 			':log' => $log,

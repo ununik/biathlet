@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 @font-face {
-    font-family: andada;
-    src: url("Andada-Regular.ttf");
+    font-family: nimbus;
+    src: url("Nimbus-Regular.ttf");
 }
 a{
 	color: gray;
@@ -14,7 +14,7 @@ a:hover{
 	display: none;
 }
 body{
-	font-family: andada, Serif;
+	font-family: nimbus, Serif;
 }
 
 #content{
@@ -69,7 +69,7 @@ body{
 	font-size: 18px;
 	width: 200px;
 	height: 40px;
-	font-family: andada, Serif;
+	font-family: nimbus, Serif;
 	cursor: pointer;
 }
 .submit_button:hover{
@@ -164,4 +164,8 @@ nav li a:hover{
 	height: 300px;
 	background-size: 100%;
 	background-repeat: no-repeat;
+}
+.userWeapon{
+	width: 70vW !important;
+	height: 40vW !important;
 }

@@ -9,8 +9,13 @@ $container .= $userItem->showWeapon(
 	$stock['svgImage'],
 	$harness['svgImage'],
 	$diopter['svgImage'],
-	$buttPlate['svgImage']
-		);
+	$buttPlate['svgImage'],
+	'/uploads/images/sponsors/sticks/viessmann.svg',
+	'/uploads/images/equipment/background.svg',
+	'workroomWeapon'
+);
+
+$container .= '<div class="workroomParts">';
 
 //weapon
 $container .= '<div class="workshopItemBoxWrapper">';
@@ -55,6 +60,8 @@ $container .= '<div class="detail">';
 $container .= '<div class="title">'.$buttPlate['title'].'</div>';
 $container .= '</div>';
 $container .= '</div>';
+$container .= '</div>';
+
 $container .= '</div>';
 
 $container .= '<div id="test"></div>';
