@@ -508,6 +508,9 @@ nav ul li{
 	text-align: right;
 	border-right: 1px solid black;
 }
+.bankTable tr:hover td{
+	background-color: silver;
+}
 .goTraining{
 		width: 25px;
 		height: 25px;
@@ -524,6 +527,16 @@ nav ul li{
 }
 .goTraining:hover{
 	background-image: url(../images/icons/go-hover.svg);
+}
+.setValue{
+		width: 50px;
+		height: 50px;
+		background-image: url(../images/icons/go.svg);
+		background-size: 100%;
+		cursor: pointer;
+}
+.setValue:hover{
+	background-image: url(../images/icons/go-hover.svg);	
 }
 .personalDefinition{
 	float: right;
@@ -586,6 +599,22 @@ nav ul li{
 }
 .workroom-buttPlate:hover{
 	background-image: url(../images/icons/buttPlate-active.svg);
+	background-size: 100% auto;
+}
+.workroom-removeSticker{
+	background-image: url(../images/icons/removeSticker.svg);
+	background-size: 100% auto;
+}
+.workroom-removeSticker:hover{
+	background-image: url(../images/icons/removeSticker-active.svg);
+	background-size: 100% auto;
+}
+.workroom-removeStickerNoActive{
+	background-image: url(../images/icons/removeSticker.svg);
+	background-size: 100% auto;
+}
+.workroom-removeStickerNoActive:hover{
+	background-image: url(../images/icons/removeSticker-noActive.svg);
 	background-size: 100% auto;
 }
 

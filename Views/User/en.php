@@ -8,7 +8,7 @@
 	$harness['svgImage'],
 	$diopter['svgImage'],
 	$buttPlate['svgImage'],
-   	'/uploads/images/sponsors/sticks/viessmann.svg',
+   	Partners::getStickerFromId($profil->_sticker),
    	'/uploads/images/equipment/background.svg',
    	'userWeapon'
 );

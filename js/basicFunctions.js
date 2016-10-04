@@ -6,6 +6,11 @@ function showMessage(text){
 	$('body').css('overflow', 'hidden');
 	$('#message').html('<div id="closeMessage" onclick="hideMessage()"></div>'+text);
 }
+function showMessageWithoutClose(text){
+	$('#messageBlackBackground').css('display', 'block');
+	$('body').css('overflow', 'hidden');
+	$('#message').html(text);
+}
 function hideMessage(){
 	$('#messageBlackBackground').css('display', 'none');
 	$('body').css('overflow', 'auto');

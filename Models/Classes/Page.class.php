@@ -5,6 +5,10 @@ class Page
 	private $_pid = 2; //unlog root x log root - 101
 	public $_language = 'en';
 	
+	public function getLog()
+	{
+		return $this->_log;
+	}
 	public function getPID()
 	{
 		return $this->_pid;

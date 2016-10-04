@@ -65,4 +65,6 @@ foreach ($languageClass->getAllLanguages($page->_language, false) as $langNaviga
 	$html->addToTranslationNavigation($langNavigation['originalTitle'], $page->getLink($page->getPID(), '', $langNavigation['short']));
 }
 
+require HOME_DIR . '/automation/controller.php';
+
 print($html->printHTML());

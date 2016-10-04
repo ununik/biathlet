@@ -2,6 +2,7 @@
 $container = '<h3>'.Translation::t($page->_language, 'Workroom').'</h3>';
 
 $container .= '<h4>'.Translation::t($page->_language, 'Completed weapon').'</h4>';
+$sticker = Partners::getStickerFromId($user->_sticker);
 $container .= $userItem->showWeapon(
 	$page->_language,
 	$weapon['svgImage'],
@@ -10,7 +11,7 @@ $container .= $userItem->showWeapon(
 	$harness['svgImage'],
 	$diopter['svgImage'],
 	$buttPlate['svgImage'],
-	'/uploads/images/sponsors/sticks/viessmann.svg',
+	$sticker,
 	'/uploads/images/equipment/background.svg',
 	'workroomWeapon'
 );
@@ -61,6 +62,26 @@ $container .= '<div class="title">'.$buttPlate['title'].'</div>';
 $container .= '</div>';
 $container .= '</div>';
 $container .= '</div>';
+
+if ($sticker != '') {
+	//removeSticker
+	$container .= '<div class="workshopItemBoxWrapper">';
+	$container .= '<div class="workshopItemBox workroom-removeSticker" onclick="removeSticker()">';
+	$container .= '<div class="detail">';
+	$container .= '<div class="title">'.Translation::t($page->_language, 'Remove sticker').'</div>';
+	$container .= '</div>';
+	$container .= '</div>';
+	$container .= '</div>';
+} else {
+	//removeSticker
+	$container .= '<div class="workshopItemBoxWrapper">';
+	$container .= '<div class="workshopItemBox workroom-removeStickerNoActive">';
+	$container .= '<div class="detail">';
+	$container .= '<div class="title">'.Translation::t($page->_language, 'Remove sticker').'</div>';
+	$container .= '</div>';
+	$container .= '</div>';
+	$container .= '</div>';
+}
 
 $container .= '</div>';
 

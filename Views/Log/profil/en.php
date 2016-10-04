@@ -2,6 +2,7 @@
 $container = '<h3>'.$user->getFullName().'</h3>';
 
 $container .= '<table class="personalDefinition">';
+$container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Country').'</td><td>'.$user->_country[$page->_language].'</td><tr>';
 $container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Accuracy').'</td><td>'.$user->getAccuracy().'</td><tr>';
 $container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Best cartridge').'<br><small>'.Translation::t($page->_language, '(for competitions)').'</small></td><td>'.$bestCartridge['title'].'</td><tr>';
 $container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Leg power').'</td><td>'.$user->getLegPower().'</td><tr>';
@@ -18,7 +19,7 @@ $container .= $userItem->showWeapon(
 	$harness['svgImage'],
 	$diopter['svgImage'],
 	$buttPlate['svgImage'],
-	'/uploads/images/sponsors/sticks/viessmann.svg',
+	Partners::getStickerFromId($user->_sticker),
 	'/uploads/images/equipment/background.svg'
 );
 

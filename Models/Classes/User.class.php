@@ -27,6 +27,9 @@ class User
   	public $_handPower = 0;
   	public $_endurance = 0;
   	public $_stability = 0;
+  	public $_countryId = 0;
+  	public $_country = array();
+  	public $_sticker = 0;
   	private $_arrayOfAllEquiptmentForCompetitions = array();
 	
 	public function __construct($sessionId = '')
@@ -68,6 +71,11 @@ class User
             $this->_handPower = $user['handPower'];
             $this->_endurance = $user['endurance'];
             $this->_stability = $user['stability'];
+            $this->_countryId = $user['country'];
+            $this->_country = Country::getCountryFromId($this->_countryId);
+            if ($user['sticker-actived'] == 1) {
+            	$this->_sticker = $user['sticker'];
+            }
             
             $result = Connection::connect()->prepare(
                  'UPDATE `user` SET `lastOnlineTime`=:time WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
@@ -79,6 +87,27 @@ class User
 		}
 		
 		return true;
+	}
+	
+	public function setCountry($country)
+	{
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `country`=:country WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':country' => $country,
+				':id' => $this->_id,
+		));
+	}
+	
+	public function removeSticker()
+	{
+		$result = Connection::connect()->prepare(
+				'UPDATE `user` SET `sticker-actived`=0 WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+				);
+		$result->execute(array(
+				':id' => $this->_id,
+		));
 	}
 	
 	private function getArrayOfAllEquiptmentForCompetitions ()

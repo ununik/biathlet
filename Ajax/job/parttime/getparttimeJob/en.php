@@ -34,5 +34,5 @@ $user->setStability($user->_stability + ($_POST['type'] * $currentJob['stability
 $bank = new Bank($user->_id);
 $bank->addNewEntry($user->_id, $currentJob['price'.$_POST['type']], $currentJob['message']);
 
-echo 'done';
+echo 1;
 //echo $currentJob->doParttimeJob($_POST['id'], $_POST['type'], $user->_id);
