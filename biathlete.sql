@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Počítač: localhost
--- Vygenerováno: Úte 04. říj 2016, 17:12
--- Verze serveru: 5.5.50-0ubuntu0.14.04.1
--- Verze PHP: 5.5.9-1ubuntu4.17
+-- Počítač: 127.0.0.1
+-- Vygenerováno: Čtv 06. říj 2016, 07:37
+-- Verze serveru: 5.5.34
+-- Verze PHP: 5.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -190,10 +190,10 @@ INSERT INTO `equipment-producer` (`uid`, `id`, `title`, `link`, `active`, `delet
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `job-partTime`
+-- Struktura tabulky `job-parttime`
 --
 
-CREATE TABLE IF NOT EXISTS `job-partTime` (
+CREATE TABLE IF NOT EXISTS `job-parttime` (
   `id` int(15) NOT NULL AUTO_INCREMENT,
   `message` text COLLATE utf8_danish_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_danish_ci NOT NULL,
@@ -217,10 +217,10 @@ CREATE TABLE IF NOT EXISTS `job-partTime` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=2 ;
 
 --
--- Vypisuji data pro tabulku `job-partTime`
+-- Vypisuji data pro tabulku `job-parttime`
 --
 
-INSERT INTO `job-partTime` (`id`, `message`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`, `legPower`, `handPower`, `endurance`, `stability`, `accuracy`) VALUES
+INSERT INTO `job-parttime` (`id`, `message`, `title`, `description`, `minEnergy`, `price1`, `price2`, `price3`, `energy1`, `energy2`, `energy3`, `language`, `active`, `deleted`, `legPower`, `handPower`, `endurance`, `stability`, `accuracy`) VALUES
 (1, 'Part time job - WOOD GROUP (timber company)', 'WOOD GROUP (timber company)', '', 25, 2, 5, 10, 8, 13, 20, 'en', 1, 0, 2, 3, -1, 1, 0);
 
 -- --------------------------------------------------------
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `main-menu` (
   `pidLink` int(10) NOT NULL,
   `externalLink` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=20 ;
 
 --
 -- Vypisuji data pro tabulku `main-menu`
@@ -288,7 +288,8 @@ INSERT INTO `main-menu` (`id`, `language`, `active`, `deleted`, `sorting`, `titl
 (15, 'cs', 1, 0, 10, 'Odhlásit se', 1, 102, ''),
 (16, 'cs', 1, 0, 9, 'Nastavení', 1, 106, ''),
 (17, 'cs', 1, 0, 5, 'Biatlonisté', 1, 115, ''),
-(18, 'cs', 1, 0, 4, 'Práce', 1, 112, '');
+(18, 'cs', 1, 0, 4, 'Práce', 1, 112, ''),
+(19, 'en', 1, 0, 4, 'Venues', 1, 120, '');
 
 -- --------------------------------------------------------
 
@@ -338,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `url` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=38 ;
 
 --
 -- Vypisuji data pro tabulku `page`
@@ -379,7 +380,8 @@ INSERT INTO `page` (`id`, `pid`, `log`, `language`, `title`, `controller`, `view
 (33, 102, 1, 'cs', 'Logout', '/Controllers/Log/logout/all.php', '', 1, 0, 'logout'),
 (34, 106, 1, 'cs', 'Nastavení', '/Controllers/Log/settings/en.php', '/Views/Log/settings/en.php', 1, 0, 'nastaveni'),
 (35, 115, 1, 'cs', 'Biatlonisté', '/Controllers/Log/biathletes/en.php', '/Views/Log/biathletes/en.php', 1, 0, 'biatloniste'),
-(36, 119, 1, 'en', 'Bank', '/Controllers/Log/bank/en.php', '/Views/Log/bank/en.php', 1, 0, 'bank');
+(36, 119, 1, 'en', 'Bank', '/Controllers/Log/bank/en.php', '/Views/Log/bank/en.php', 1, 0, 'bank'),
+(37, 120, 1, 'en', 'Venues', '/Controllers/Log/venues/en.php', '/Views/Log/venues/en.php', 1, 0, 'venues');
 
 -- --------------------------------------------------------
 
@@ -713,7 +715,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `country`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`, `sticker`, `sticker-actived`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1475588723, 47, 47, 64.5, 1475586627, 'Part time job - WOOD GROUP (timber company)', 1, 1475588786, 120, 'm', 1, 12, 14, 10, 28, 18, 555, 171, 241, 82, 178, 1, 1),
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1475729646, 47, 47, 64.5, 1475586627, 'Part time job - WOOD GROUP (timber company)', 1, 1475591645, 120, 'm', 23, 24, 14, 10, 28, 19, 555, 171, 241, 82, 178, 1, 0),
 (2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1469902789, 1472467065, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
 (3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063945, 1470389835, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
 (4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063990, 1470130837, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -776,6 +778,21 @@ INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (36, 1, 26, 1475498724, 2),
 (37, 1, 27, 1475498724, 2),
 (38, 1, 28, 1472038337, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `venues`
+--
+
+CREATE TABLE IF NOT EXISTS `venues` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `language` varchar(5) NOT NULL,
+  `country` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
