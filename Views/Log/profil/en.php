@@ -1,5 +1,5 @@
 <?php
-$container = '<h3>'.$user->getFullName().'</h3>';
+$container = '<h3 class="profilName">'.$user->getFullName().$flag.'</h3>';
 
 $container .= '<table class="personalDefinition">';
 $container .= '<tr><td class="personal_left">'.Translation::t($page->_language, 'Country').'</td><td>'.$user->_country[$page->_language].'</td><tr>';
@@ -26,7 +26,7 @@ $container .= $userItem->showWeapon(
 $container .= '<ul>';
 $container .= '<li><a href="' . $page->getLink(114) . '">'.Translation::t($page->_language, 'Workroom').'</a></li>';
 $container .= '<li><a href="' . $page->getLink(103) . '">'.Translation::t($page->_language, 'Update profil').'</a></li>';
-$container .= '<li>'.Translation::t($page->_language, 'Link to profil:').' <a href="'.$page->getLink(116).'?user='.$user->_id.'">'.$page->getLink(116).'?user='.$user->_id.'</a></li>';
+$container .= '<li>'.Translation::t($page->_language, 'Link to profil:').' <a href="'.$page->getLink(116).$user->getLogin().'/">'.$page->getLink(116).$user->getLogin().'/</a></li>';
 $container .= '</ul>';
 
 $container .= '<h4>'.Translation::t($page->_language, 'My equipment').'</h4>';
@@ -62,7 +62,7 @@ for ($n=0; $n < $i; $n++) {
         $container .= '<div class="profilItemBoxWrapper">';
         $container .= '<div class="profilItemBox">';
         $container .= '<div class="detail">';
-        $container .= '<div class="title"><a href="'.$page->getLink(117).'?id='.$item['item'].'" target="_blank">'.$item['title'].'</a></div>';
+        $container .= '<div class="title"><a href="'.$page->getLink(117).''.$item['item'].'/" target="_blank">'.$item['title'].'</a></div>';
         if ($item['image'] != '') {
             $container .= '<img src="'.URL_PATH.$item['image'].'" class="ilustration">';
         }

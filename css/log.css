@@ -124,6 +124,12 @@ nav ul li{
 .partTimeGetJob:hover{
 	background-image: url(../images/icons/go-hover.svg);
 }
+.profilName .flag_name{
+	width:21px;
+	height:14px;
+	display: inline-block;
+	background-size: 100%;
+}
 .form{
 	width: 300px;
 	margin: 0px auto;
@@ -241,6 +247,17 @@ nav ul li{
 	position: relative;
 	top: 25px;
 	font-size: 16px;
+	display: inline-block;
+	width: 100px;
+	text-align: left;
+}
+.header_level{
+	position: relative;
+	top: 25px;
+	font-size: 16px;
+	display: inline-block;	
+	width: 130px;
+	text-align: left;
 }
 .inactiveSteps{
 	display: none;
@@ -616,6 +633,27 @@ nav ul li{
 .workroom-removeStickerNoActive:hover{
 	background-image: url(../images/icons/removeSticker-noActive.svg);
 	background-size: 100% auto;
+}
+#toNextLevelWrapper{
+	position: absolute;
+	width: 100px;
+	height: 15px;
+	font-size: 13px;
+	line-height: 15px;
+	border: 1px solid black;
+}
+#toNextLevelInner{
+	background-color: blue;
+	height: 100%;
+}
+#toNextLevelNumber{
+	position: relative;
+	top: -15px;
+	width: 100px;
+	height: 15px;
+	text-align: center;
+	font-size: 13px;
+	line-height: 15px;
 }
 
 @media only screen and (max-device-width: 600px){

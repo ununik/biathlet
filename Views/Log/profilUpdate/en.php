@@ -41,6 +41,13 @@ $container .= '</select>';
 $container .= '</div>';
 
 $container .= '<div class="formField">';
+$container .= '<label>'.Translation::t($page->_language, 'Country').'</label>';
+$container .= '<select name="country">';
+$container .= $countryOptions;
+$container .= '</select>';
+$container .= '</div>';
+
+$container .= '<div class="formField">';
 $container .= '<label>'.Translation::t($page->_language, 'Mail').'</label>';
 $container .= '<input type="text" name="mail" value="' . $mail . '">';
 $container .= '</div>';

@@ -3,6 +3,9 @@ class Page
 {
 	private $_log = false;
 	private $_pid = 2; //unlog root x log root - 101
+	
+	private $_specialValue = array();
+	
 	public $_language = 'en';
 	
 	public function getLog()
@@ -135,5 +138,14 @@ class Page
 		}
 		
 		return $externalLink;
+	}
+	
+	public function getSpecialValue($number)
+	{
+		return $this->_specialValue[$number];
+	}
+	public function setSpecialValue($value, $number)
+	{
+		$this->_specialValue[$number] = $value;
 	}
 }

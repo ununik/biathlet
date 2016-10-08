@@ -32,4 +32,18 @@ class Country
 		}
 		return $countryArray;
 	}
+	
+	public function getFlag($id)
+	{
+	    $result = Connection::connect()->prepare(
+	            'SELECT flag FROM `countries` WHERE `active`=1 AND `deleted`=0 AND `id`=:id;'
+	            );
+	    $result->execute(array(
+	            ':id' => $id
+	    ));
+	    	
+	    $country = $result->fetch();
+	    
+	    return $country;
+	}
 }

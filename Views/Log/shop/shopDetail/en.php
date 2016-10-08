@@ -1,5 +1,9 @@
 <?php
-$actualShop = $shops->getActualShop($_GET['shop'], $page->_language);
+$shopId = $shops->getShopByUrl($page->getSpecialValue(1));
+if ($shopId == false) {
+	header('Location: '.$page->getLink($page->getHomepageId()));
+}
+$actualShop = $shops->getActualShop($shopId, $page->_language);
 $return = '<h4>'.$actualShop['title'].'</h4>';
 $return .= '<div>'.$actualShop['description'].'</div>';
 
@@ -7,7 +11,7 @@ $categories = $shops->getAllCategories($page->_language);
 
 $i = 0;
 foreach ($categories as $category) {
-    $shopItems = $shops->getAllItemsForCategory($_GET['shop'], $category['id'], $page->_language);
+    $shopItems = $shops->getAllItemsForCategory($shopId, $category['id'], $page->_language, $user->getLevel());
     if (count($shopItems) == 0) {
         continue;
     }
@@ -36,7 +40,7 @@ for ($n=0; $n < $i; $n++) {
         $return .= '<div class="shopItemBoxWrapper">';
         $return .= '<div class="shopItemBox">';
         $return .= '<div class="detail">';
-        $return .= '<div class="title"><a href="'.$page->getLink(117).'?id='.$item['id'].'" target="_blank">'.$item['title'].'</a></div>';
+        $return .= '<div class="title"><a href="'.$page->getLink(117).$item['id'].'/" target="_blank">'.$item['title'].'</a></div>';
         //$return .= '<div>'.$item['description'].'</div>';
         if ($item['image'] != '') {
             $return .= '<img src="'.URL_PATH.$item['image'].'" class="ilustration">';

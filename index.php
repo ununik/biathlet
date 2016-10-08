@@ -8,6 +8,7 @@ $page = new Page();
 $languageClass = new Language();
 //Language setting
 $page->changeLanguage($languagePath);
+$page->setSpecialValue($specialValue1, 1);
 
 $html->setCssFile(URL_PATH . '/css/unlog.css');
 //Authentication

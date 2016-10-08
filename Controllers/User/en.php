@@ -1,9 +1,10 @@
 <?php
-if (!isset($_GET['user']) || $_GET['user'] == '' || $_GET['user'] == 0) {
-    header('Location: '. $page->getLink($page->getHomepageId()));
+$userId = $user->getUserByLogin($page->getSpecialValue(1));
+if ($userId == false) {
+	$userId = $user->_id;
 }
 
-$profil = new User($_GET['user']);
+$profil = new User($userId);
 if ($profil === false) {
     header('Location: '. $page->getLink($page->getHomepageId()));
 }

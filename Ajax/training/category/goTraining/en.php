@@ -18,6 +18,11 @@ if ($user->_lastActivityTimestamp > time()) {
 	return;
 }
 
+if ($user->getLevel() < $actualTraining['level']) {
+    echo 'Low level';
+    return;
+}
+
 if ($user->_money < $actualTraining['price']) {
 	echo 'No money';
 	return;

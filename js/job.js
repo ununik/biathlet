@@ -17,6 +17,7 @@ function getParttimeJob(id, type, language) {
 		  reloadEnergy();
 		  reloadMoney();
 		  reloadActivity();
+		  reloadLevel()
 		  if (mypostrequest.responseText != 1) {
 			  showMessage(mypostrequest.responseText);
 		  

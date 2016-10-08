@@ -5,6 +5,7 @@ class User
 	
 	private $_mail = '';
 	private $_login = '';
+	private $_levelDiference = 15;
 	public $_firstname = '';
 	public $_lastname = '';
 	public $_actualEnergy = 0;
@@ -30,6 +31,7 @@ class User
   	public $_countryId = 0;
   	public $_country = array();
   	public $_sticker = 0;
+  	private $_expirience = 0;
   	private $_arrayOfAllEquiptmentForCompetitions = array();
 	
 	public function __construct($sessionId = '')
@@ -72,6 +74,7 @@ class User
             $this->_endurance = $user['endurance'];
             $this->_stability = $user['stability'];
             $this->_countryId = $user['country'];
+            $this->_expirience = $user['expirience'];
             $this->_country = Country::getCountryFromId($this->_countryId);
             if ($user['sticker-actived'] == 1) {
             	$this->_sticker = $user['sticker'];
@@ -444,13 +447,10 @@ class User
 	public function getHeader($language)
 	{
 	    $return = '';
-	    
 	    $return .= '<span class="header_money"><a href="'.Page::getLink(119, '', $language).'"><span id="myMoney"><script>reloadMoney()</script></span></a></span>';
-	    
+	    $return .= '<span class="header_level">Level: <span id="myLevel"><script>reloadLevel()</script></span></span>';
 	    $return .= '<span class="header_energy">'.Translation::t($language, 'Energy').': <span id="myEnergy"><script>reloadEnergy()</script></span></span>';
-	  
 	    $return .= '<a href=" '.Page::getLink(101, '', $language).' " class="header_name">' . $this->getFullName() . '</a>';
-	    
 	    $return .= '<a href=" '.Page::getLink(105, '', $language).' " id="mailbox_icon" class="header_message" style="background-image: url('. URL_PATH . '/images/icons/messageReaded.svg)"></a>';
 	    
 	    //one unreaded message
@@ -469,11 +469,11 @@ class User
 	    return $return;
 	}
 	
-	public function updateProfil($firstname, $lastname, $mail, $login, $gender)
+	public function updateProfil($firstname, $lastname, $mail, $login, $gender, $country)
 	{
 	    $result = Connection::connect()->prepare(
 	            'UPDATE `user` SET `firstname`=:firstname, `lastname`=:lastname,
-	            `mail`=:mail, `login`=:login, `gender`=:gender
+	            `mail`=:mail, `login`=:login, `gender`=:gender, `country`=:country
 	            WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
 	            );
 	    $result->execute(array(
@@ -481,6 +481,7 @@ class User
 	            ':lastname' => $lastname,
 	            ':mail' => $mail,
 	            ':login' => $login,
+	            ':country' => $country,
               ':gender' => $gender,
 	            ':id' => $this->_id
 	    ));
@@ -583,7 +584,7 @@ class User
         $columnsInTable[0] = $columnsInTable;
       }
       
-      $sql = 'SELECT `id` from `user` WHERE 1=0 ';
+      $sql = 'SELECT `id`, `login` from `user` WHERE deleted=0 AND active=1 ';
       
       foreach ($words as $word) {
         if ($word == '') {
@@ -600,5 +601,35 @@ class User
       $users = $result->fetchAll();
       
       return $users;
+  }
+  
+  public function getUserByLogin($login)
+  {
+  	$result = Connection::connect()->prepare(
+  			'SELECT id FROM `user` WHERE `login`=:login AND `active`=1 AND deleted=0 LIMIT 1;'
+  			);
+  	$result->execute(array(
+  			':login' => $login,
+  	));
+  	 
+  	$user = $result->fetch();
+  	if (!isset($user['id']) ||  $user['id'] == 0) {
+  		return false;
+  	}
+  	
+  	return $user['id'];
+  }
+  
+  public function getLevel()
+  {
+      return floor(sqrt($this->_expirience/$this->_levelDiference));
+  }
+  public function expirienceInLevel($levelNumber)
+  {
+      return $this->_levelDiference * $levelNumber * $levelNumber;
+  }
+  public function getActualExpirience()
+  {
+      return $this->_expirience;
   }
 }

@@ -44,10 +44,10 @@ class Shop
         return $categories;
     }
     
-    public function getAllItemsForCategory($shop, $category, $language)
+    public function getAllItemsForCategory($shop, $category, $language, $level = 0)
     {
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `equipment` INNER JOIN `shops-item` ON `equipment`.`id`=`shops-item`.`equipment`
+                'SELECT equipment.id, equipment.title, `shops-item`.price, equipment.image FROM `equipment` INNER JOIN `shops-item` ON `equipment`.`id`=`shops-item`.`equipment`
                 WHERE 
                 `shops-item`.`active`=1 AND 
                 `shops-item`.`deleted`=0 AND 
@@ -56,13 +56,15 @@ class Shop
                 `equipment`.language=:language AND 
                 `shops-item`.`shop`=:shop AND 
                 `equipment`.categoryInShop=:category AND
-                `equipment`.specialCode = ""
+                `equipment`.specialCode = "" AND 
+                `shops-item`.`level` <= :level
                 ;'
                 );
         $result->execute(array(
                 ':shop' => $shop,
                 ':category' => $category,
-                ':language' => $language
+                ':language' => $language,
+                ':level' => $level
         ));
          
         $categories = $result->fetchAll();
@@ -82,5 +84,22 @@ class Shop
         $item = $result->fetch();
         
         return $item;
+    }
+    
+    public function getShopByUrl($url)
+    {
+    	$result = Connection::connect()->prepare(
+    			'SELECT id FROM `shops` WHERE `url`=:url AND `active`=1 AND deleted=0 LIMIT 1;'
+    			);
+    	$result->execute(array(
+    			':url' => $url,
+    	));
+    	
+    	$shop = $result->fetch();
+    	if (!isset($shop['id']) ||  $shop['id'] == 0) {
+    		return false;
+    	}
+    	 
+    	return $shop['id'];
     }
 }

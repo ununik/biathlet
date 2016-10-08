@@ -26,14 +26,16 @@ function doTraining(id) {
 			  reloadEnergy();
 			  reloadMoney();
 			  reloadActivity();
+			  reloadLevel()
 			  
 			  setTimeout(function(){
 				  hideMessage();
 		      },2000);
-		  } else {
+		  }	 else {
 			  reloadEnergy();
 			  reloadMoney();
 			  reloadActivity();
+			  reloadLevel()
 			  hideMessage();
 		  }
 	  }

@@ -3,12 +3,19 @@ $pagePath = '';
 $languagePath = '';
 if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] != '') {
     $path = explode("/",$_SERVER['PATH_INFO']);
-    if (isset($path[count($path)-2])) {
-        $pagePath = $path[count($path)-2];
+    //page3
+    if (isset($path[2])) {
+        $pagePath = $path[2];
+    }
+    //language
+    if (isset($path[1])) {
+        $languagePath = $path[1];
     }
     
-    if (isset($path[count($path)-3])) {
-        $languagePath = $path[count($path)-3];
+    //specialValue1
+    $specialValue1 = '';
+    if (isset($path[3])) {
+    	$specialValue1 = $path[3];
     }
 }
 

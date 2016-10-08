@@ -1,9 +1,10 @@
 <?php
-if (!isset($_GET['user'])) {
+$userId = $user->getUserByLogin($page->getSpecialValue(1));
+if ($userId == false) {
 	header('Location: '.$page->getLink($page->getHomepageId()));
 }
 
-$secondUser = new User($_GET['user']);
+$secondUser = new User($userId);
 
 if ($secondUser->_id == 0) {
 	header('Location: '.$page->getLink($page->getHomepageId()));

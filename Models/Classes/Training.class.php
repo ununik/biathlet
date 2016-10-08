@@ -15,14 +15,15 @@ class Training
         return $categories;
     }
     
-    public function getAllTrainingsSubcategories($language, $category)
+    public function getAllTrainingsSubcategories($language, $category, $level = 0)
     {
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `training-subcategory` WHERE `category`=:category AND `language`=:language AND `active`=1 AND `deleted`=0 ORDER BY sort;'
+                'SELECT * FROM `training-subcategory` WHERE `category`=:category AND `language`=:language AND `level` <= :level AND `active`=1 AND `deleted`=0 ORDER BY sort;'
                 );
         $result->execute(array(
                 ':language' => $language,
                 ':category' => $category,
+                ':level' => $level,
         ));
          
         $categories = $result->fetchAll();

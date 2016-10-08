@@ -15,7 +15,7 @@ $userItem = new UserItem();
 $first = true;
 $cartridgesSelect = '';
 $return = '';
-foreach ($training->getAllTrainingsSubcategories($language, $_POST['id']) as $subcategory) {
+foreach ($training->getAllTrainingsSubcategories($language, $_POST['id'], $user->getLevel()) as $subcategory) {
 	if ($first == true) {
 		$cartridges = '';
 		if ($subcategory['cartridges'] > 0) {

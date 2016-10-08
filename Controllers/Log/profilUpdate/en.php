@@ -9,6 +9,7 @@ $lastname = $user->_lastname;
 $mail = $user->getMail();
 $login = $user->getLogin();
 $gender = $user->_gender;
+$countryId = $user->_countryId;
 
 if (isset($_POST['profilUpdate'])) {
     $inactiveStepsPersonal = '';
@@ -18,6 +19,7 @@ if (isset($_POST['profilUpdate'])) {
     $mail = \Library\Forms\safeText($_POST['mail']);
     $login = \Library\Forms\safeText($_POST['login']);
     $gender = \Library\Forms\safeText($_POST['gender']);
+    $countryId = \Library\Forms\safeText($_POST['country']);
     
     if (strlen($firstname) > 255) {
         $err[] = 'Fisrtname is too long.';
@@ -52,7 +54,7 @@ if (isset($_POST['profilUpdate'])) {
     }
     
     if (count($err) == 0) {
-        $user->updateProfil($firstname, $lastname, $mail, $login, $gender);
+        $user->updateProfil($firstname, $lastname, $mail, $login, $gender, $countryId);
         header('Location: '. $page->getLink(104));
     }
 }
@@ -82,4 +84,14 @@ if (isset($_POST['passwordUpdate'])) {
         $user->updateProfilPassword($new);
         header('Location: '. $page->getLink(104));
     }
+}
+
+$countryOptions = '';
+$countryClass = new Country();
+foreach ($countryClass->getAllCountries($page->_language) as $countries) { 
+    $countryOptions .= '<option value="'.$countries['id'].'"';
+    if ($countries['id'] == $countryId) {
+        $countryOptions .= ' selected ';
+    }
+    $countryOptions .= '>'.$countries['name'].'</option>';
 }
