@@ -26,7 +26,7 @@ function doTraining(id) {
 			  reloadEnergy();
 			  reloadMoney();
 			  reloadActivity();
-			  reloadLevel()
+			  reloadLevel();
 			  
 			  setTimeout(function(){
 				  hideMessage();
@@ -35,7 +35,7 @@ function doTraining(id) {
 			  reloadEnergy();
 			  reloadMoney();
 			  reloadActivity();
-			  reloadLevel()
+			  reloadLevel();
 			  hideMessage();
 		  }
 	  }

@@ -52,3 +52,4 @@ $user->setHandPower($user->_handPower + ($actualTraining['handPower']));
 $user->setLegPower($user->_legPower + ($actualTraining['legPower']));
 $user->setStability($user->_stability + ($actualTraining['stability']));
 $user->setMaxEnergy($user->_maxEnergy + ($actualTraining['addToEnergy']));
+$user->setExpereince($user->getActualExpirience() + $actualTraining['expirience']);

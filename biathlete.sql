@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: 127.0.0.1
--- Vygenerováno: Čtv 06. říj 2016, 07:37
+-- Vygenerováno: Pon 10. říj 2016, 07:43
 -- Verze serveru: 5.5.34
 -- Verze PHP: 5.4.22
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `title` text NOT NULL,
   `user` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Vypisuji data pro tabulku `bank`
@@ -72,7 +72,14 @@ INSERT INTO `bank` (`id`, `timestamp`, `revenue`, `title`, `user`) VALUES
 (30, 1475504235, 10, 'Part time job - WOOD GROUP (timber company)', 1),
 (31, 1475567196, 10, 'Part time job - WOOD GROUP (timber company)', 1),
 (32, 1475573200, 10, 'Part time job - WOOD GROUP (timber company)', 1),
-(33, 1475584827, 10, 'Part time job - WOOD GROUP (timber company)', 1);
+(33, 1475584827, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(34, 1475872986, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(35, 1475906994, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(36, 1475907717, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
+(37, 1475907723, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
+(38, 1475907730, -2.2, 'Shop - ELEY tenex biathlon', 1),
+(39, 1475907757, -2.2, 'Shop - ELEY tenex biathlon', 1),
+(40, 1475939042, 2, 'Part time job - WOOD GROUP (timber company)', 1);
 
 -- --------------------------------------------------------
 
@@ -87,15 +94,17 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `name` varchar(255) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `flag` text NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Vypisuji data pro tabulku `countries`
 --
 
-INSERT INTO `countries` (`uid`, `id`, `language`, `name`, `active`, `deleted`) VALUES
-(1, 1, 'en', 'Czechia', 1, 0);
+INSERT INTO `countries` (`uid`, `id`, `language`, `name`, `active`, `deleted`, `flag`) VALUES
+(1, 1, 'en', 'Czechia', 1, 0, '/images/flags/cze.svg'),
+(2, 2, 'en', 'Germany', 1, 0, '/images/flags/ger.svg');
 
 -- --------------------------------------------------------
 
@@ -339,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `url` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=41 ;
 
 --
 -- Vypisuji data pro tabulku `page`
@@ -381,7 +390,10 @@ INSERT INTO `page` (`id`, `pid`, `log`, `language`, `title`, `controller`, `view
 (34, 106, 1, 'cs', 'Nastavení', '/Controllers/Log/settings/en.php', '/Views/Log/settings/en.php', 1, 0, 'nastaveni'),
 (35, 115, 1, 'cs', 'Biatlonisté', '/Controllers/Log/biathletes/en.php', '/Views/Log/biathletes/en.php', 1, 0, 'biatloniste'),
 (36, 119, 1, 'en', 'Bank', '/Controllers/Log/bank/en.php', '/Views/Log/bank/en.php', 1, 0, 'bank'),
-(37, 120, 1, 'en', 'Venues', '/Controllers/Log/venues/en.php', '/Views/Log/venues/en.php', 1, 0, 'venues');
+(37, 120, 1, 'en', 'Venues', '/Controllers/venues/en.php', '/Views/venues/en.php', 1, 0, 'venues'),
+(38, 121, 1, 'en', 'Venue', '/Controllers/venue/en.php', '/Views/venue/en.php', 1, 0, 'venue'),
+(39, 10, 0, 'en', 'Venues', '/Controllers/venues/en.php', '/Views/venues/en.php', 1, 0, 'venues'),
+(40, 11, 0, 'en', 'Venue', '/Controllers/venue/en.php', '/Views/venue/en.php', 1, 0, 'venue');
 
 -- --------------------------------------------------------
 
@@ -467,6 +479,7 @@ CREATE TABLE IF NOT EXISTS `shops` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `language` varchar(10) COLLATE utf8_danish_ci NOT NULL,
   `sort` int(11) NOT NULL,
+  `url` varchar(255) COLLATE utf8_danish_ci NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=3 ;
 
@@ -474,9 +487,9 @@ CREATE TABLE IF NOT EXISTS `shops` (
 -- Vypisuji data pro tabulku `shops`
 --
 
-INSERT INTO `shops` (`uid`, `id`, `title`, `description`, `active`, `deleted`, `language`, `sort`) VALUES
-(1, 1, 'Fischer sport', 'All sport items', 1, 0, 'en', 0),
-(2, 2, 'The Gun Store', 'Guns ...', 1, 0, 'en', 10);
+INSERT INTO `shops` (`uid`, `id`, `title`, `description`, `active`, `deleted`, `language`, `sort`, `url`) VALUES
+(1, 1, 'Fischer sport', 'All sport items', 1, 0, 'en', 0, 'fischer-sport'),
+(2, 2, 'The Gun Store', 'Guns ...', 1, 0, 'en', 10, 'the-gun-store');
 
 -- --------------------------------------------------------
 
@@ -523,6 +536,7 @@ CREATE TABLE IF NOT EXISTS `shops-item` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `price` float NOT NULL,
+  `level` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=11 ;
 
@@ -530,17 +544,17 @@ CREATE TABLE IF NOT EXISTS `shops-item` (
 -- Vypisuji data pro tabulku `shops-item`
 --
 
-INSERT INTO `shops-item` (`uid`, `id`, `language`, `shop`, `equipment`, `active`, `deleted`, `price`) VALUES
-(1, 1, 'en', 2, 1, 1, 0, 350),
-(2, 2, 'en', 2, 2, 1, 0, 2.2),
-(3, 3, 'en', 2, 3, 1, 0, 2.7),
-(4, 4, 'en', 2, 4, 1, 0, 60),
-(5, 5, 'en', 2, 5, 1, 0, 85),
-(6, 6, 'en', 2, 6, 1, 0, 40),
-(7, 7, 'en', 2, 12, 1, 0, 100),
-(8, 8, 'en', 2, 13, 1, 0, 100),
-(9, 9, 'en', 2, 22, 1, 0, 20),
-(10, 9, 'en', 2, 23, 1, 0, 20);
+INSERT INTO `shops-item` (`uid`, `id`, `language`, `shop`, `equipment`, `active`, `deleted`, `price`, `level`) VALUES
+(1, 1, 'en', 2, 1, 1, 0, 350, 0),
+(2, 2, 'en', 2, 2, 1, 0, 2.2, 0),
+(3, 3, 'en', 2, 3, 1, 0, 2.7, 0),
+(4, 4, 'en', 2, 4, 1, 0, 60, 0),
+(5, 5, 'en', 2, 5, 1, 0, 85, 0),
+(6, 6, 'en', 2, 6, 1, 0, 40, 0),
+(7, 7, 'en', 2, 12, 1, 0, 100, 0),
+(8, 8, 'en', 2, 13, 1, 0, 100, 0),
+(9, 9, 'en', 2, 22, 1, 0, 20, 0),
+(10, 9, 'en', 2, 23, 1, 0, 20, 0);
 
 -- --------------------------------------------------------
 
@@ -598,6 +612,8 @@ CREATE TABLE IF NOT EXISTS `training-subcategory` (
   `stability` int(11) NOT NULL,
   `cartridges` int(11) NOT NULL DEFAULT '0',
   `addToEnergy` int(10) NOT NULL,
+  `level` int(15) NOT NULL DEFAULT '0',
+  `expirience` int(11) NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=4 ;
 
@@ -605,10 +621,10 @@ CREATE TABLE IF NOT EXISTS `training-subcategory` (
 -- Vypisuji data pro tabulku `training-subcategory`
 --
 
-INSERT INTO `training-subcategory` (`uid`, `id`, `category`, `title`, `description`, `language`, `active`, `deleted`, `sort`, `energy`, `time`, `price`, `message`, `accuracy`, `endurance`, `handPower`, `legPower`, `stability`, `cartridges`, `addToEnergy`) VALUES
-(1, 1, 1, 'Slow run', 'afsdfsdafsdfds', 'en', 1, 0, 0, 10, 1, 0, 'You have slow running training', 0, 0, 0, 0, 0, 0, 1),
-(2, 2, 1, 'Fast run', 'afsdfsdafsdfds', 'en', 1, 0, 0, 11, 350, 10, 'You have fast running training', 100, 0, 0, 0, 0, 0, 2),
-(3, 3, 3, 'Zeroing', 'gdsfgfdgfdgdfgsfdgdf', 'en', 1, 0, 0, 5, 20, 0, 'You have zeroing training', 0, 0, 0, 0, 0, 2, 0);
+INSERT INTO `training-subcategory` (`uid`, `id`, `category`, `title`, `description`, `language`, `active`, `deleted`, `sort`, `energy`, `time`, `price`, `message`, `accuracy`, `endurance`, `handPower`, `legPower`, `stability`, `cartridges`, `addToEnergy`, `level`, `expirience`) VALUES
+(1, 1, 1, 'Slow run', 'afsdfsdafsdfds', 'en', 1, 0, 0, 10, 1, 0, 'You have slow running training', 0, 0, 0, 0, 0, 0, 1, 0, 0),
+(2, 2, 1, 'Fast run', 'afsdfsdafsdfds', 'en', 1, 0, 0, 11, 350, 10, 'You have fast running training', 100, 0, 0, 0, 0, 0, 2, 2, 0),
+(3, 3, 3, 'Zeroing', 'gdsfgfdgfdgdfgsfdgdf', 'en', 1, 0, 0, 5, 20, 0, 'You have zeroing training', 0, 0, 0, 0, 0, 2, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -688,6 +704,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `maxEnergy` int(10) NOT NULL DEFAULT '20',
   `actualEnergy` int(10) NOT NULL DEFAULT '20',
   `money` float NOT NULL DEFAULT '100',
+  `expirience` int(15) NOT NULL,
   `lastActivityTimestamp` int(20) NOT NULL,
   `lastActivity` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   `stayLogin` tinyint(1) NOT NULL DEFAULT '1',
@@ -714,11 +731,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Vypisuji data pro tabulku `user`
 --
 
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `country`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`, `sticker`, `sticker-actived`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1475729646, 47, 47, 64.5, 1475586627, 'Part time job - WOOD GROUP (timber company)', 1, 1475591645, 120, 'm', 23, 24, 14, 10, 28, 19, 555, 171, 241, 82, 178, 1, 0),
-(2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1469902789, 1472467065, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063945, 1470389835, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063990, 1470130837, 20, 20, 100, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `country`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `expirience`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`, `sticker`, `sticker-actived`) VALUES
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1476010739, 47, 47, 76.7, 8, 1476009912, 'You have zeroing training', 1, 1476010859, 120, 'm', 1, 12, 14, 10, 28, 18, 555, 185, 262, 75, 185, 1, 0),
+(2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1469902789, 1475906814, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063945, 1475906963, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063990, 1475906828, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -733,7 +750,7 @@ CREATE TABLE IF NOT EXISTS `user-item` (
   `timestamp` int(20) NOT NULL,
   `count` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=40 ;
 
 --
 -- Vypisuji data pro tabulku `user-item`
@@ -741,7 +758,7 @@ CREATE TABLE IF NOT EXISTS `user-item` (
 
 INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (1, 1, 2, 1470397326, 0),
-(2, 1, 3, 1475242571, 11),
+(2, 1, 3, 1476009892, 1),
 (3, 1, 4, 1469792731, 2),
 (4, 0, 7, 1470063816, 3),
 (5, 0, 8, 1470063816, 3),
@@ -777,7 +794,8 @@ INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (35, 1, 25, 1475498724, 2),
 (36, 1, 26, 1475498724, 2),
 (37, 1, 27, 1475498724, 2),
-(38, 1, 28, 1472038337, 1);
+(38, 1, 28, 1472038337, 1),
+(39, 1, 2, 1475931147, 0);
 
 -- --------------------------------------------------------
 
@@ -791,8 +809,22 @@ CREATE TABLE IF NOT EXISTS `venues` (
   `language` varchar(5) NOT NULL,
   `country` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `url` varchar(255) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Vypisuji data pro tabulku `venues`
+--
+
+INSERT INTO `venues` (`uid`, `id`, `language`, `country`, `title`, `active`, `deleted`, `url`) VALUES
+(1, 1, 'en', 1, 'Nové M?sto na Morav?', 1, 0, 'nove-mesto-na-morave'),
+(2, 2, 'en', 1, 'Jablonec nad Nisou', 1, 0, 'jablonec-nad-nisou'),
+(3, 3, 'en', 1, 'Jáchymov', 1, 0, 'jachymov'),
+(4, 4, 'en', 1, 'Letohrad', 1, 0, 'letohrad'),
+(5, 5, 'en', 1, 'Harrachov', 1, 0, 'harrachov');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

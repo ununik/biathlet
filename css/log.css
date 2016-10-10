@@ -129,6 +129,7 @@ nav ul li{
 	height:14px;
 	display: inline-block;
 	background-size: 100%;
+	border: 1px solid black;
 }
 .form{
 	width: 300px;

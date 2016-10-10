@@ -530,6 +530,17 @@ class User
 	    ));
 	}
 	
+	public function setExpereince($value)
+	{
+	    $result = Connection::connect()->prepare(
+	            'UPDATE `user` SET `expirience`=:value WHERE `id`=:id AND `active`=1 AND `deleted`=0 LIMIT 1;'
+	            );
+	    $result->execute(array(
+	            ':id' => $this->_id,
+	            ':value' => $value
+	    ));
+	}
+	
 	public function setMoney($money)
 	{
 	    $result = Connection::connect()->prepare(
