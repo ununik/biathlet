@@ -74,8 +74,10 @@ class UserItem
     public function getBestCartridgesForUser($user, $language)
     {
     	$item  = $this->getAllItemsForUser($user, 2, $language, 'equipment.id', 'accuracy DESC');
-    	
-    	return $item[0]['id'];
+    	if (isset($item[0]['id'])) {
+    	   return $item[0]['id'];
+    	}
+    	return 0;
     }
     
     public function getAllItemsForUser($user, $category, $language, $columns = '*', $order = '', $where = '')

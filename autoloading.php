@@ -1,6 +1,7 @@
 <?php
 $pagePath = '';
 $languagePath = '';
+$specialValue1 = '';
 if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] != '') {
     $path = explode("/",$_SERVER['PATH_INFO']);
     //page3
@@ -13,7 +14,6 @@ if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] != '') {
     }
     
     //specialValue1
-    $specialValue1 = '';
     if (isset($path[3])) {
     	$specialValue1 = $path[3];
     }

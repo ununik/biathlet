@@ -4,7 +4,7 @@ class Job
     public function getAllPartTimeJobs($maxEnergy, $language)
     {
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `job-partTime` WHERE `minEnergy`<=:maxEnergy AND `language`=:language AND `active`=1 AND `deleted`=0 ORDER BY minEnergy DESC, title ASC;'
+                'SELECT * FROM `job-parttime` WHERE `minEnergy`<=:maxEnergy AND `language`=:language AND `active`=1 AND `deleted`=0 ORDER BY minEnergy DESC, title ASC;'
                 );
         $result->execute(array(
                 ':maxEnergy' => $maxEnergy,
@@ -19,7 +19,7 @@ class Job
     public function getParttimeJobFromId($id)
     {
         $result = Connection::connect()->prepare(
-                'SELECT * FROM `job-partTime` WHERE `id`=:id AND `active`=1 AND `deleted`=0;'
+                'SELECT * FROM `job-parttime` WHERE `id`=:id AND `active`=1 AND `deleted`=0;'
                 );
         $result->execute(array(
                 ':id' => $id
@@ -28,10 +28,5 @@ class Job
         $job = $result->fetch();
         
         return $job;
-    }
-    
-    public function doParttimeJob($id, $type, $user)
-    {
-        return 'TODO';
     }
 }
