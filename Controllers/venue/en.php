@@ -16,6 +16,8 @@ if ($venueId == false) {
 	header('Location: '. $page->getLink(11));	
 }
 
+$html->addToJs(URL_PATH.'/js/venue.js');
+
 $venue = $venueClass->getVenueFromId($venueId, $page->_language);
 $countryClass = new Country();
 $country = $countryClass->getCountryFromId($venue['country']);

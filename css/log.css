@@ -656,6 +656,17 @@ nav ul li{
 	font-size: 13px;
 	line-height: 15px;
 }
+.venueMap{
+	width: 30vW;
+	height: 30vW;
+	background-size: 100%;
+}
+.trackColor{
+	width: 10vW;
+	height:3vW;
+	display: inline-block;
+	cursor: pointer;
+}
 
 @media only screen and (max-device-width: 600px){
 	#header{

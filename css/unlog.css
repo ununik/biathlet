@@ -123,6 +123,17 @@ nav li a:hover{
 	left: 0px;
 	z-index: -15;
 }
+.venueMap{
+	width: 50vW;
+	height: 50vW;
+	background-size: 100%;
+}
+.trackColor{
+	width: 10vW;
+	height:3vW;
+	display: inline-block;
+	cursor: pointer;
+}
 @media only screen and (max-device-width: 800px){
 	#content{
 		width: 100%;

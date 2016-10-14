@@ -21,7 +21,6 @@ if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 		$html->setCssFile(URL_PATH . '/css/log.css');
 		$html->addToJs('', 'const HOME_DIR = "'.HOME_DIR.'"');
 		$html->addToJs('', 'const URL_PATH = "'.URL_PATH.'"');
-		$html->addToJs(URL_PATH . '/js/jquery-3.1.0.min.js');
 		$html->addToJs(URL_PATH . '/js/ajax.js');
 		$html->addToJs(URL_PATH . '/js/basicFunctions.js');
 		$html->setHeader($user->getHeader($page->_language));
@@ -37,6 +36,8 @@ if (isset($_SESSION['biathlete_user']) && $_SESSION['biathlete_user'] != '') {
 } else {
 	$user = new User();
 }
+
+$html->addToJs(URL_PATH . '/js/jquery-3.1.0.min.js');
 
 $page->changePID($pagePath);
 $html->setHomepageLink($page->getLink($page->getHomepageId()));

@@ -47,4 +47,18 @@ class Venues
 		
 		return $venues;
 	}
+	public function getTracksForVenue($venue, $language)
+	{
+	    $result = Connection::connect()->prepare(
+	            'SELECT * FROM `venue-tracks` WHERE `language`=:language AND `venue`=:venue AND active=1 AND deleted=0;'
+	            );
+	    $result->execute(array(
+	        ':language' => $language,
+	        ':venue' => $venue
+	    ));
+	
+	    $venues = $result->fetchAll();
+	
+	    return $venues;
+	}
 }
