@@ -644,7 +644,9 @@ nav ul li{
 	border: 1px solid black;
 }
 #toNextLevelInner{
-	background-color: blue;
+	background-image: url(../images/expierence.svg);
+	background-size: 100% auto;
+	background-position: right;
 	height: 100%;
 }
 #toNextLevelNumber{
@@ -660,6 +662,11 @@ nav ul li{
 	width: 30vW;
 	height: 30vW;
 	background-size: 100%;
+}
+#venueDescription{
+	width: 20vW;
+	position: absolute;
+	margin-left: 32vW;
 }
 .trackColor{
 	width: 10vW;

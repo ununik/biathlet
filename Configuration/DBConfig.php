@@ -6,4 +6,4 @@ define('DB_HOST', 'localhost');
 //} else {
 //    define('DB_LOGIN', 'ununik');
 //}
-define('DB_PASSWORD', 'Unununium111');
+define('DB_PASSWORD', '');

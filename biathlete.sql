@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Počítač: localhost
--- Vygenerováno: Pát 14. říj 2016, 18:00
--- Verze serveru: 5.5.50-0ubuntu0.14.04.1
--- Verze PHP: 5.5.9-1ubuntu4.17
+-- Počítač: 127.0.0.1
+-- Vygenerováno: Pon 17. říj 2016, 08:15
+-- Verze serveru: 5.5.34
+-- Verze PHP: 5.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -747,7 +747,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `country`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `expirience`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`, `sticker`, `sticker-actived`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1476460715, 47, 47, 74, 9, 1476092801, 'You have zeroing training', 1, 1476101795, 120, 'm', 1, 12, 14, 10, 27, 18, 555, 185, 262, 75, 185, 1, 0),
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1476599725, 48, 48, 74, 9, 1476560869, 'You have slow running training', 1, 1476562524, 120, 'm', 1, 12, 14, 10, 27, 18, 555, 185, 262, 75, 185, 1, 0),
 (2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1469902789, 1475906814, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
 (3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063945, 1475906963, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
 (4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063990, 1475906828, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -830,17 +830,24 @@ CREATE TABLE IF NOT EXISTS `venue-tracks` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Vypisuji data pro tabulku `venue-tracks`
 --
 
 INSERT INTO `venue-tracks` (`uid`, `id`, `language`, `description`, `length`, `map`, `venue`, `color`, `active`, `deleted`) VALUES
-(1, 1, 'en', '', 3000, '/uploads/images/tracks/JablonecNadNIsou/3000m.svg', 2, 'ffff00', 1, 0),
-(2, 2, 'en', '', 2600, '/uploads/images/tracks/JablonecNadNIsou/2600m.svg', 2, '00c200', 1, 0),
-(3, 2, 'en', '', 1700, '/uploads/images/tracks/JablonecNadNIsou/1700m.svg', 2, 'ff0000', 1, 0),
-(4, 2, 'en', '', 1400, '/uploads/images/tracks/JablonecNadNIsou/1400m.svg', 2, 'ff9600', 1, 0);
+(1, 1, 'en', 'dsakpas[k[pdask[pdasdkas[pkd[pas[pdka[pskdpkas[pkd[pask', 3000, '/uploads/images/tracks/JablonecNadNIsou/3000m.svg', 2, 'ffff00', 1, 0),
+(2, 2, 'en', 'fsadifiads dspoajoadfs', 2600, '/uploads/images/tracks/JablonecNadNIsou/2600m.svg', 2, '00c200', 1, 0),
+(3, 3, 'en', 'foadsi hoisdfhasd', 1700, '/uploads/images/tracks/JablonecNadNIsou/1700m.svg', 2, 'ff0000', 1, 0),
+(4, 4, 'en', 'fadoshi hoafsd ', 1400, '/uploads/images/tracks/JablonecNadNIsou/1400m.svg', 2, 'ff9600', 1, 0),
+(5, 5, 'en', 'dsakpas[k[pdask[pdasdkas[pkd[pas[pdka[pskdpkas[pkd[pask', 2500, '/uploads/images/tracks/Jachymov/2500m.svg', 3, 'ffff00', 1, 0),
+(6, 6, 'en', 'fsadifiads dspoajoadfs', 3600, '/uploads/images/tracks/Jachymov/3600m.svg', 3, '00c200', 1, 0),
+(7, 7, 'en', 'fsadifiads dspoajoadfs', 1800, '/uploads/images/tracks/Jachymov/1800m.svg', 3, '002ede', 1, 0),
+(8, 8, 'en', 'fsadifiads dspoajoadfs', 4000, '/uploads/images/tracks/NoveMestoNaMorave/4000m.svg', 1, '992020', 1, 0),
+(9, 9, 'en', 'fsadifiads dspoajoadfs', 3300, '/uploads/images/tracks/NoveMestoNaMorave/3300m.svg', 1, '002ede', 1, 0),
+(10, 10, 'en', 'fsadifiads dspoajoadfs', 3000, '/uploads/images/tracks/NoveMestoNaMorave/3000m.svg', 1, 'ffff00', 1, 0),
+(11, 11, 'en', 'fsadifiads dspoajoadfs', 2500, '/uploads/images/tracks/NoveMestoNaMorave/2500m.svg', 1, '00c200', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -866,9 +873,9 @@ CREATE TABLE IF NOT EXISTS `venues` (
 --
 
 INSERT INTO `venues` (`uid`, `id`, `language`, `country`, `title`, `active`, `deleted`, `url`, `map`) VALUES
-(1, 1, 'en', 1, 'Nové M?sto na Morav?', 1, 0, 'nove-mesto-na-morave', ''),
+(1, 1, 'en', 1, 'Nové M?sto na Morav?', 1, 0, 'nove-mesto-na-morave', '/uploads/images/tracks/NoveMestoNaMorave/all.svg'),
 (2, 2, 'en', 1, 'Jablonec nad Nisou', 1, 0, 'jablonec-nad-nisou', '/uploads/images/tracks/JablonecNadNIsou/all.svg'),
-(3, 3, 'en', 1, 'Jáchymov', 1, 0, 'jachymov', ''),
+(3, 3, 'en', 1, 'Jáchymov', 1, 0, 'jachymov', '/uploads/images/tracks/Jachymov/all.svg'),
 (4, 4, 'en', 1, 'Letohrad', 1, 0, 'letohrad', ''),
 (5, 5, 'en', 1, 'Harrachov', 1, 0, 'harrachov', '');
 

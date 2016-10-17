@@ -50,7 +50,7 @@ class Venues
 	public function getTracksForVenue($venue, $language)
 	{
 	    $result = Connection::connect()->prepare(
-	            'SELECT * FROM `venue-tracks` WHERE `language`=:language AND `venue`=:venue AND active=1 AND deleted=0;'
+	            'SELECT * FROM `venue-tracks` WHERE `language`=:language AND `venue`=:venue AND active=1 AND deleted=0 ORDER BY length DESC;'
 	            );
 	    $result->execute(array(
 	        ':language' => $language,
