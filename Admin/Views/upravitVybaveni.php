@@ -10,7 +10,7 @@ foreach ($categories as $category) {
 }
 
 $container = 'Uprava vybaveni - '. $language;
-$container .= '<form action="" method="post">';
+$container .= '<form action="" method="post" enctype="multipart/form-data">';
 $container .= '<h3>'.$item['title'].'</h3>';
 $container .= '<table>';
 
@@ -40,6 +40,14 @@ $container .= '</tr>';
 
 $container .= '<tr>';
 $container .= '<td>Stabilita</td><td><input type="text" value="'.$item['stability'].'" name="stability"></td>';
+$container .= '</tr>';
+
+$container .= '<tr>';
+$container .= '<td>Ilustrační obrázek</td><td><input type="file" name="image">';
+if ($item['image'] != '') {
+    $container .= '<img src="'.URL_PATH.$item['image'].'" height="35px">';
+}
+$container .= '</td>';
 $container .= '</tr>';
 
 $container .= '<tr>';

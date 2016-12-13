@@ -1,7 +1,7 @@
 <?php 
-$container = 'Vybaveni';
+$container = 'Vybavení';
 $container .= '<table><tr>';
-$container .= '<th>jmeno</th>';
+$container .= '<th>EN</th>';
 $container .= '<th>CS</th>';
 $container .= '</tr>';
 foreach ($equipmentClass->getAllCategories() as $category) {
@@ -13,7 +13,7 @@ foreach ($equipmentClass->getAllCategories() as $category) {
         if ($equipmentClass->issetTranslationForItem($item['id'], 'cs')) {
             $container .= '<td><a href="?page=upravitVybaveni&language=cs&id='.$item['id'].'">upravit</a></td>';
         } else {
-            $container .= '<td><a href="?page=upravitVybaveni&language=cs&id='.$item['id'].'&new=true">vytvorit</a></td>';
+            $container .= '<td><a href="?page=upravitVybaveni&language=cs&id='.$item['id'].'&new=true">vytvořit</a></td>';
         }
         
         $container .= '</tr>';

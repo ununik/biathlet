@@ -1,7 +1,7 @@
 <?php
 $container = 'Překlady';
 $container .= '<table>';
-$container .= '<tr><th>original</th><th>preklad</th><th></th></tr>';
+$container .= '<tr><th>originál</th><th>překlad</th><th></th></tr>';
 foreach ($translation->showAllWords('cs') as $translationTable) {
 	$container .= '<tr>';
 	$container .= '<td>';

@@ -57,7 +57,7 @@ body{
    color: red;
 }
 .submit_button{
-	margin: 0px auto;
+	margin: 15px auto 0px auto;
 	display: block;
 	background-image: url('../images/icons/button.svg');
 	background-size: 100%;
@@ -112,6 +112,7 @@ nav li .active{
 }
 nav li a:hover{
 	text-decoration: underline;
+	color: #555555;
 }
 #topBackground{
 	background-image: url(../images/topBackground.svg);
@@ -133,8 +134,34 @@ nav li a:hover{
 	height:3vW;
 	display: inline-block;
 	cursor: pointer;
+	font-size: 2.5vW;
+	line-height: 3vW;
+	text-align: center;
 }
-@media only screen and (max-device-width: 800px){
+#languageNavigation{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+#languageNavigation li{
+	display: inline-block;
+}
+#languageNavigation li a{
+	border: 1px solid silver;
+	padding: 3px 5px 1px 5px;
+	display: block;
+	color: black;
+	text-decoration: none;
+}
+#languageNavigation li a:hover{
+	background-color: silver;
+}
+.language_menu_flag{
+	height: 1em;
+	width: 1.5em;
+	margin-right: 5px;
+}
+@media only screen and (max-device-width: 890px){
 	#content{
 		width: 100%;
 	}
@@ -159,6 +186,9 @@ nav li a:hover{
 }
 
 @media only screen and (max-device-width: 400px){
+	#content{
+		width: 100%;
+	}
 	#logo{
 		height: 65px;
 	}
@@ -168,6 +198,22 @@ nav li a:hover{
 	nav li{
 		display: block;
 		margin: 4px 0px;
+	}
+	#languageNavigation li a{
+		border: 1px solid silver;
+		padding: 3px 5px 1px 5px;
+		display: block;
+		color: black;
+		text-decoration: none;
+		font-size: 14px;
+	}
+	#languageNavigation li a:hover{
+		background-color: silver;
+	}
+	.language_menu_flag{
+		height: 14px;
+		width: 21px;
+		margin-right: 3px;
 	}
 }
 #weaponImg{

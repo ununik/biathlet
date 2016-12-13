@@ -101,9 +101,9 @@ class HTML
         $this->_actualActivity = $new;
     }
     
-    public function addToTranslationNavigation($language, $url)
+    public function addToTranslationNavigation($language, $flag, $url)
     {
-    	$this->_languageNavigation[] = '<a href="'.$url.'">'.$language.'</a>';
+    	$this->_languageNavigation[] = '<a href="'.$url.'"><img src="'.URL_PATH.$flag.'" class="language_menu_flag">'.$language.'</a>';
     }
     
     public function printHTML()

@@ -23,29 +23,29 @@ if (isset($_POST['registration'])) {
 	
 	//mail
 	if (strlen($mail) == 0) {
-		$err[] = 'Mail is mandatory field.';
+		$err[] = Translation::t($page->_language, 'Mail is mandatory field.');
 	}
 	if (strlen($mail) > 255) {
-		$err[] = 'Mail is too long.';
+		$err[] = Translation::t($page->_language, 'Mail is too long.');
 	}
 	if (!\Library\Forms\validateEMAIL($mail)) {
-		$err[] = 'Mail has not valid format';
+		$err[] = Translation::t($page->_language, 'Mail has not valid format.');
 	}
 	if ($user->existsMail($mail)) {
-		$err[] = 'This mail is occupied.';
+		$err[] = Translation::t($page->_language, 'This mail is occupied.');
 	}
 	
 	//password	
 	if (strlen($password) == 0) {
-		$err[] = 'Password is mandatory field.';
+		$err[] = Translation::t($page->_language, 'Password is mandatory field.');
 	}
 	if ($password !== $passwordAgain) {
-		$err[] = 'Both passwords are not the same.';
+		$err[] = Translation::t($page->_language, 'Both passwords are not the same.');
 	}
 	
 	//rules
 	if (!isset($_POST['rules'])) {
-	    $err[] = 'You must agree with rules.';
+	    $err[] = Translation::t($page->_language, 'You must agree with rules.');
 	}
 	
 	

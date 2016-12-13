@@ -64,7 +64,7 @@ if ($actualPage['view'] != '') {
 
 //LANGUAGE MENU
 foreach ($languageClass->getAllLanguages($page->_language, false) as $langNavigation) {
-	$html->addToTranslationNavigation($langNavigation['originalTitle'], $page->getLink($page->getPID(), '', $langNavigation['short']));
+	$html->addToTranslationNavigation($langNavigation['originalTitle'], $langNavigation['flag'], $page->getLink($page->getPID(), '', $langNavigation['short']));
 }
 
 require HOME_DIR . '/automation/controller.php';

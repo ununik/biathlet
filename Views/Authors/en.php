@@ -1,5 +1,5 @@
 <?php
-$container = '<h3>Authors</h3>';
+$container = '<h3>'.Translation::t($page->_language, 'Authors').'</h3>';
 
 $container .= '<h4>Martin Přibyl</h4>';
 $container .= '<table>';

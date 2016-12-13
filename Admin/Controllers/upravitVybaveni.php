@@ -19,6 +19,15 @@ if (isset($_POST['save'])) {
     $forAll['handPower'] = $_POST['handPower'];
     $forAll['endurance'] = $_POST['endurance'];
     $forAll['stability'] = $_POST['stability'];
+    
+    if (isset($_FILES['image'])) {
+        $moved = move_uploaded_file($_FILES['image']['tmp_name'],HOME_DIR.'/uploads/images/equipment/'.$_FILES['image']['name']);
+        
+        if ($moved) {
+            $forAll['image'] = '/uploads/images/equipment/'.$_FILES['image']['name'];
+        }
+    }
+    
     if (isset($_POST['active'])) {
         $forLanguage['active'] = 1;
     } else {

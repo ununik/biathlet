@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Počítač: 127.0.0.1
--- Vygenerováno: Pon 17. říj 2016, 08:15
--- Verze serveru: 5.5.34
--- Verze PHP: 5.4.22
+-- Počítač: localhost
+-- Vygenerováno: Úte 13. pro 2016, 17:17
+-- Verze serveru: 5.5.50-0ubuntu0.14.04.1
+-- Verze PHP: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `title` text NOT NULL,
   `user` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Vypisuji data pro tabulku `bank`
@@ -80,7 +80,12 @@ INSERT INTO `bank` (`id`, `timestamp`, `revenue`, `title`, `user`) VALUES
 (38, 1475907730, -2.2, 'Shop - ELEY tenex biathlon', 1),
 (39, 1475907757, -2.2, 'Shop - ELEY tenex biathlon', 1),
 (40, 1475939042, 2, 'Part time job - WOOD GROUP (timber company)', 1),
-(41, 1476092770, -2.7, 'Shop - LAPUA Polar Biathlon', 1);
+(41, 1476092770, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
+(42, 1481551633, 10, 'Part time job - WOOD GROUP (timber company)', 1),
+(43, 1481553566, -2.2, 'Shop - ELEY tenex biathlon', 1),
+(44, 1481553570, -2.7, 'Shop - LAPUA Polar Biathlon', 1),
+(45, 1481553573, -2.2, 'Shop - ELEY tenex biathlon', 1),
+(46, 1481553576, -2.7, 'Shop - LAPUA Polar Biathlon', 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `flag` text NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Vypisuji data pro tabulku `countries`
@@ -105,7 +110,9 @@ CREATE TABLE IF NOT EXISTS `countries` (
 
 INSERT INTO `countries` (`uid`, `id`, `language`, `name`, `active`, `deleted`, `flag`) VALUES
 (1, 1, 'en', 'Czechia', 1, 0, '/images/flags/cze.svg'),
-(2, 2, 'en', 'Germany', 1, 0, '/images/flags/ger.svg');
+(2, 2, 'en', 'Germany', 1, 0, '/images/flags/ger.svg'),
+(3, 3, 'en', 'Great Britain', 1, 0, '/images/flags/gb.svg'),
+(4, 1, 'cs', '?esko', 1, 0, '/images/flags/cze.svg');
 
 -- --------------------------------------------------------
 
@@ -134,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `endurance` int(10) NOT NULL,
   `stability` int(10) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=50 ;
 
 --
 -- Vypisuji data pro tabulku `equipment`
@@ -144,7 +151,7 @@ INSERT INTO `equipment` (`uid`, `id`, `title`, `description`, `language`, `speci
 (1, 1, 'AnschÃ¼tz 1827 F', '', 'en', '', 0, 1, '/uploads/images/equipment/ansch-1827f.jpg', '/uploads/images/equipment/weapons/anschutz1827f.svg', 1, 0, '/uploads/images/equipment/weapons/anschutz1827f2.svg', 0, 5, -20, -5, -2, -2),
 (2, 2, 'ELEY tenex biathlon', '', 'en', '', 0, 2, '/uploads/images/equipment/eley-tenex-box.jpg', '', 1, 0, '', 0, 10, 0, 0, 0, 0),
 (3, 3, 'LAPUA Polar Biathlon', '', 'en', '', 0, 2, '/uploads/images/equipment/lapuaPolar.jpg', '', 1, 0, '', 0, 29, 0, 0, 0, 0),
-(4, 4, 'AnschÃ¼tz magazine', '', 'en', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg', '', 1, 0, '', 0, 1, 1, 1, 1, 1),
+(4, 4, 'AnschÃ¼tz magazine', '', 'en', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg', '', 1, 0, '', 0, 2, 1, 1, 1, 1),
 (5, 5, 'Larsen rifle bag', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-futral.jpg', '', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (6, 6, 'Larsen armsling', '', 'en', '', 0, 3, '/uploads/images/equipment/larsen-sling.jpg', '', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (7, 7, 'Default metal', '', 'en', '', 0, 1, '', '', 1, 0, '', 0, 0, 0, 0, 0, 0),
@@ -155,37 +162,41 @@ INSERT INTO `equipment` (`uid`, `id`, `title`, `description`, `language`, `speci
 (12, 12, 'Biatar RS-4 (dark)', '', 'en', '', 0, 4, '/uploads/images/equipment/biatarLight.jpg', '/uploads/images/equipment/stocks/biatarRS4-dark.svg', 1, 0, '', 1, 10, 0, 0, 0, 0),
 (13, 13, 'Biatar RS-4 (light)', '', 'en', '', 0, 4, '/uploads/images/equipment/biatarLight.jpg', '/uploads/images/equipment/stocks/biatarRS4-light.svg', 1, 0, '', 1, 10, 0, 0, 0, 0),
 (14, 14, 'Anschutz diopter', '', 'en', '', 0, 5, '', '/uploads/images/equipment/diopter/anschutz.svg', 1, 0, '', 0, 1, 0, 0, 0, 0),
-(15, 15, 'Bi7-2', '', 'en', '', 0, 4, '', '/uploads/images/equipment/stocks/bi7.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
+(15, 15, 'Bi7-2', '', 'en', '', 0, 4, '/uploads/images/equipment/bi7-3.jpg', '/uploads/images/equipment/stocks/bi7.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (16, 16, 'Izhmash Bi7-3', '', 'en', '', 0, 1, '', '/uploads/images/equipment/weapons/bi7-3.svg', 1, 0, '/uploads/images/equipment/weapons/bi7-32.svg', 0, 0, 0, 0, 0, 0),
 (17, 17, 'Bi7 diopter', '', 'en', '', 0, 5, '', '/uploads/images/equipment/diopter/bi7.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (18, 18, '2Hooks', '', 'en', '', 0, 8, '', '/uploads/images/equipment/buttPlates/2hooks.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (19, 19, 'Anschutz', '', 'en', '', 0, 8, '', '/uploads/images/equipment/buttPlates/anschutz.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (20, 20, 'Bi7-4', '', 'en', '', 0, 4, '', '/uploads/images/equipment/stocks/bi7-4.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
-(21, 21, 'Izhmash Bi7-4', '', 'en', '', 0, 1, '', '/uploads/images/equipment/weapons/bi7-4.svg', 1, 0, '/uploads/images/equipment/weapons/bi7-42.svg', 0, 0, 0, 0, 0, 0),
+(21, 21, 'Izhmash Bi7-4', '', 'en', '', 0, 1, '/uploads/images/equipment/biathlon_BI-7-409_small.jpg', '/uploads/images/equipment/weapons/bi7-4.svg', 1, 0, '/uploads/images/equipment/weapons/bi7-42.svg', 0, 0, 0, 0, 0, 0),
 (22, 1, 'AnschÃ¼tz 1827 F', '', 'cs', '', 0, 1, '/uploads/images/equipment/ansch-1827f.jpg', '/uploads/images/equipment/weapons/anschutz1827f.svg', 1, 0, '/uploads/images/equipment/weapons/anschutz1827f2.svg', 0, 5, -20, -5, -2, -2),
 (23, 13, 'Biatar RS-4 (light)', '', 'cs', '', 0, 4, '/uploads/images/equipment/biatarLight.jpg', '/uploads/images/equipment/stocks/biatarRS4-light.svg', 1, 0, '', 1, 10, 0, 0, 0, 0),
 (24, 14, 'Anschutz diopter', '', 'cs', '', 0, 5, '', '/uploads/images/equipment/diopter/anschutz.svg', 1, 0, '', 0, 1, 0, 0, 0, 0),
 (25, 22, 'Anschutz', '', 'en', '', 0, 4, '', '/uploads/images/equipment/stocks/anschutz.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
-(26, 23, 'Anschutz 1903', '', 'en', '', 0, 1, '', '/uploads/images/equipment/weapons/anschutz1903.svg', 1, 0, '/uploads/images/equipment/weapons/anschutz19032.svg', 0, 0, 0, 0, 0, 0),
+(26, 23, 'Anschutz 1903', '', 'en', '', 0, 1, '/uploads/images/equipment/bild.jpg', '/uploads/images/equipment/weapons/anschutz1903.svg', 1, 0, '/uploads/images/equipment/weapons/anschutz19032.svg', 0, 0, 0, 0, 0, 0),
 (27, 24, 'Anschutz 1903', '', 'en', '', 0, 4, '', '/uploads/images/equipment/stocks/anschutz1903.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (28, 25, 'Harness - blue / white', '', 'en', '', 0, 7, '', '/uploads/images/equipment/harness/blue-white.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (29, 26, 'Harness - red / white', '', 'en', '', 0, 7, '', '/uploads/images/equipment/harness/red-white.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (30, 27, 'Harness - orange / orange', '', 'en', '', 0, 7, '', '/uploads/images/equipment/harness/orange-orange.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (31, 28, 'Harness - black / black', '', 'en', '', 0, 7, '', '/uploads/images/equipment/harness/black-black.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
-(32, 4, 'AnschÃ¼tz zÃ¡sobnÃ­ky', '', 'cs', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg', '', 1, 0, '', 0, 1, 1, 1, 1, 1),
+(32, 4, 'AnschÃ¼tz zÃ¡sobnÃ­k', '', 'cs', '', 0, 3, '/uploads/images/equipment/ans_magazine.jpg', '', 1, 0, '', 0, 2, 1, 1, 1, 1),
 (33, 6, 'Larsen armsling', '', 'cs', '', 0, 3, '/uploads/images/equipment/larsen-sling.jpg', '', 0, 0, '', 0, 0, 0, 0, 0, 0),
 (34, 5, 'Larsen rifle bag', '', 'cs', '', 0, 3, '/uploads/images/equipment/larsen-futral.jpg', '', 0, 0, '', 0, 0, 0, 0, 0, 0),
 (35, 18, '2Hooks', '', 'cs', '', 0, 8, '', '/uploads/images/equipment/buttPlates/2hooks.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (36, 19, 'Anschutz', '', 'cs', '', 0, 8, '', '/uploads/images/equipment/buttPlates/anschutz.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (37, 2, 'ELEY tenex biathlon', '', 'cs', '', 0, 2, '/uploads/images/equipment/eley-tenex-box.jpg', '', 0, 0, '', 0, 10, 0, 0, 0, 0),
-(38, 21, 'Izhmash Bi7-4', '', 'cs', '', 0, 1, '', '/uploads/images/equipment/weapons/bi7-4.svg', 0, 0, '/uploads/images/equipment/weapons/bi7-42.svg', 0, 0, 0, 0, 0, 0),
-(39, 16, 'Izhmash Bi7-3', '', 'cs', '', 0, 1, '', '/uploads/images/equipment/weapons/bi7-3.svg', 0, 0, '/uploads/images/equipment/weapons/bi7-32.svg', 0, 0, 0, 0, 0, 0),
+(38, 21, 'Izhmash Bi7-4', '', 'cs', '', 0, 1, '/uploads/images/equipment/biathlon_BI-7-409_small.jpg', '/uploads/images/equipment/weapons/bi7-4.svg', 1, 0, '/uploads/images/equipment/weapons/bi7-42.svg', 0, 0, 0, 0, 0, 0),
+(39, 16, 'Izhmash Bi7-3', '', 'cs', '', 0, 1, '', '/uploads/images/equipment/weapons/bi7-3.svg', 1, 0, '/uploads/images/equipment/weapons/bi7-32.svg', 0, 0, 0, 0, 0, 0),
 (40, 7, 'Default metal', '', 'cs', '', 0, 1, '', '', 0, 0, '', 0, 0, 0, 0, 0, 0),
-(41, 23, 'Anschutz 1903', '', 'cs', '', 0, 1, '', '/uploads/images/equipment/weapons/anschutz1903.svg', 1, 0, '/uploads/images/equipment/weapons/anschutz19032.svg', 0, 0, 0, 0, 0, 0),
+(41, 23, 'Anschutz 1903', '', 'cs', '', 0, 1, '/uploads/images/equipment/bild.jpg', '/uploads/images/equipment/weapons/anschutz1903.svg', 1, 0, '/uploads/images/equipment/weapons/anschutz19032.svg', 0, 0, 0, 0, 0, 0),
 (42, 24, 'Anschutz 1903', '', 'cs', '', 0, 4, '', '/uploads/images/equipment/stocks/anschutz1903.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
 (43, 27, 'Harness - orange / orange', '', 'cs', '', 0, 7, '', '/uploads/images/equipment/harness/orange-orange.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
-(44, 17, 'Bi7 diopter', '', 'cs', '', 0, 5, '', '/uploads/images/equipment/diopter/bi7.svg', 0, 0, '', 0, 0, 0, 0, 0, 0),
-(45, 26, 'Harness - red / white', '', 'cs', '', 0, 7, '', '/uploads/images/equipment/harness/red-white.svg', 0, 0, '', 0, 0, 0, 0, 0, 0);
+(44, 17, 'Bi7 diopter', '', 'cs', '', 0, 5, '', '/uploads/images/equipment/diopter/bi7.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
+(45, 26, 'Harness - red / white', '', 'cs', '', 0, 7, '', '/uploads/images/equipment/harness/red-white.svg', 0, 0, '', 0, 0, 0, 0, 0, 0),
+(46, 3, 'LAPUA Polar Biathlon', '', 'cs', '', 0, 2, '/uploads/images/equipment/lapuaPolar.jpg', '', 1, 0, '', 0, 29, 0, 0, 0, 0),
+(47, 12, 'Biatar RS-4 (dark)', '', 'cs', '', 0, 4, '/uploads/images/equipment/biatarLight.jpg', '/uploads/images/equipment/stocks/biatarRS4-dark.svg', 1, 0, '', 1, 10, 0, 0, 0, 0),
+(48, 28, 'Harness - black / black', '', 'cs', '', 0, 7, '', '/uploads/images/equipment/harness/black-black.svg', 1, 0, '', 0, 0, 0, 0, 0, 0),
+(49, 15, 'Bi7-2', '', 'cs', '', 0, 4, '/uploads/images/equipment/bi7-3.jpg', '/uploads/images/equipment/stocks/bi7.svg', 1, 0, '', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -257,20 +268,22 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `short` varchar(20) NOT NULL,
   `long` varchar(255) NOT NULL,
-  `originalTitle` varchar(255) NOT NULL,
+  `originalTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
   `enTitle` varchar(255) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `flag` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Vypisuji data pro tabulku `languages`
 --
 
-INSERT INTO `languages` (`id`, `short`, `long`, `originalTitle`, `enTitle`, `active`, `deleted`) VALUES
-(1, 'en', 'English', 'English', 'English', 1, 0),
-(2, 'cs', 'Czech', '?eština', 'Czech', 1, 0);
+INSERT INTO `languages` (`id`, `short`, `long`, `originalTitle`, `enTitle`, `active`, `deleted`, `flag`) VALUES
+(1, 'en', 'English', 'English', 'English', 1, 0, '/images/flags/gb.svg'),
+(2, 'cs', 'Czech', 'Čeština', 'Czech', 1, 0, '/images/flags/cze.svg'),
+(3, 'de', 'German', 'Deutsch', 'German', 1, 0, '/images/flags/ger.svg');
 
 -- --------------------------------------------------------
 
@@ -289,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `main-menu` (
   `pidLink` int(10) NOT NULL,
   `externalLink` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=23 ;
 
 --
 -- Vypisuji data pro tabulku `main-menu`
@@ -313,7 +326,10 @@ INSERT INTO `main-menu` (`id`, `language`, `active`, `deleted`, `sorting`, `titl
 (16, 'cs', 1, 0, 9, 'Nastavení', 1, 106, ''),
 (17, 'cs', 1, 0, 5, 'Biatlonisté', 1, 115, ''),
 (18, 'cs', 1, 0, 4, 'Práce', 1, 112, ''),
-(19, 'en', 1, 0, 4, 'Venues', 1, 120, '');
+(19, 'en', 1, 0, 4, 'Venues', 1, 120, ''),
+(20, 'cs', 1, 0, 3, 'Pravidla', 0, 5, ''),
+(21, 'cs', 1, 0, 4, 'AutoÅ™i', 0, 6, ''),
+(22, 'cs', 1, 0, 5, 'Game tour', 0, 7, '');
 
 -- --------------------------------------------------------
 
@@ -363,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `url` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=47 ;
 
 --
 -- Vypisuji data pro tabulku `page`
@@ -408,7 +424,13 @@ INSERT INTO `page` (`id`, `pid`, `log`, `language`, `title`, `controller`, `view
 (37, 120, 1, 'en', 'Venues', '/Controllers/venues/en.php', '/Views/venues/en.php', 1, 0, 'venues'),
 (38, 121, 1, 'en', 'Venue', '/Controllers/venue/en.php', '/Views/venue/en.php', 1, 0, 'venue'),
 (39, 10, 0, 'en', 'Venues', '/Controllers/venues/en.php', '/Views/venues/en.php', 1, 0, 'venues'),
-(40, 11, 0, 'en', 'Venue', '/Controllers/venue/en.php', '/Views/venue/en.php', 1, 0, 'venue');
+(40, 11, 0, 'en', 'Venue', '/Controllers/venue/en.php', '/Views/venue/en.php', 1, 0, 'venue'),
+(41, 5, 0, 'cs', 'Pravidla', '', '/Views/Rules/en.php', 1, 0, 'pravidla'),
+(42, 109, 1, 'cs', 'Pravidla', '', '/Views/Rules/en.php', 1, 0, 'pravidla'),
+(43, 6, 0, 'cs', 'AutoÅ™i', '', '/Views/Authors/en.php', 1, 0, 'autori'),
+(44, 110, 1, 'cs', 'AutoÅ™i', '', '/Views/Authors/en.php', 1, 0, 'autori'),
+(45, 7, 0, 'cs', 'Game tour', '', '/Views/GameTour/en.php', 1, 0, 'game-tour'),
+(46, 111, 1, 'cs', 'Game tour', '', '/Views/GameTour/en.php', 1, 0, 'game-tour');
 
 -- --------------------------------------------------------
 
@@ -470,14 +492,15 @@ CREATE TABLE IF NOT EXISTS `rules` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Vypisuji data pro tabulku `rules`
 --
 
 INSERT INTO `rules` (`id`, `language`, `text`, `active`, `deleted`) VALUES
-(1, 'en', 'Users must be over 10 years old.', 1, 0);
+(1, 'en', 'Users must be over 10 years old.', 1, 0),
+(2, 'cs', 'Uživatel musí být starší 10 let.', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -653,7 +676,7 @@ CREATE TABLE IF NOT EXISTS `translation` (
   `original` text CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
   `translated` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=48 ;
 
 --
 -- Vypisuji data pro tabulku `translation`
@@ -695,8 +718,16 @@ INSERT INTO `translation` (`id`, `language`, `original`, `translated`) VALUES
 (34, 'cs', 'Actual activity', 'AktuÃ¡lnÃ­ aktivita'),
 (35, 'cs', 'Completed weapon', 'KompletnÃ­ zbraÅˆ'),
 (36, 'cs', 'Bank', 'Banka'),
-(37, 'cs', 'Money operations', 'Penezni operace'),
-(38, 'cs', 'REMOVE STICKER', 'ODSTRANIT SAMOLEPKU');
+(37, 'cs', 'Money operations', 'PenÄ›Å¾nÃ­i operace'),
+(38, 'cs', 'REMOVE STICKER', 'ODSTRANIT SAMOLEPKU'),
+(39, 'cs', 'Rules', 'Pravidla'),
+(40, 'cs', 'Authors', 'AutoÅ™i'),
+(41, 'cs', 'Mail is mandatory field.', 'Mail musÃ­ bÃ½t vyplnÄ›nÃ½.'),
+(42, 'cs', 'Mail is too long.', 'VyplnÄ›nÃ½ mail je pÅ™Ã­liÅ¡ dlouhÃ½.'),
+(43, 'cs', 'Mail has not valid format.', 'Mail nemÃ¡ sprÃ¡vnÃ½ formÃ¡t.'),
+(44, 'cs', 'This mail is occupied.', 'Tento mail uÅ¾ pouÅ¾Ã­vÃ¡ nÄ›kdo jinÃ½.'),
+(46, 'cs', 'Both passwords are not the same.', 'Hesla se neshodujÃ­.'),
+(47, 'cs', 'You must agree with rules.', 'MusÃ­te souhlasit s pravidly.');
 
 -- --------------------------------------------------------
 
@@ -747,7 +778,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`, `country`, `active`, `deleted`, `registered`, `lastOnlineTime`, `maxEnergy`, `actualEnergy`, `money`, `expirience`, `lastActivityTimestamp`, `lastActivity`, `stayLogin`, `nextEnergyTimestamp`, `howLongToNextEnergy`, `gender`, `weapon`, `stock`, `diopter`, `rifle_sling`, `harness`, `buttPlate`, `accuracy`, `legPower`, `handPower`, `endurance`, `stability`, `sticker`, `sticker-actived`) VALUES
-(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', '42738c57c82d918bdca73343c16cc7da', 1, 1, 0, 1468225389, 1476599725, 48, 48, 74, 9, 1476560869, 'You have slow running training', 1, 1476562524, 120, 'm', 1, 12, 14, 10, 27, 18, 555, 185, 262, 75, 185, 1, 0),
+(1, 'Martin', 'PÅ™ibyl', 'ununik@gmail.com', 'ununik', 'c4a8a43699dd4136e7b1020efc83aad9', 1, 1, 0, 1468225389, 1481638821, 49, 44, 74.2, 11, 1481638814, 'You have zeroing training', 1, 1481638914, 120, 'm', 16, 15, 17, 10, 28, 18, 555, 191, 271, 72, 188, 1, 0),
 (2, '', '', 'lsdsa@fdfs.sdfa', 'test123', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1469902789, 1475906814, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
 (3, '', '', 'unusad@fsd.dsa', 'dsfafsad', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063945, 1475906963, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0),
 (4, '', '', 'unusad@fsd.dsaa', 'dsfafsada', '2a818cb3c27b7915cc998ca3e63ef62f', 0, 1, 0, 1470063990, 1475906828, 20, 20, 100, 0, 0, '', 1, 0, 0, 'n', 7, 8, 9, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -765,7 +796,7 @@ CREATE TABLE IF NOT EXISTS `user-item` (
   `timestamp` int(20) NOT NULL,
   `count` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=42 ;
 
 --
 -- Vypisuji data pro tabulku `user-item`
@@ -810,7 +841,9 @@ INSERT INTO `user-item` (`id`, `user`, `item`, `timestamp`, `count`) VALUES
 (36, 1, 26, 1475498724, 2),
 (37, 1, 27, 1475498724, 2),
 (38, 1, 28, 1472038337, 1),
-(39, 1, 2, 1475931147, 0);
+(39, 1, 2, 1475931147, 0),
+(40, 1, 2, 1481638794, 0),
+(41, 1, 3, 1481554260, 0);
 
 -- --------------------------------------------------------
 

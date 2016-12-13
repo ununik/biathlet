@@ -23,7 +23,7 @@ class Translation
 	public function showAllWords($language)
 	{
 		$result = Connection::connect()->prepare(
-				'SELECT * FROM `translation` WHERE `language`=:language;'
+				'SELECT * FROM `translation` WHERE `language`=:language ORDER BY original;'
 				);
 		$result->execute(array(
 				':language' => $language

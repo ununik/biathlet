@@ -5,12 +5,12 @@ class Language
 	{
 		if ($withActual) {
 			$result = Connection::connect()->prepare(
-					'SELECT * FROM `languages` WHERE `active`=1 AND `deleted`=0;'
+					'SELECT * FROM `languages` WHERE `active`=1 AND `deleted`=0 ORDER BY `originalTitle`;'
 					);
 			$result->execute();
 		} else {
 			$result = Connection::connect()->prepare(
-					'SELECT * FROM `languages` WHERE `short`!=:language AND `active`=1 AND `deleted`=0;'
+					'SELECT * FROM `languages` WHERE `short`!=:language AND `active`=1 AND `deleted`=0 ORDER BY `originalTitle`;'
 					);
 			$result->execute(array(
 					':language' => $language

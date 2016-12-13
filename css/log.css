@@ -257,8 +257,9 @@ nav ul li{
 	top: 25px;
 	font-size: 16px;
 	display: inline-block;	
-	width: 130px;
-	text-align: left;
+	width: 100px;
+	text-align: center;
+	margin-right: 10px;
 }
 .inactiveSteps{
 	display: none;
@@ -556,6 +557,25 @@ nav ul li{
 .setValue:hover{
 	background-image: url(../images/icons/go-hover.svg);	
 }
+.submit_button{
+	margin: 0px auto;
+	display: block;
+	background-image: url('../images/icons/button.svg');
+	background-size: 100%;
+	background-color: transparent;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 5px;
+	outline: none;
+	font-size: 18px;
+	width: 200px;
+	height: 40px;
+	font-family: nimbus, Serif;
+	cursor: pointer;
+}
+.submit_button:hover{
+	color: #000080;
+}
 .personalDefinition{
 	float: right;
 	width: 290px;
@@ -673,8 +693,23 @@ nav ul li{
 	height:3vW;
 	display: inline-block;
 	cursor: pointer;
+	font-size: 2.5vW;
+	line-height: 3vW;
+	text-align: center;
 }
-
+#languageNavigation{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+#languageNavigation li{
+	display: inline-block;
+}
+.language_menu_flag{
+	height: 1em;
+	width: 1.5em;
+	margin-right: 5px;
+}
 @media only screen and (max-device-width: 600px){
 	#header{
 		position: relative;

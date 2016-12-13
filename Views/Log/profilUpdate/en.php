@@ -57,7 +57,7 @@ $container .= '<label>'.Translation::t($page->_language, 'Login').'</label>';
 $container .= '<input type="text" name="login" value="' . $login . '">';
 $container .= '</div>';
 
-$container .= '<input type="submit" name="profilUpdate" value="save">';
+$container .= '<input type="submit" name="profilUpdate" class="submit_button" value="save">';
 $container .= '</form>';
 
 $container .= '<form action="" method="post" class="form steps '.$inactiveStepsLogin.'" id="login">';
@@ -76,7 +76,7 @@ $container .= '<label>New password again</label>';
 $container .= '<input type="password" name="newPassword2">';
 $container .= '</div>';
 
-$container .= '<input type="submit" name="passwordUpdate" value="save">';
+$container .= '<input type="submit" name="passwordUpdate" class="submit_button" value="save">';
 $container .= '</form>';
 
 return $container;

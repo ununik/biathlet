@@ -1,6 +1,3 @@
-$(document).ready(function() {
-	  
-});
 function showMessage(text){
 	$('#messageBlackBackground').css('display', 'block');
 	$('body').css('overflow', 'hidden');
